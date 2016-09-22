@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <LinearLayout
+        android:paddingRight="@dimen/check_padding"
+        android:paddingLeft="@dimen/check_padding"
+        android:paddingTop="@dimen/check_padding"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:paddingTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:src="@android:drawable/sym_def_app_icon" />
+
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="@dimen/check_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:textSize="@dimen/check_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="월요일"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ededed"
+            android:text="dididididi"/>
+
+
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:paddingTop="@dimen/check_padding2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="@dimen/check_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오늘의 TIP"
+                android:paddingBottom="15px"/>
+
+            <TextView
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ededed"
+                android:text="dididididididididdididididididididididididididi"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:layout_weight="0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@android:drawable/sym_def_app_icon"
+            android:layout_weight="0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="확인완료"
+            android:id="@+id/button"
+            android:background="@color/button"
+            android:textColor="@color/button_font"
+            android:textSize="@dimen/check_text"
+            />
+    </LinearLayout>
+
+</LinearLayout>
