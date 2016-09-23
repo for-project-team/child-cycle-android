@@ -24,10 +24,6 @@
             android:label="Adduser"></activity>
 
         <activity
-            android:name=".LoginActivity"
-            android:label="Login"></activity>
-
-        <activity
             android:name=".PrepareFirstActivity"
             android:label="PrepareFirst"
             />
