@@ -1,123 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
 
     <LinearLayout
-        android:paddingRight="@dimen/check_padding"
-        android:paddingLeft="@dimen/check_padding"
-        android:paddingTop="@dimen/check_padding"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/check_padding"
+        android:paddingRight="@dimen/check_padding"
+        android:paddingTop="@dimen/check_padding">
 
         <LinearLayout
-            android:paddingTop="25dp"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingTop="25dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
-                android:src="@android:drawable/sym_def_app_icon" />
+                android:src="@mipmap/img_weather_sun" />
 
             <LinearLayout
-                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:padding="20dp">
 
-            <TextView
-                android:textStyle="bold"
-                android:textSize="@dimen/check_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="25"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="25℃"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:textStyle="bold"
-                android:textSize="@dimen/check_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="월요일"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="월요일"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="#7E7E7E"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
 
 
         <TextView
-            android:textSize="@dimen/check_tip"
-            android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ededed"
-            android:text="dididididi"/>
+            android:padding="15dp"
+            android:text="화창합니다. 열이 뜨거우니 주의하세요."
+            android:textColor="#7A7A7A"
+            android:textSize="16sp" />
 
 
         <LinearLayout
-            android:layout_weight="0.5"
-            android:paddingTop="@dimen/check_padding2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/check_padding2">
 
             <TextView
-                android:textStyle="bold"
-                android:textSize="@dimen/check_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="15px"
                 android:text="오늘의 TIP"
-                android:paddingBottom="15px"/>
+                android:textSize="@dimen/check_text"
+                android:textStyle="bold" />
 
             <TextView
-                android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ededed"
-                android:textSize="@dimen/check_tip"
-                android:text="dididididididididdididididididididididididididi"/>
+                android:padding="15dp"
+                android:text="속도를 줄일 때 한번에 브레이크를 잡는 것보다
+천천히 힘을 주는 것이 좋습니다."
+                android:textColor="#7A7A7A"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="bottom"
-            android:layout_weight="0.1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="bottom">
 
-        <ImageView
-            android:src="@android:drawable/sym_def_app_icon"
-            android:layout_weight="0.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="확인완료"
             android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:background="@color/button"
+            android:text="확인완료"
             android:textColor="@color/button_font"
-            android:textSize="@dimen/check_text"
-            />
+            android:textSize="@dimen/check_text" />
     </LinearLayout>
 
 </LinearLayout>

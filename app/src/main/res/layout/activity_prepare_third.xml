@@ -46,7 +46,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="착용완료"
             android:textSize="@dimen/check_text"
             android:id="@+id/button"

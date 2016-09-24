@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:baselineAligned="false">
 
 
     <LinearLayout
@@ -11,7 +12,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:baselineAligned="false">
 
         <ImageView
         android:id="@+id/head"
@@ -46,7 +48,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="착용완료"
             android:textSize="@dimen/check_text"
             android:id="@+id/button"
