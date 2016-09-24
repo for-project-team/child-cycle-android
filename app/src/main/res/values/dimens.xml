@@ -13,15 +13,21 @@
     <dimen name="check_padding2">50dp</dimen>
 
     <dimen name="check_tip">18dp</dimen>
-    <dimen name="check_text">18dp</dimen>
+    <dimen name="check_text">18sp</dimen>
 
 
     <dimen name="input_data_padding">50dp</dimen>
-    <dimen name="data_paddingTop">28dp</dimen>
-    <dimen name="data_padding">24dp</dimen>
-    <dimen name="data_text">16dp</dimen>
+    <dimen name="data_paddingTop">24dp</dimen>
+    <dimen name="data_padding">20dp</dimen>
+    <dimen name="data_text">16sp</dimen>
 
     <dimen name="data_width">80dp</dimen>
 
-    <dimen name="stroke_padding">16dp</dimen>
+    <dimen name="stroke_padding">16sp</dimen>
+
+    <dimen name="main_text">16sp</dimen>
+    <dimen name="main_text_large">18sp</dimen>
+    <dimen name="main_spadding">16dp</dimen>
+    <dimen name="main_padding">20dp</dimen>
+
 </resources>

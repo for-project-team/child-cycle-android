@@ -6,4 +6,6 @@
 
     <color name="button">#FF5722</color>
     <color name="button_font">#fff</color>
+
+    <color name="maintxt_color">#3e3e3e</color>
 </resources>

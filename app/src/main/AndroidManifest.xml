@@ -43,6 +43,10 @@
             android:label="PrepareFourth"
             />
 
+        <activity
+            android:name=".RidingMainActivity"
+            android:label="RidingMain"></activity>
+
     </application>
 
 </manifest>

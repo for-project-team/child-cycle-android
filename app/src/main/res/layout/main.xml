@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:padding="@dimen/main_padding"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:textColor="@color/maintxt_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="주행시간"
+                    android:textSize="@dimen/main_text" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:id="@+id/riding_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00:00:00"
+                android:textSize="@dimen/main_text_large" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/maintxt_color"
+
+                    android:id="@+id/riding_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016.09.25 (일)"
+                    android:textSize="@dimen/main_text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="맑음"
+                    android:textSize="@dimen/main_text" />
+
+                <TextView
+                    android:textColor="@color/maintxt_color"
+                    android:id="@+id/weather_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="25℃"
+                    android:textSize="@dimen/main_text" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="5"
+        android:paddingTop="@dimen/main_spadding"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="핸들"
+                android:textSize="@dimen/main_text_large"
+                />
+
+            <ImageView
+                android:layout_margin="@dimen/main_padding"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/maintxt_color" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="속도"
+                android:textSize="@dimen/main_text_large"
+                />
+
+            <ImageView
+                android:layout_margin="@dimen/main_padding"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/maintxt_color" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="거리감지"
+                android:textSize="@dimen/main_text_large"
+                />
+
+            <ImageView
+                android:layout_margin="@dimen/main_padding"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="@dimen/main_spadding"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:textColor="@color/maintxt_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="주행거리"
+                    android:textSize="@dimen/main_text" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:id="@+id/riding_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.00 km"
+                android:textSize="@dimen/main_text_large" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:textColor="@color/maintxt_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="주행속도"
+                    android:textSize="@dimen/main_text" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:id="@+id/riding_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15 m/s"
+                android:textSize="@dimen/main_text_large" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="일시정지"
+            android:textSize="@dimen/check_text"
+            android:id="@+id/button_stop"
+            android:background="@color/button"
+            android:textColor="@color/button_font"
+            />
+
+        <Button
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="종료"
+            android:textSize="@dimen/check_text"
+            android:id="@+id/button_exit"
+            android:background="@color/button"
+            android:textColor="@color/button_font"
+            />
+    </LinearLayout>
+
+</LinearLayout>
