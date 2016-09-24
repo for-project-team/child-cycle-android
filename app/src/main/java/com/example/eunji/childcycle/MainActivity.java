@@ -2,9 +2,7 @@ package com.example.eunji.childcycle;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,14 +24,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,16 +34,32 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton imgbtn = (ImageButton) findViewById(R.id.adduser1);
 
-        imgbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PrepareSecondActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        ImageButton imgbtn1 = (ImageButton) findViewById(R.id.adduser1);
+        ImageButton imgbtn2 = (ImageButton) findViewById(R.id.adduser2);
+        ImageButton imgbtn3 = (ImageButton) findViewById(R.id.adduser3);
+
+        TextView txtview1 = (TextView) findViewById(R.id.username1);
+        TextView txtview2 = (TextView) findViewById(R.id.username2);
+        TextView txtview3 = (TextView) findViewById(R.id.username3);
+
     }
+
+    //클릭 리스너
+
+    public void btnClick(View v){
+        Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void txtClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), PrepareFirstActivity.class);
+        startActivity(intent);
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -93,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.main) {
-            // Handle the camera action
+
         } else if (id == R.id.history) {
 
         } else if (id == R.id.setting) {

@@ -5,7 +5,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
 
 
     <dimen name="check_padding">28dp</dimen>
@@ -13,5 +12,16 @@
 
     <dimen name="check_padding2">50dp</dimen>
 
-    <dimen name="check_text">16sp</dimen>
+    <dimen name="check_tip">18dp</dimen>
+    <dimen name="check_text">18dp</dimen>
+
+
+    <dimen name="input_data_padding">50dp</dimen>
+    <dimen name="data_paddingTop">28dp</dimen>
+    <dimen name="data_padding">24dp</dimen>
+    <dimen name="data_text">16dp</dimen>
+
+    <dimen name="data_width">80dp</dimen>
+
+    <dimen name="stroke_padding">16dp</dimen>
 </resources>

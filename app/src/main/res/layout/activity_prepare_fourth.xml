@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content">
 
             <TextView
+                android:textStyle="bold"
                 android:textSize="@dimen/check_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
+                android:textStyle="bold"
                 android:textSize="@dimen/check_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
 
 
         <TextView
+            android:textSize="@dimen/check_tip"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +71,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:textSize="@dimen/check_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ededed"
+                android:textSize="@dimen/check_tip"
                 android:text="dididididididididdididididididididididididididi"/>
 
 

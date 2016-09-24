@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,28 +16,208 @@
             />
 
         <LinearLayout
+            android:paddingTop="@dimen/data_paddingTop"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:paddingLeft="@dimen/data_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="프로필 사진"
+                android:textStyle="bold"
+                android:textSize="@dimen/data_text"/>
 
                 <ImageView
-                    android:padding="@dimen/check_padding"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/sym_def_app_icon"/>
 
+            <LinearLayout
+                android:layout_weight="8"
+                android:paddingTop="@dimen/data_paddingTop"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                    android:paddingTop="@dimen/data_paddingTop"
+                    android:paddingBottom="@dimen/stroke_padding"
+                    android:paddingRight="@dimen/data_padding"
+                    android:paddingLeft="@dimen/data_padding"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:textSize="@dimen/data_text"
+                        android:text="생년월일"
+                        android:textStyle="bold"
+                        android:layout_width="@dimen/data_width"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/user_birthday"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/check_text"
+                        android:hint="  ex) 19950913"
+                        android:paddingRight="@dimen/input_data_padding"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginRight="@dimen/stroke_padding"
+                    android:layout_marginLeft="@dimen/stroke_padding"
+                    android:background="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:paddingTop="@dimen/data_paddingTop"
+                    android:paddingBottom="@dimen/stroke_padding"
+                    android:paddingRight="@dimen/data_padding"
+                    android:paddingLeft="@dimen/data_padding"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:textSize="@dimen/data_text"
+                        android:text="성별"
+                        android:textStyle="bold"
+                        android:layout_width="@dimen/data_width"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:paddingRight="@dimen/data_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="여자"
+                            android:textSize="@dimen/data_text"
+                        />
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="남자"
+                            android:textSize="@dimen/data_text" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_marginRight="@dimen/stroke_padding"
+                    android:layout_marginLeft="@dimen/stroke_padding"
+                    android:background="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:paddingTop="@dimen/data_paddingTop"
+                    android:paddingBottom="@dimen/stroke_padding"
+                    android:paddingRight="@dimen/data_padding"
+                    android:paddingLeft="@dimen/data_padding"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:textSize="@dimen/data_text"
+                        android:text="키(cm)"
+                        android:textStyle="bold"
+                        android:layout_width="@dimen/data_width"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/user_height"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/check_text"
+                        android:paddingRight="@dimen/input_data_padding"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginRight="@dimen/stroke_padding"
+                    android:layout_marginLeft="@dimen/stroke_padding"
+                    android:background="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:paddingTop="@dimen/data_paddingTop"
+                    android:paddingBottom="@dimen/stroke_padding"
+                    android:paddingRight="@dimen/data_padding"
+                    android:paddingLeft="@dimen/data_padding"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:textSize="@dimen/data_text"
+                        android:text="체중(kg)"
+                        android:textStyle="bold"
+                        android:layout_width="@dimen/data_width"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/user_weight"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/check_text"
+                        android:paddingRight="@dimen/input_data_padding"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginRight="@dimen/stroke_padding"
+                    android:layout_marginLeft="@dimen/stroke_padding"
+                    android:background="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_weight="5"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:onClick="onClick"
+                    android:layout_marginRight="@dimen/stroke_padding"
+                    android:layout_marginLeft="@dimen/stroke_padding"
+                    android:layout_gravity="center"
+                    android:id="@+id/add_user_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="등록완료"/>
+
+            </LinearLayout>
+
+
         </LinearLayout>
-
-
 
     </FrameLayout>
 </LinearLayout>

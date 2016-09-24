@@ -28,7 +28,7 @@
             android:text="자전거에 탑승하세요"
             android:textColor="#000"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="@dimen/check_text"
             />
 
         <ImageView
@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="착용완료"
+            android:textSize="@dimen/check_text"
             android:id="@+id/button"
             android:background="@color/button"
             android:textColor="@color/button_font"
