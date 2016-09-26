@@ -29,16 +29,6 @@
             />
 
         <activity
-            android:name=".PrepareSecondActivity"
-            android:label="PrepareSecond"
-            />
-
-        <activity
-            android:name=".PrepareThirdActivity"
-            android:label="PrepareThird"
-            />
-
-        <activity
             android:name=".PrepareFourthActivity"
             android:label="PrepareFourth"
             />

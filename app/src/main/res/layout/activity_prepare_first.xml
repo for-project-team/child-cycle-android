@@ -16,14 +16,15 @@
         android:baselineAligned="false">
 
         <ImageView
-        android:id="@+id/head"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-        android:paddingTop="40px"
-        android:src="@android:drawable/sym_def_app_icon" />
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="40px"
+            android:src="@android:drawable/sym_def_app_icon" />
 
         <TextView
+            android:id="@+id/text_change"
             android:layout_weight="0.1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,12 +34,35 @@
             android:textSize="@dimen/check_text"
             />
 
-        <ImageView
-            android:layout_weight="0.1"
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <ImageButton
+                android:id="@+id/action_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/action_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/action_button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/action_button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +71,7 @@
         android:layout_weight="1">
 
         <Button
+            android:onClick="onClick"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="착용완료"

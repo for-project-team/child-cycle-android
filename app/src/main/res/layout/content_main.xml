@@ -20,7 +20,7 @@
         <LinearLayout
             android:gravity="bottom"
             android:layout_weight="0.84"
-            android:layout_width="435dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
