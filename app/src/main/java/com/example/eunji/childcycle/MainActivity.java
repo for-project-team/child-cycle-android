@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void txtClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), PrepareFirstActivity.class);
+        Intent intent = new Intent(getApplicationContext(), PrepareActivity.class);
         startActivity(intent);
     }
 
@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.main) {
+            Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
+            startActivity(intent1);
 
         } else if (id == R.id.history) {
 

@@ -24,7 +24,7 @@
             android:label="Adduser"></activity>
 
         <activity
-            android:name=".PrepareFirstActivity"
+            android:name=".PrepareActivity"
             android:label="PrepareFirst"
             />
 

@@ -20,7 +20,7 @@ public class PrepareFourthActivity extends Activity {
 
     Button.OnClickListener ClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            Intent intent = new Intent(PrepareFourthActivity.this, PrepareFirstActivity.class);
+            Intent intent = new Intent(PrepareFourthActivity.this, PrepareActivity.class);
             startActivity(intent);
         }
     };

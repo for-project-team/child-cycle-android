@@ -104,23 +104,29 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioButton
+                        <RadioGroup
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingRight="@dimen/data_padding"
-                            android:text="여자"
-                            android:textColor="#fff"
-                            android:textColorHint="#fff"
-                            android:textSize="14sp" />
+                            android:orientation="horizontal">
 
-                        <RadioButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="남자"
-                            android:textColor="#fff"
-                            android:textColorHint="#fff"
-                            android:textSize="14sp" />
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="@dimen/data_padding"
+                                android:text="여자"
+                                android:textColor="#fff"
+                                android:textColorHint="#fff"
+                                android:textSize="14sp" />
 
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="남자"
+                                android:textColor="#fff"
+                                android:textColorHint="#fff"
+                                android:textSize="14sp" />
+
+                        </RadioGroup>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -155,6 +161,8 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:paddingRight="@dimen/input_data_padding"
+                        android:textColor="#fff"
+                        android:textColorHint="#fff"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -191,6 +199,8 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:paddingRight="@dimen/input_data_padding"
+                        android:textColor="#fff"
+                        android:textColorHint="#fff"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -214,13 +224,13 @@
                     android:id="@+id/add_user_finish"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:background="#FF5722"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/stroke_padding"
                     android:layout_marginRight="@dimen/stroke_padding"
+                    android:background="#FF5722"
                     android:onClick="onClick"
-                    android:textColor="#fff"
-                    android:text="등록완료" />
+                    android:text="등록완료"
+                    android:textColor="#fff" />
 
             </LinearLayout>
 

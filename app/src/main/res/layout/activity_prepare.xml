@@ -16,7 +16,7 @@
         android:baselineAligned="false">
 
         <ImageView
-            android:id="@+id/head"
+            android:id="@+id/prepare_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,27 +35,32 @@
             />
 
         <LinearLayout
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:src="@drawable/ic_menu_camera"
                 android:id="@+id/action_button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageButton
+                android:src="@drawable/ic_menu_gallery"
                 android:id="@+id/action_button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageButton
+                android:src="@drawable/ic_menu_gallery"
                 android:id="@+id/action_button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageButton
+                android:src="@drawable/ic_menu_gallery"
                 android:id="@+id/action_button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
