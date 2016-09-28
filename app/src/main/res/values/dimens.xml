@@ -17,7 +17,7 @@
 
 
     <dimen name="input_data_padding">50dp</dimen>
-    <dimen name="data_paddingTop">24dp</dimen>
+    <dimen name="data_paddingTop">20dp</dimen>
     <dimen name="data_padding">20dp</dimen>
     <dimen name="data_text">16sp</dimen>
 

@@ -16,6 +16,9 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adduser);
 
+        setTitle("사용자 등록");
+
+
         EditText user_birthday = (EditText) findViewById(R.id.user_birthday);
         EditText user_height = (EditText) findViewById(R.id.user_height);
         EditText user_weight = (EditText) findViewById(R.id.user_weight);

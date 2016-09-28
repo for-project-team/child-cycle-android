@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -15,227 +16,286 @@
             android:src="@mipmap/bg" />
 
         <LinearLayout
+            android:weightSum="10"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/data_paddingTop">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/data_padding"
-                android:text="프로필 사진"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_profile_upload" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
                 android:orientation="vertical"
-                android:paddingTop="@dimen/data_paddingTop">
-
+                android:weightSum="1"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/stroke_padding"
-                    android:paddingLeft="@dimen/data_padding"
-                    android:paddingRight="@dimen/data_padding"
-                    android:paddingTop="@dimen/data_paddingTop">
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:paddingTop="25dp">
 
                     <TextView
-                        android:layout_width="@dimen/data_width"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="생년월일"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:text="프로필 사진"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/user_birthday"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="  ex) 19950913"
-                        android:paddingRight="@dimen/input_data_padding"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="14sp" />
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_profile_upload" />
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/stroke_padding"
-                    android:layout_marginRight="@dimen/stroke_padding"
-                    android:background="#F7F7F7" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/stroke_padding"
-                    android:paddingLeft="@dimen/data_padding"
-                    android:paddingRight="@dimen/data_padding"
-                    android:paddingTop="@dimen/data_paddingTop">
-
-                    <TextView
-                        android:layout_width="@dimen/data_width"
-                        android:layout_height="wrap_content"
-                        android:text="성별"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    android:layout_weight="0.8"
+                    android:orientation="vertical"
+                    android:weightSum="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_paddingTop">
 
-                        <RadioGroup
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="닉네임"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/user_nickname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:paddingRight="@dimen/input_data_padding"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_paddingTop">
+
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="생년월일"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/user_birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="  ex) 19950913"
+                            android:paddingRight="@dimen/input_data_padding"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_paddingTop">
+
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="성별"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <RadioButton
-                                android:layout_width="match_parent"
+                            <RadioGroup
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingRight="@dimen/data_padding"
-                                android:text="여자"
-                                android:textColor="#fff"
-                                android:textColorHint="#fff"
-                                android:textSize="14sp" />
+                                android:orientation="horizontal">
 
-                            <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="남자"
-                                android:textColor="#fff"
-                                android:textColorHint="#fff"
-                                android:textSize="14sp" />
+                                <RadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingRight="@dimen/data_padding"
+                                    android:text="여자"
+                                    android:textColor="#fff"
+                                    android:textColorHint="#fff"
+                                    android:textSize="14sp" />
 
-                        </RadioGroup>
+                                <RadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="남자"
+                                    android:textColor="#fff"
+                                    android:textColorHint="#fff"
+                                    android:textSize="14sp" />
+
+                            </RadioGroup>
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/stroke_padding"
-                    android:layout_marginRight="@dimen/stroke_padding"
-                    android:background="#F7F7F7" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/stroke_padding"
-                    android:paddingLeft="@dimen/data_padding"
-                    android:paddingRight="@dimen/data_padding"
-                    android:paddingTop="@dimen/data_paddingTop">
-
-                    <TextView
-                        android:layout_width="@dimen/data_width"
-                        android:layout_height="wrap_content"
-                        android:text="키(cm)"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/user_height"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:paddingRight="@dimen/input_data_padding"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="14sp" />
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_paddingTop">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="키(cm)"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/stroke_padding"
-                    android:layout_marginRight="@dimen/stroke_padding"
-                    android:background="#F7F7F7" />
+                        <EditText
+                            android:id="@+id/user_height"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:paddingRight="@dimen/input_data_padding"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/stroke_padding"
-                    android:paddingLeft="@dimen/data_padding"
-                    android:paddingRight="@dimen/data_padding"
-                    android:paddingTop="@dimen/data_paddingTop">
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="@dimen/data_width"
-                        android:layout_height="wrap_content"
-                        android:text="체중(kg)"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
 
-                    <EditText
-                        android:id="@+id/user_weight"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:paddingRight="@dimen/input_data_padding"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="14sp" />
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_paddingTop">
+
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="체중(kg)"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/user_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:paddingRight="@dimen/input_data_padding"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
 
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/stroke_padding"
-                    android:layout_marginRight="@dimen/stroke_padding"
-                    android:background="#F7F7F7" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/add_user_finish"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/stroke_padding"
-                    android:layout_marginRight="@dimen/stroke_padding"
-                    android:background="#FF5722"
-                    android:onClick="onClick"
-                    android:text="등록완료"
-                    android:textColor="#fff" />
-
             </LinearLayout>
 
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/data_padding"
+            android:layout_marginTop="@dimen/data_paddingTop"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/add_user_finish"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/stroke_padding"
+                android:layout_marginRight="@dimen/stroke_padding"
+                android:background="#FF5722"
+                android:onClick="onClick"
+                android:text="등록완료"
+                android:textColor="#fff" />
+        </LinearLayout>
     </FrameLayout>
 </LinearLayout>
