@@ -16,17 +16,16 @@
             android:src="@mipmap/bg" />
 
         <LinearLayout
-            android:weightSum="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="10">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:weightSum="1"
-                >
+                android:weightSum="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -44,16 +43,61 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_profile_upload" />
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:weightSum="1"
+                        >
 
+                        <ImageView
+                            android:layout_weight="0.2"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_profile_upload" />
+
+                        <ImageView
+                            android:layout_weight="0.2"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_profile_upload" />
+
+                        <ImageView
+                            android:layout_weight="0.2"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_profile_upload" />
+
+                        <ImageView
+                            android:layout_weight="0.2"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_profile_upload" />
+
+                        <ImageView
+                            android:layout_weight="0.2"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_profile_upload" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/data_padding"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
@@ -69,7 +113,7 @@
                         android:paddingBottom="@dimen/stroke_padding"
                         android:paddingLeft="@dimen/data_padding"
                         android:paddingRight="@dimen/data_padding"
-                        android:paddingTop="@dimen/data_paddingTop">
+                        android:paddingTop="@dimen/data_padding">
 
                         <TextView
                             android:layout_width="@dimen/data_width"
