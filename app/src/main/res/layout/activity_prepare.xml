@@ -41,6 +41,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <Button
+                android:layout_margin="@dimen/stroke_margin"
+                android:layout_width="@dimen/stroke_size"
+                android:layout_height="@dimen/stroke_size"
+                android:background="@drawable/stroke_button_clicked"
+                android:id="@+id/stroke1"
+                />
+
+            <Button
+                android:layout_margin="@dimen/stroke_margin"
+                android:layout_width="@dimen/stroke_size"
+                android:layout_height="@dimen/stroke_size"
+                android:background="@drawable/stroke_button"
+                android:id="@+id/stroke2"
+                />
+
+            <Button
+                android:layout_margin="@dimen/stroke_margin"
+                android:layout_width="@dimen/stroke_size"
+                android:layout_height="@dimen/stroke_size"
+                android:background="@drawable/stroke_button"
+                android:id="@+id/stroke3"
+                />
+
+            <Button
+                android:layout_margin="@dimen/stroke_margin"
+                android:layout_width="@dimen/stroke_size"
+                android:layout_height="@dimen/stroke_size"
+                android:background="@drawable/stroke_button"
+                android:id="@+id/stroke4"
+                />
+
+            <!--
+
             <ImageButton
                 android:src="@drawable/ic_menu_camera"
                 android:id="@+id/action_button1"
@@ -65,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+-->
         </LinearLayout>
 
     </LinearLayout>

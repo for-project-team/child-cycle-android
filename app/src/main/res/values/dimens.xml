@@ -17,7 +17,7 @@
 
 
     <dimen name="input_data_padding">50dp</dimen>
-    <dimen name="data_paddingTop">20dp</dimen>
+    <dimen name="data_paddingTop">22dp</dimen>
     <dimen name="data_padding">20dp</dimen>
     <dimen name="data_text">16sp</dimen>
 
@@ -29,5 +29,9 @@
     <dimen name="main_text_large">18sp</dimen>
     <dimen name="main_spadding">16dp</dimen>
     <dimen name="main_padding">20dp</dimen>
+
+
+    <dimen name="stroke_size">10dp</dimen>
+    <dimen name="stroke_margin">5dp</dimen>
 
 </resources>
