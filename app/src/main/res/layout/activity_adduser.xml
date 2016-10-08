@@ -32,7 +32,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical"
-                    android:paddingTop="25dp">
+                    android:paddingTop="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -44,11 +44,11 @@
                         android:textStyle="bold" />
 
                     <LinearLayout
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:paddingTop="10dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="76dp"
                         android:orientation="horizontal"
                         android:gravity="center"
                         android:weightSum="1"
@@ -103,6 +103,44 @@
                     android:layout_weight="0.8"
                     android:orientation="vertical"
                     android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/stroke_padding"
+                        android:paddingLeft="@dimen/data_padding"
+                        android:paddingRight="@dimen/data_padding"
+                        android:paddingTop="@dimen/data_padding">
+
+                        <TextView
+                            android:layout_width="@dimen/data_width"
+                            android:layout_height="wrap_content"
+                            android:text="이름"
+                            android:textColor="#fff"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:paddingRight="@dimen/input_data_padding"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/stroke_padding"
+                        android:layout_marginRight="@dimen/stroke_padding"
+                        android:background="#F7F7F7" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -324,8 +362,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/data_padding"
-            android:layout_marginTop="@dimen/data_paddingTop"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="bottom"
             android:orientation="vertical">

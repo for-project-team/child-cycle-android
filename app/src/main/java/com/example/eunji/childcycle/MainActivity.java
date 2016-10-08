@@ -17,6 +17,25 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ImageButton imgbtn1;
+    private ImageButton imgbtn2;
+    private ImageButton imgbtn3;
+
+    private TextView txtview1;
+    private TextView txtview2;
+    private TextView txtview3;
+
+    private void _InitUi() {
+
+        imgbtn1 = (ImageButton) findViewById(R.id.add_user1);
+        imgbtn2 = (ImageButton) findViewById(R.id.add_user2);
+        imgbtn3 = (ImageButton) findViewById(R.id.add_user3);
+
+        txtview1 = (TextView) findViewById(R.id.user_name1);
+        txtview2 = (TextView) findViewById(R.id.user_name2);
+        txtview3 = (TextView) findViewById(R.id.user_name3);
+
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +53,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
-        ImageButton imgbtn1 = (ImageButton) findViewById(R.id.adduser1);
-        ImageButton imgbtn2 = (ImageButton) findViewById(R.id.adduser2);
-        ImageButton imgbtn3 = (ImageButton) findViewById(R.id.adduser3);
-
-        TextView txtview1 = (TextView) findViewById(R.id.username1);
-        TextView txtview2 = (TextView) findViewById(R.id.username2);
-        TextView txtview3 = (TextView) findViewById(R.id.username3);
 
     }
 

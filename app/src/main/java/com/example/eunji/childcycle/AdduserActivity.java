@@ -12,18 +12,27 @@ import android.widget.EditText;
  */
 public class AdduserActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private EditText user_birthday;
+    private EditText user_height;
+    private EditText user_weight;
+
+    private Button add_user_finish;
+
+    private void _InitUi(){
+
+        user_birthday = (EditText) findViewById(R.id.user_birthday);
+        user_height = (EditText) findViewById(R.id.user_height);
+        user_weight = (EditText) findViewById(R.id.user_weight);
+
+        add_user_finish = (Button) findViewById(R.id.add_user_finish);
+
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adduser);
 
         setTitle("사용자 등록");
-
-
-        EditText user_birthday = (EditText) findViewById(R.id.user_birthday);
-        EditText user_height = (EditText) findViewById(R.id.user_height);
-        EditText user_weight = (EditText) findViewById(R.id.user_weight);
-
-        Button add_user_finish = (Button) findViewById(R.id.add_user_finish);
 
     }
 

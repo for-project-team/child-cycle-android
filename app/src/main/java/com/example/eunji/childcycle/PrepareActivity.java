@@ -15,30 +15,33 @@ import android.widget.TextView;
 
 public class PrepareActivity extends Activity {
     public static Button btn;
-    TextView txtview1;
-    ImageView imgview;
-    Button strkbtn[] = new Button[4];
-    Drawable strkbtn_toggle[] = new Drawable[2];
+    private TextView txtview1;
+    private ImageView imgview;
+    private Button strkbtn[] = new Button[4];
+    private Drawable strkbtn_toggle[] = new Drawable[2];
 
     String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요", "hihi!"};
     String s1[] = {"착용완료", "확인완료"};
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prepare);
+    private void _InitUi(){
 
         txtview1 = (TextView) findViewById(R.id.text_change);
         imgview = (ImageView) findViewById(R.id.prepare_image);
 
-        btn = (Button) findViewById(R.id.button);
+        btn = (Button) findViewById(R.id.next_button);
 
-        strkbtn[0] = (Button) findViewById(R.id.stroke1);
-        strkbtn[1] = (Button) findViewById(R.id.stroke2);
-        strkbtn[2] = (Button) findViewById(R.id.stroke3);
-        strkbtn[3] = (Button) findViewById(R.id.stroke4);
+        strkbtn[0] = (Button) findViewById(R.id.prepare_stroke1);
+        strkbtn[1] = (Button) findViewById(R.id.prepare_stroke2);
+        strkbtn[2] = (Button) findViewById(R.id.prepare_stroke3);
+        strkbtn[3] = (Button) findViewById(R.id.prepare_stroke4);
 
         strkbtn_toggle[0] = getResources().getDrawable(R.drawable.stroke_button_clicked);
         strkbtn_toggle[1] = getResources().getDrawable(R.drawable.stroke_button);
+    }
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_prepare);
 
 
 //        for ( i = 0; i < 4; i++) {

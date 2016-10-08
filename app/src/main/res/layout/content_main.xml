@@ -50,7 +50,7 @@
 
                 <ImageView
                     android:layout_weight="0.3"
-                    android:id="@+id/user1"
+                    android:id="@+id/app_user1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="12dp"
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:onClick="txtClick"
-                    android:id="@+id/username1"
+                    android:id="@+id/user_name1"
                     android:layout_weight="0.5"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
 
                 <ImageButton
                     android:onClick="btnClick"
-                    android:id="@+id/adduser1"
+                    android:id="@+id/add_user1"
                     android:layout_gravity="center"
                     android:src="@mipmap/ic_user_add"
                     android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
 
                 <ImageView
                     android:layout_weight="0.3"
-                    android:id="@+id/user2"
+                    android:id="@+id/app_user2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="12dp"
@@ -95,7 +95,7 @@
 
                 <TextView
                     android:onClick="txtClick"
-                    android:id="@+id/username2"
+                    android:id="@+id/user_name2"
                     android:layout_weight="0.5"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
 
                 <ImageButton
                     android:onClick="btnClick"
-                    android:id="@+id/adduser2"
+                    android:id="@+id/add_user2"
                     android:layout_gravity="center"
                     android:src="@mipmap/ic_user_add"
                     android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
 
                 <ImageView
                     android:layout_weight="0.3"
-                    android:id="@+id/user3"
+                    android:id="@+id/app_user3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="12dp"
@@ -133,7 +133,7 @@
 
                 <TextView
                     android:onClick="txtClick"
-                    android:id="@+id/username3"
+                    android:id="@+id/user_name3"
                     android:layout_weight="0.5"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
 
                 <ImageButton
                     android:onClick="btnClick"
-                    android:id="@+id/adduser3"
+                    android:id="@+id/add_user3"
                     android:layout_gravity="center"
                     android:src="@mipmap/ic_user_add"
                     android:layout_width="wrap_content"

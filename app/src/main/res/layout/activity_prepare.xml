@@ -47,7 +47,7 @@
                 android:layout_width="@dimen/stroke_size"
                 android:layout_height="@dimen/stroke_size"
                 android:background="@drawable/stroke_button_clicked"
-                android:id="@+id/stroke1"
+                android:id="@+id/prepare_stroke1"
                 />
 
             <Button
@@ -55,7 +55,7 @@
                 android:layout_width="@dimen/stroke_size"
                 android:layout_height="@dimen/stroke_size"
                 android:background="@drawable/stroke_button"
-                android:id="@+id/stroke2"
+                android:id="@+id/prepare_stroke2"
                 />
 
             <Button
@@ -63,7 +63,7 @@
                 android:layout_width="@dimen/stroke_size"
                 android:layout_height="@dimen/stroke_size"
                 android:background="@drawable/stroke_button"
-                android:id="@+id/stroke3"
+                android:id="@+id/prepare_stroke3"
                 />
 
             <Button
@@ -71,7 +71,7 @@
                 android:layout_width="@dimen/stroke_size"
                 android:layout_height="@dimen/stroke_size"
                 android:background="@drawable/stroke_button"
-                android:id="@+id/stroke4"
+                android:id="@+id/prepare_stroke4"
                 />
 
             <!--
@@ -117,7 +117,7 @@
             android:layout_height="60dp"
             android:text="착용완료"
             android:textSize="@dimen/check_text"
-            android:id="@+id/button"
+            android:id="@+id/next_button"
             android:background="@color/button"
             android:textColor="@color/button_font"
             />
