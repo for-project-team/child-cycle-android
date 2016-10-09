@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:padding="@dimen/main_padding"
@@ -95,7 +93,7 @@
 
                 <TextView
                     android:gravity="center_vertical"
-                    android:id="@+id/weather"
+                    android:id="@+id/today_weather"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="맑음"
@@ -135,6 +133,7 @@
                 />
 
             <ImageView
+                android:id="@+id/handle_aram"
                 android:layout_margin="@dimen/main_padding"
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
@@ -163,6 +162,7 @@
                 />
 
             <ImageView
+                android:id="@+id/speed_aram"
                 android:layout_margin="@dimen/main_padding"
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
@@ -191,6 +191,7 @@
                 />
 
             <ImageView
+                android:id="@+id/distance_aram"
                 android:layout_margin="@dimen/main_padding"
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
@@ -298,6 +299,7 @@
         >
 
         <Button
+            android:onClick="pauseClick"
             android:textStyle="bold"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -310,6 +312,7 @@
             />
 
         <Button
+            android:onClick="exitClick"
             android:textStyle="bold"
             android:layout_weight="1"
             android:layout_width="match_parent"

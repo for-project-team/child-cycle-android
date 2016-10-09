@@ -34,6 +34,9 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
 
         setTitle("사용자 등록");
 
+        _InitUi();
+
+
     }
 
     @Override
@@ -41,4 +44,6 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
+
+
 }

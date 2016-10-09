@@ -4,17 +4,17 @@
     <item android:title=" ">
         <menu>
             <item
-                android:id="@+id/main"
+                android:id="@+id/drawer_main"
                 android:icon="@drawable/ic_menu_share"
                 android:title="메인" />
 
             <item
-                android:id="@+id/history"
+                android:id="@+id/drawer_history"
                 android:icon="@drawable/ic_menu_share"
                 android:title="주행기록" />
 
             <item
-                android:id="@+id/setting"
+                android:id="@+id/drawer_setting"
                 android:icon="@drawable/ic_menu_send"
                 android:title="환경설정" />
         </menu>

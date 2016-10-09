@@ -1,13 +1,18 @@
 package com.example.eunji.childcycle;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,13 +22,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageButton imgbtn1;
-    private ImageButton imgbtn2;
-    private ImageButton imgbtn3;
-
-    private TextView txtview1;
-    private TextView txtview2;
-    private TextView txtview3;
+    private ImageButton imgbtn1, imgbtn2, imgbtn3;
+    private TextView txtview1, txtview2, txtview3;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     private void _InitUi() {
 
@@ -35,22 +37,38 @@ public class MainActivity extends AppCompatActivity
         txtview2 = (TextView) findViewById(R.id.user_name2);
         txtview3 = (TextView) findViewById(R.id.user_name3);
 
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        boolean bFinish = intent.getBooleanExtra("FinishSelf", false);
+        if(bFinish)
+            finish();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        _InitUi();
+
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -65,8 +83,24 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void txtClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), PrepareActivity.class);
-        startActivity(intent);
+
+        new AlertDialog.Builder(this)
+                .setTitle("안전한 자전거를 시작합니다.")
+                .setMessage("'ㅇㅇㅇ'이 맞습니까?")
+                .setPositiveButton("예", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(getApplicationContext(), PrepareActivity.class);
+                        startActivity(intent);
+
+                    }
+                })
+                .setNegativeButton("아니오", null)
+                .show();
+
+
     }
 
 
@@ -109,13 +143,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.main) {
+        if (id == R.id.drawer_main) {
             Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
             startActivity(intent1);
 
-        } else if (id == R.id.history) {
+        } else if (id == R.id.drawer_history) {
 
-        } else if (id == R.id.setting) {
+        } else if (id == R.id.drawer_setting) {
 
         }
 
