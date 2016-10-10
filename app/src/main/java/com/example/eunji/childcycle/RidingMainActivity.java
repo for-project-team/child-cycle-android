@@ -1,14 +1,24 @@
 package com.example.eunji.childcycle;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,11 +27,15 @@ import android.widget.TextView;
 /**
  * Created by Eunji on 2016. 9. 25..
  */
-public class RidingMainActivity extends AppCompatActivity {
+public class RidingMainActivity extends AppCompatActivity
+        {
 
     private Button button_stop, button_exit;
     private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
+
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     private void _InitUi(){
 
@@ -43,6 +57,8 @@ public class RidingMainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
+//        setSupportActionBar(toolbar);
 
         _InitUi();
 
@@ -50,6 +66,14 @@ public class RidingMainActivity extends AppCompatActivity {
 
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
+
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
+//
+//
+//        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -66,7 +90,7 @@ public class RidingMainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent intent = new Intent(getApplicationContext(), RidingMainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), FinishRidingActivity.class);
                         startActivity(intent);
 
                     }
@@ -74,8 +98,16 @@ public class RidingMainActivity extends AppCompatActivity {
                 .setNegativeButton("아니오", null)
                 .show();
 
-
     }
+
+            @Override
+            protected void onNewIntent(Intent intent) {
+                super.onNewIntent(intent);
+                boolean bFinish = intent.getBooleanExtra("FinishSelf", false);
+                if(bFinish)
+                    finish();
+            }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -97,12 +129,14 @@ public class RidingMainActivity extends AppCompatActivity {
                                 clearTop.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 clearTop.putExtra("FinishSelf", true);
                                 startActivity(clearTop);
+
+                                ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                                am.restartPackage(getPackageName());
                             }
                         })
 
                         .setNegativeButton("아니오", null)
                         .show();
-
                 break;
 
             default:
@@ -113,6 +147,48 @@ public class RidingMainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//    @SuppressWarnings("StatementWithEmptyBody")
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//        // Handle navigation view item clicks here.
+//        int id = item.getItemId();
+//
+//        if (id == R.id.drawer_main) {
+//            Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
+//            startActivity(intent1);
+//
+//        } else if (id == R.id.drawer_history) {
+//
+//        } else if (id == R.id.drawer_setting) {
+//
+//        }
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
 
 
 

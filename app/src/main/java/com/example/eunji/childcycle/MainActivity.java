@@ -3,7 +3,6 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +11,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,13 +39,7 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        boolean bFinish = intent.getBooleanExtra("FinishSelf", false);
-        if(bFinish)
-            finish();
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,8 +91,7 @@ public class MainActivity extends AppCompatActivity
                 })
                 .setNegativeButton("아니오", null)
                 .show();
-
-
+        
     }
 
 
