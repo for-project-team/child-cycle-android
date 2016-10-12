@@ -1,24 +1,16 @@
 package com.example.eunji.childcycle;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,20 +19,23 @@ import android.widget.TextView;
 /**
  * Created by Eunji on 2016. 9. 25..
  */
-public class RidingMainActivity extends AppCompatActivity
-        {
 
-    private Button button_stop, button_exit;
+public class RidingMainActivity extends AppCompatActivity
+         {
+
+    private Button button_stop, button_pause;
     private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
+            public static int num=0;
+
     private void _InitUi(){
 
-        button_exit = (Button) findViewById(R.id.button_exit);
         button_stop = (Button) findViewById(R.id.button_stop);
+        button_pause = (Button) findViewById(R.id.button_pause);
 
         riding_time = (TextView) findViewById(R.id.riding_time);
         today_wether = (TextView) findViewById(R.id.today_weather);
@@ -51,12 +46,13 @@ public class RidingMainActivity extends AppCompatActivity
         handle_aram = (ImageView) findViewById(R.id.handle_aram);
         speed_aram = (ImageView) findViewById(R.id.speed_aram);
         distance_aram = (ImageView) findViewById(R.id.distance_aram);
+
     }
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.riding_main);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -72,16 +68,22 @@ public class RidingMainActivity extends AppCompatActivity
 //        drawer.setDrawerListener(toggle);
 //        toggle.syncState();
 //
-//
 //        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
     public void pauseClick(View v) {
+        ++num;
+
+        if(num%2 == 1) {
+            button_pause.setText("시작");
+        }
+        else
+            button_pause.setText("일시정지");
 
     }
 
-    public void exitClick(View v) {
+    public void stopClick(View v) {
         new AlertDialog.Builder(this)
                 .setTitle("")
                 .setMessage("정말로 운행을 종료할까요?")
@@ -129,9 +131,8 @@ public class RidingMainActivity extends AppCompatActivity
                                 clearTop.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 clearTop.putExtra("FinishSelf", true);
                                 startActivity(clearTop);
+                                finish();
 
-                                ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-                                am.restartPackage(getPackageName());
                             }
                         })
 
@@ -147,13 +148,13 @@ public class RidingMainActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
@@ -190,10 +191,4 @@ public class RidingMainActivity extends AppCompatActivity
 //        return true;
 //    }
 
-
-
-//    @Override
-//    public void onBackPressed() {
-//        //super.onBackPressed();
-//    }
 }

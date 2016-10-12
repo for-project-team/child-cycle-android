@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent1);
 
         } else if (id == R.id.drawer_history) {
-
+            setContentView(R.layout.record_table);
         } else if (id == R.id.drawer_setting) {
 
         }
