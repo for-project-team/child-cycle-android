@@ -101,6 +101,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/data_padding"
                     android:layout_weight="0.8"
                     android:orientation="vertical"
                     android:weightSum="1">
@@ -167,6 +168,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
+                            android:maxLines="1"
                             android:paddingRight="@dimen/input_data_padding"
                             android:textColor="#fff"
                             android:textColorHint="#fff"
@@ -207,6 +209,8 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="  ex) 19950913"
+                            android:inputType="date"
+                            android:maxLines="1"
                             android:paddingRight="@dimen/input_data_padding"
                             android:textColor="#fff"
                             android:textColorHint="#fff"
@@ -246,11 +250,13 @@
                             android:orientation="horizontal">
 
                             <RadioGroup
+                                android:id="@+id/gender_radiogroup"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/woman_radiobutton"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:paddingRight="@dimen/data_padding"
@@ -260,6 +266,7 @@
                                     android:textSize="14sp" />
 
                                 <RadioButton
+                                    android:id="@+id/man_radiobutton"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="남자"
@@ -302,6 +309,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
+                            android:inputType="number"
+                            android:maxLines="1"
                             android:paddingRight="@dimen/input_data_padding"
                             android:textColor="#fff"
                             android:textColorHint="#fff"
@@ -340,6 +349,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
+                            android:inputType="number"
+                            android:maxLines="1"
                             android:paddingRight="@dimen/input_data_padding"
                             android:textColor="#fff"
                             android:textColorHint="#fff"
