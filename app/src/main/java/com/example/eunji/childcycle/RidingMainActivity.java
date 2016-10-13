@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -26,8 +28,12 @@ public class RidingMainActivity extends AppCompatActivity {
     private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
+
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
 
     public static int num = 0;
 
@@ -52,8 +58,6 @@ public class RidingMainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riding_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
-//        setSupportActionBar(toolbar);
 
         _InitUi();
 
@@ -65,25 +69,40 @@ public class RidingMainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     public void pauseClick(View v) {
-        ++num;
+        num++;
 
         if (num % 2 == 1) {
-            button_pause.setText("시작");
-        } else
             button_pause.setText("일시정지");
+            startTime = SystemClock.uptimeMillis();
+            customHandler.postDelayed(updateTimerThread, 0);
+        }
 
+        else {
+            button_pause.setText("시작");
+            timeSwapBuff += timeInMilliseconds;
+            customHandler.removeCallbacks(updateTimerThread);
+        }
     }
+
+
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            int hours = mins / 60;
+            secs = secs % 60;
+
+            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
+            customHandler.postDelayed(this, 0);
+        }
+    };
+
 
     public void stopClick(View v) {
         new AlertDialog.Builder(this)
@@ -96,12 +115,10 @@ public class RidingMainActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(getApplicationContext(), FinishRidingActivity.class);
                         startActivity(intent);
-
                     }
                 })
                 .setNegativeButton("아니오", null)
                 .show();
-
     }
 
     @Override
