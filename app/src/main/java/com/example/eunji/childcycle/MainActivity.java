@@ -1,5 +1,6 @@
 package com.example.eunji.childcycle;
 
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,20 +55,21 @@ public class MainActivity extends AppCompatActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-
         navigationView.setNavigationItemSelectedListener(this);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
     }
 
     //클릭 리스너
 
-    public void btnClick(View v){
+    public void btnClick(View v) {
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
 
@@ -91,9 +92,8 @@ public class MainActivity extends AppCompatActivity
                 })
                 .setNegativeButton("아니오", null)
                 .show();
-        
-    }
 
+    }
 
 
     @Override
@@ -135,13 +135,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.drawer_main) {
-            Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
+            Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
             startActivity(intent1);
 
         } else if (id == R.id.drawer_history) {
             setContentView(R.layout.record_table);
         } else if (id == R.id.drawer_setting) {
-            Intent intent2 = new Intent(getApplicationContext(),ContentsSettingActivity.class);
+            Intent intent2 = new Intent(getApplicationContext(), ContentsSettingActivity.class);
             startActivity(intent2);
         }
 

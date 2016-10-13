@@ -20,8 +20,7 @@ import android.widget.TextView;
  * Created by Eunji on 2016. 9. 25..
  */
 
-public class RidingMainActivity extends AppCompatActivity
-         {
+public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
     private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
@@ -30,9 +29,9 @@ public class RidingMainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
-            public static int num=0;
+    public static int num = 0;
 
-    private void _InitUi(){
+    private void _InitUi() {
 
         button_stop = (Button) findViewById(R.id.button_stop);
         button_pause = (Button) findViewById(R.id.button_pause);
@@ -60,8 +59,12 @@ public class RidingMainActivity extends AppCompatActivity
 
         ActionBar actionBar = getSupportActionBar();
 
+
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+
 
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
 //                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -75,10 +78,9 @@ public class RidingMainActivity extends AppCompatActivity
     public void pauseClick(View v) {
         ++num;
 
-        if(num%2 == 1) {
+        if (num % 2 == 1) {
             button_pause.setText("시작");
-        }
-        else
+        } else
             button_pause.setText("일시정지");
 
     }
@@ -102,13 +104,13 @@ public class RidingMainActivity extends AppCompatActivity
 
     }
 
-            @Override
-            protected void onNewIntent(Intent intent) {
-                super.onNewIntent(intent);
-                boolean bFinish = intent.getBooleanExtra("FinishSelf", false);
-                if(bFinish)
-                    finish();
-            }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        boolean bFinish = intent.getBooleanExtra("FinishSelf", false);
+        if (bFinish)
+            finish();
+    }
 
 
     @Override
