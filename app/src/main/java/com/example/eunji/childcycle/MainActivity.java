@@ -141,7 +141,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.drawer_history) {
             setContentView(R.layout.record_table);
         } else if (id == R.id.drawer_setting) {
-
+            Intent intent2 = new Intent(getApplicationContext(),ContentsSettingActivity.class);
+            startActivity(intent2);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
