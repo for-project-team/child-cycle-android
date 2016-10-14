@@ -45,7 +45,7 @@ public class TempSenseTest extends AppCompatActivity {
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         ll = new SpeedoActionListener();
 
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
+//        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
     }
 
     private class SpeedoActionListener implements LocationListener {
