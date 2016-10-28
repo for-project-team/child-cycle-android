@@ -1,4 +1,4 @@
-package com.example.eunji.childcycle.urlconnection;
+package com.example.eunji.childcycle.dto;
 
 /**
  * Created by choihyesun on 2016. 10. 10..
@@ -6,6 +6,16 @@ package com.example.eunji.childcycle.urlconnection;
 
 public class UserDTO {
     private String name, nickname, birth, photo;
+    private String[] userName;
+
+    public String[] getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String[] userName) {
+        this.userName = userName;
+    }
+
     private int weight, height, gender;
 
     public String getName() {
