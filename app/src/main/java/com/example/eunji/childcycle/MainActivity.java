@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
+    private static final String TAG = "Hanium";
+
     private void _InitUi() {
 
         imgbtn1 = (ImageButton) findViewById(R.id.add_user1);
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity
 
         _InitUi();
 
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -62,16 +63,12 @@ public class MainActivity extends AppCompatActivity
 
 
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
     //클릭 리스너
-
     public void btnClick(View v){
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
-
     }
 
     public void txtClick(View v) {

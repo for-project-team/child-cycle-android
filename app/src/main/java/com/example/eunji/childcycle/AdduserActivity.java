@@ -11,14 +11,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.eunji.childcycle.dto.UserDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
-import com.example.eunji.childcycle.urlconnection.UserDTO;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -108,57 +106,18 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                if(statusCode == 200){
+                if(statusCode == 201){
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
                 }else{
-                    Log.d(TAG, "onSuccess1 statusCode : " + statusCode + "\nresponse" + response);
+                    Log.d(TAG, "onSuccess statusCode : " + statusCode + "\nresponse" + response);
                 }
-            }
-
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.d(TAG, "onSuccess2 statusCode : " + statusCode);
             }
 
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Log.d(TAG, "onFailure1 statusCode : " + statusCode);
+                Log.d(TAG, "onFailure statusCode : " + statusCode);
                 Log.d(TAG, "throwable" + throwable + " errorResponse" + errorResponse);
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-                Log.d(TAG, "onFailure2 statusCode : " + statusCode);
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.d(TAG, "onFailure3 statusCode : " + statusCode);
-            }
-
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-                Log.d(TAG, "onSuccess3 statusCode : " + statusCode);
-            }
-
-            @Override
-            protected Object parseResponse(byte[] responseBody) throws JSONException {
-                return super.parseResponse(responseBody);
-            }
-
-            @Override
-            public boolean isUseRFC5179CompatibilityMode() {
-                return super.isUseRFC5179CompatibilityMode();
-            }
-
-            @Override
-            public void setUseRFC5179CompatibilityMode(boolean useRFC5179CompatibilityMode) {
-                super.setUseRFC5179CompatibilityMode(useRFC5179CompatibilityMode);
             }
         });
     }
