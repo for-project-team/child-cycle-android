@@ -137,10 +137,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.drawer_main) {
             Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
             startActivity(intent1);
+        }
 
-        } else if (id == R.id.drawer_history) {
-            setContentView(R.layout.record_table);
-        } else if (id == R.id.drawer_setting) {
+        else if (id == R.id.drawer_history) {
+            setContentView(R.layout.record_table);          // 수정필요
+        }
+
+        else if (id == R.id.drawer_setting) {
             Intent intent2 = new Intent(getApplicationContext(), ContentsSettingActivity.class);
             startActivity(intent2);
         }

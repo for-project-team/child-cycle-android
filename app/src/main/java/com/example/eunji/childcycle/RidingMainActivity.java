@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -16,21 +18,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Timer;
+
 /**
  * Created by Eunji on 2016. 9. 25..
  */
 
-public class RidingMainActivity extends AppCompatActivity
-         {
+public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
     private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
+    private Handler customHandler;
 
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
+    private long startTime = 0L;
+    public static int num=0;
 
-            public static int num=0;
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
 
     private void _InitUi(){
 
@@ -47,14 +53,14 @@ public class RidingMainActivity extends AppCompatActivity
         speed_aram = (ImageView) findViewById(R.id.speed_aram);
         distance_aram = (ImageView) findViewById(R.id.distance_aram);
 
-    }
+        customHandler = new Handler();
 
+    }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riding_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
-//        setSupportActionBar(toolbar);
+
 
         _InitUi();
 
@@ -63,25 +69,38 @@ public class RidingMainActivity extends AppCompatActivity
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     public void pauseClick(View v) {
-        ++num;
+        num++;
 
         if(num%2 == 1) {
-            button_pause.setText("시작");
-        }
-        else
             button_pause.setText("일시정지");
-
+            startTime = SystemClock.uptimeMillis();
+            customHandler.postDelayed(updateTimerThread, 0);
+        }
+        else if(num%2 == 0) {
+            button_pause.setText("시작");
+            timeSwapBuff += timeInMilliseconds;
+            customHandler.removeCallbacks(updateTimerThread);
+        }
     }
+
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            int hours = mins / 60;
+            secs = secs % 60;
+
+            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":"+ String.format("%02d", secs));
+            customHandler.postDelayed(this, 0);
+        }
+
+    };
+
 
     public void stopClick(View v) {
         new AlertDialog.Builder(this)
@@ -148,47 +167,5 @@ public class RidingMainActivity extends AppCompatActivity
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        // Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//
-//        if (id == R.id.drawer_main) {
-//            Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
-//            startActivity(intent1);
-//
-//        } else if (id == R.id.drawer_history) {
-//
-//        } else if (id == R.id.drawer_setting) {
-//
-//        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 
 }
