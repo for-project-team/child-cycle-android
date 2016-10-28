@@ -322,20 +322,20 @@
             android:layout_height="60dp"
             android:text="일시정지"
             android:textSize="@dimen/check_text"
-            android:id="@+id/button_stop"
+            android:id="@+id/button_pause"
             android:background="@color/button"
             android:textColor="@color/button_font"
             />
 
         <Button
-            android:onClick="exitClick"
+            android:onClick="stopClick"
             android:textStyle="bold"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="종료"
+            android:text="중지"
             android:textSize="@dimen/check_text"
-            android:id="@+id/button_exit"
+            android:id="@+id/button_stop"
             android:background="@color/button"
             android:textColor="@color/button_font"
             />
