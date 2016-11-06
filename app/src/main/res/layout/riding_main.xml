@@ -255,12 +255,11 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:id="@+id/riding_length"
+                android:id="@+id/riding_distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2.00 km"
                 android:textSize="@dimen/main_text_large" />
-
 
         </LinearLayout>
 

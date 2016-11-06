@@ -4,6 +4,7 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +13,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.eunji.childcycle.dao.UserInfoDAO;
+import com.example.eunji.childcycle.dto.UserDTO;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +33,10 @@ public class MainActivity extends AppCompatActivity
     private TextView txtview1, txtview2, txtview3;
     private DrawerLayout drawer;
     private NavigationView navigationView;
+
+    private ArrayList<UserDTO> userList;
+
+    private Intent intent;
 
     private void _InitUi() {
 
@@ -48,13 +60,27 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-
         _InitUi();
 
+        userList = new ArrayList<>();
+
+        // 데이터 가져오기 완료 후 txtView에 출력
+        new HttpTask(new OnCompletionListener() {
+            @Override
+            public void onComplete(ArrayList<UserDTO> result) {
+                if(result != null) {
+                    userList = result;
+                    txtview1.setText(result.get(0).getName());
+                    txtview2.setText(result.get(1).getName());
+                    txtview3.setText(result.get(2).getName());
+                }else{
+                    Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).execute();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -63,36 +89,32 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
     }
 
-    //클릭 리스너
-
+    //회원가입 버튼 클릭 리스너
     public void btnClick(View v) {
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
 
     }
 
+    // textView 클릭 메소드
     public void txtClick(View v) {
-
         new AlertDialog.Builder(this)
                 .setTitle("안전한 자전거를 시작합니다.")
-                .setMessage("'ㅇㅇㅇ'이 맞습니까?")
+                .setMessage("ooo 이 맞습니까?")
                 .setPositiveButton("예", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        Intent intent = new Intent(getApplicationContext(), PrepareActivity.class);
+                        // put Extra
+                        intent = new Intent(getApplicationContext(), PrepareActivity.class);
+                        intent.putExtra("nickname", userList.get(0).getNickname());
                         startActivity(intent);
-
                     }
                 })
                 .setNegativeButton("아니오", null)
                 .show();
-
     }
 
 
@@ -148,5 +170,46 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+}
+
+// 리스너
+interface OnCompletionListener {
+    void onComplete(ArrayList<UserDTO> result);
+}
+
+// 비동기통신 콜백함수
+class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>> {
+
+    OnCompletionListener listener = null;
+    UserInfoDAO userInfoDAO = new UserInfoDAO();
+    ArrayList<UserDTO> list = new ArrayList<>();
+    String getDataUrl = "http://14.63.213.62:3000/users";
+
+    public HttpTask() {
+    }
+
+    public HttpTask(OnCompletionListener listener) {
+        this.listener = listener;
+    }
+
+    protected ArrayList<UserDTO> doInBackground(ArrayList<UserDTO>... params) {
+
+        if(params != null){
+            list = userInfoDAO.lodingUserData(getDataUrl);
+            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+            Log.d("Hanium", list.get(0).getNickname());
+            return list;
+        }else{
+            return null;
+        }
+    }
+
+    // 결과에 대해 호출되는 부분
+    protected void onPostExecute(ArrayList<UserDTO> result) {
+        // result : 웹서버로부터 가져온 값
+        // 리턴받은 String데이터를 EditText에 출력
+        if ( listener != null)
+            listener.onComplete(result);    // 리스너 호출
     }
 }

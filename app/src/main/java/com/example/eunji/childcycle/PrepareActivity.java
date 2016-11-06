@@ -1,6 +1,5 @@
 package com.example.eunji.childcycle;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Eunji on 2016. 9. 11..
@@ -55,6 +55,9 @@ public class PrepareActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
+        Intent intent = getIntent();
+        String nickname = intent.getExtras().getString("nickname");
+        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
 //        for ( i = 0; i < 4; i++) {
 //            strkbtn[i].setOnClickListener(new View.OnClickListener() {
 //                @Override
