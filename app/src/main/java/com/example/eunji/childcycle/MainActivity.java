@@ -28,13 +28,9 @@ public class MainActivity extends AppCompatActivity
 
     private void _InitUi() {
 
-        imgbtn1 = (ImageButton) findViewById(R.id.add_user1);
-        imgbtn2 = (ImageButton) findViewById(R.id.add_user2);
-        imgbtn3 = (ImageButton) findViewById(R.id.add_user3);
+        imgbtn1 = (ImageButton) findViewById(R.id.add_user);
 
-        txtview1 = (TextView) findViewById(R.id.user_name1);
-        txtview2 = (TextView) findViewById(R.id.user_name2);
-        txtview3 = (TextView) findViewById(R.id.user_name3);
+        txtview1 = (TextView) findViewById(R.id.user_name);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);

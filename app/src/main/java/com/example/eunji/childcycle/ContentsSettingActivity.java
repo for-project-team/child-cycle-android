@@ -22,7 +22,7 @@ public class ContentsSettingActivity extends ActionBarActivity {
     private ListView setting_listview;
     private ArrayList<ListviewItem> data;
     private ArrayList<String> save_string;
-    private ListviewItem user_edit, user_delete, user_logout, audio_onoff;
+    private ListviewItem user_edit, user_change, user_delete, user_logout, audio_onoff;
     private ListviewAdapter adapter;
     private TextView list_Text;
     private String list_text;
@@ -33,6 +33,7 @@ public class ContentsSettingActivity extends ActionBarActivity {
 
         data = new ArrayList<>();
 
+        user_change = new ListviewItem(R.drawable.ic_menu_camera, "사용자 변경");
         user_edit = new ListviewItem(R.drawable.ic_menu_camera, "프로필 수정");
         audio_onoff = new ListviewItem(R.drawable.ic_menu_camera, "음성안내");
         user_delete = new ListviewItem(R.drawable.ic_menu_camera, "사용자 삭제");
@@ -57,6 +58,7 @@ public class ContentsSettingActivity extends ActionBarActivity {
 
         //list 생성
 
+        data.add(user_change);
         data.add(user_edit);
         data.add(audio_onoff);
         data.add(user_delete);
@@ -74,7 +76,13 @@ public class ContentsSettingActivity extends ActionBarActivity {
             list_Text = (TextView) view.findViewById(R.id.list_text);
             list_text = list_Text.getText().toString();
 
-            if (list_text.equals(user_edit.getName())) {
+            if(list_text.equals(user_change.getName())){
+                actionBar.hide();
+
+                setContentView(R.layout.content_main);
+            }
+
+            else if (list_text.equals(user_edit.getName())) {
 
                 actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF5722));
                 actionBar.setTitle(Html.fromHtml("<font color='#ffffff'> ChildCycle </font>"));

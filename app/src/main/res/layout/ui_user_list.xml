@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_weight="0.35"
+    android:paddingTop="@dimen/check_padding"
+    android:paddingRight="@dimen/check_padding2"
+    android:paddingLeft="@dimen/check_padding2"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_weight="0.3"
+            android:id="@+id/app_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:src="@mipmap/ic_user_profile" />
+
+        <TextView
+            android:onClick="txtClick"
+            android:id="@+id/user_name"
+            android:layout_weight="0.5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/check_padding"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:hint="사용자 추가하기"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <ImageButton
+            android:onClick="btnClick"
+            android:id="@+id/add_user"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_user_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+c
+    </LinearLayout>
+    </LinearLayout>

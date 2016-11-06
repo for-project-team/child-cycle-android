@@ -33,125 +33,33 @@
 
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_weight="0.35"
+            android:layout_weight="0.25"
             android:layout_gravity="center_vertical"
             android:paddingTop="@dimen/check_padding"
-            android:paddingRight="@dimen/check_padding2"
-            android:paddingLeft="@dimen/check_padding2"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <include
+                android:layout_marginTop="-35px"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                layout="@layout/ui_user_list" />
 
-                <ImageView
-                    android:layout_weight="0.3"
-                    android:id="@+id/app_user1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:src="@mipmap/ic_user_profile" />
-
-                <TextView
-                    android:onClick="txtClick"
-                    android:id="@+id/user_name1"
-                    android:layout_weight="0.5"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/check_padding"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
-                    android:hint="사용자 추가하기"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                <ImageButton
-                    android:onClick="btnClick"
-                    android:id="@+id/add_user1"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_user_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
+            <include
+                android:layout_marginTop="-35px"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                layout="@layout/ui_user_list" />
 
-                <ImageView
-                    android:layout_weight="0.3"
-                    android:id="@+id/app_user2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:src="@mipmap/ic_user_profile" />
-
-                <TextView
-                    android:onClick="txtClick"
-                    android:id="@+id/user_name2"
-                    android:layout_weight="0.5"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/check_padding"
-                    android:hint="사용자 추가하기"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                <ImageButton
-                    android:onClick="btnClick"
-                    android:id="@+id/add_user2"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_user_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:orientation="horizontal"
+            <include
+                android:layout_marginTop="-35px"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                layout="@layout/ui_user_list" />
 
-                <ImageView
-                    android:layout_weight="0.3"
-                    android:id="@+id/app_user3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:src="@mipmap/ic_user_profile" />
-
-                <TextView
-                    android:onClick="txtClick"
-                    android:id="@+id/user_name3"
-                    android:layout_weight="0.5"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/check_padding"
-                    android:hint="사용자 추가하기"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                <ImageButton
-                    android:onClick="btnClick"
-                    android:id="@+id/add_user3"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_user_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
