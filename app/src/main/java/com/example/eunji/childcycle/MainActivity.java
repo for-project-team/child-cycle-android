@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-                    txtview1.setText(result.get(0).getName());
+                 //   txtview1.setText(result.get(0).getName());
 
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();

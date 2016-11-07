@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class UserListviewAdapter extends BaseAdapter {
     private int layout;
     private ImageView icon;
     private TextView name;
-    private ImageView add;
+    private ImageButton add;
 
     public UserListviewAdapter(Context context, int layout, ArrayList<UserListviewItem> data){
         this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -56,13 +57,13 @@ public class UserListviewAdapter extends BaseAdapter {
 
         UserListviewItem userlistviewItem = data.get(position);
 
-        icon = (ImageView) convertView.findViewById(R.id.list_imageview);
+        icon = (ImageView) convertView.findViewById(R.id.app_user);
         icon.setImageResource(userlistviewItem.getIcon());
 
-        name = (TextView) convertView.findViewById(R.id.list_text);
+        name = (TextView) convertView.findViewById(R.id.user_name);
         name.setText(userlistviewItem.getName());
 
-        add = (ImageView) convertView.findViewById(R.id.list_imageview);
+        add = (ImageButton) convertView.findViewById(R.id.add_user);
         add.setImageResource(userlistviewItem.getAdd());
 
         return convertView;

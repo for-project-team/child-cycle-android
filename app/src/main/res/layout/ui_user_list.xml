@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_weight="0.35"
-    android:paddingTop="15dp"
-    android:paddingRight="@dimen/check_padding2"
-    android:paddingLeft="@dimen/check_padding2"
+    android:paddingRight="@dimen/check_padding"
+    android:paddingLeft="@dimen/check_padding"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
