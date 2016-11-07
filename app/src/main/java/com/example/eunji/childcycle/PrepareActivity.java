@@ -71,6 +71,10 @@ public class PrepareActivity extends AppCompatActivity {
         anim= AnimationUtils.loadAnimation(this,R.anim.move);
         imgview1.startAnimation(anim);
 
+        mp3 = MediaPlayer.create(this, R.raw.voicehelmet);
+        mp3.start();
+
+
 //        for ( i = 0; i < 4; i++) {
 //            strkbtn[i].setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -114,6 +118,10 @@ public class PrepareActivity extends AppCompatActivity {
                 anim= AnimationUtils.loadAnimation(getApplication(),R.anim.move);
                 imgview1.startAnimation(anim);
 
+                mp3.reset();
+                mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voicehelmet);
+                mp3.start();
+
             }
         });
 
@@ -137,6 +145,10 @@ public class PrepareActivity extends AppCompatActivity {
                 anim= AnimationUtils.loadAnimation(getApplication(),R.anim.blink);
                 imgview1.startAnimation(anim);
 
+                mp3.reset();
+                mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceequip);
+                mp3.start();
+
             }
         });
 
@@ -154,10 +166,14 @@ public class PrepareActivity extends AppCompatActivity {
                 txtview1.setText(s[2]);
                 btn.setText(s1[0]);
 
+                mp3.reset();
                 imgview.setImageResource(R.drawable.pre_3_1);
                 imgview1.setImageResource(0);
                 anim= AnimationUtils.loadAnimation(getApplication(),R.anim.ride);
                 imgview.startAnimation(anim);
+                mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceride);
+                mp3.start();
+
 
             }
         });
@@ -177,6 +193,11 @@ public class PrepareActivity extends AppCompatActivity {
                 imgview1.setImageResource(0);
                 imgview.clearAnimation();
                 imgview1.clearAnimation();
+
+                mp3.reset();
+                mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
+                mp3.start();
+
 
             }
         });
@@ -211,6 +232,11 @@ public class PrepareActivity extends AppCompatActivity {
                     imgview1.setImageResource(R.drawable.pre_2_2);
                     anim=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
                     imgview1.startAnimation(anim);
+
+                    mp3.reset();
+                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceequip);
+                    mp3.start();
+
                 }
 
                 else if (s[1].equals(text)) {
@@ -228,6 +254,11 @@ public class PrepareActivity extends AppCompatActivity {
                     imgview1.setImageResource(0);
                     anim=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.ride);
                     imgview.startAnimation(anim);
+
+                    mp3.reset();
+                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceride);
+                    mp3.start();
+
                 }
 
                 else if (s[2].equals(text)) {
@@ -245,8 +276,13 @@ public class PrepareActivity extends AppCompatActivity {
                     imgview1.setImageResource(0);
                     imgview.clearAnimation();
                     imgview1.clearAnimation();
+
+                    mp3.reset();
+                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
+                    mp3.start();
+
                 }
-                //else mp3.stop();
+                else mp3.stop();
 
             }
         });
