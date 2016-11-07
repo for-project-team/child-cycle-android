@@ -23,7 +23,7 @@ import android.widget.TextView;
 public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
-    private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
+    private TextView riding_time, today_wether, weather_temp, riding_distanceh, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private DrawerLayout drawer;
@@ -39,7 +39,7 @@ public class RidingMainActivity extends AppCompatActivity {
         riding_time = (TextView) findViewById(R.id.riding_time);
         today_wether = (TextView) findViewById(R.id.today_weather);
         weather_temp = (TextView) findViewById(R.id.weather_temp);
-        riding_length = (TextView) findViewById(R.id.riding_length);
+        riding_distanceh = (TextView) findViewById(R.id.riding_distance);
         riding_speed = (TextView) findViewById(R.id.riding_speed);
 
         handle_aram = (ImageView) findViewById(R.id.handle_aram);

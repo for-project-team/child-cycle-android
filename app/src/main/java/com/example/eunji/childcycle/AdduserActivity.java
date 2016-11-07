@@ -2,6 +2,7 @@ package com.example.eunji.childcycle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,7 @@ import cz.msebera.android.httpclient.Header;
  * Updated by Hyesun on 2016. 10. 11..
  * 회원가입을 위한 restful api 제작 및 연결 완료
  * post 방식을 이용한 데이터 전송
+ *
  */
 public class AdduserActivity extends AppCompatActivity implements View.OnClickListener {
 

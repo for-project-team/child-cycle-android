@@ -18,6 +18,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:orientation="vertical"
             android:gravity="bottom"
             android:layout_weight="0.84"
             android:layout_width="match_parent"
@@ -31,9 +32,28 @@
                 android:layout_height="wrap_content"
                 android:text="환영합니다! 사용자를 등록하고,\n안전한 자전거를 바로 시작해보세요."/>
 
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                >
+
+                <ListView
+                    android:id="@+id/setting_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:choiceMode="singleChoice"
+                    android:divider="#3e3e3e"
+                    android:dividerHeight="1dp"
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-
+<!--
         <LinearLayout
             android:layout_weight="0.25"
             android:layout_gravity="center_vertical"
@@ -61,7 +81,26 @@
                 layout="@layout/ui_user_list" />
 
 
+        </LinearLayout>-->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            >
+
+            <ListView
+                android:id="@+id/user_listview"
+                android:layout_width="match_parent"
+                android:layout_height="334dp"
+                android:choiceMode="singleChoice"
+                android:divider="#3e3e3e"
+                android:dividerHeight="0dp"
+                />
+
         </LinearLayout>
     </LinearLayout>
+
+
 
 </FrameLayout>
