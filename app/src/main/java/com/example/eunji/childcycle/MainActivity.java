@@ -86,13 +86,11 @@ public class MainActivity extends AppCompatActivity
 
         save_string = new ArrayList<String>();
 
-
         data.add(user1);
         data.add(user2);
         data.add(user3);
 
         user_listview.setAdapter(adapter);
-
 
 
         // 데이터 가져오기 완료 후 txtView에 출력
