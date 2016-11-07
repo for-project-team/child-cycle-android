@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
 
 
         //list
-        user_listview = (ListView) findViewById(R.id.setting_listview);
+        user_listview = (ListView) findViewById(R.id.user_listview);
 
         data = new ArrayList<>();
 

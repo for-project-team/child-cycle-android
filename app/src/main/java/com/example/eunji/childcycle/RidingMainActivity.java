@@ -5,7 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -40,10 +43,17 @@ public class RidingMainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
-    public static int num = 0;
+
 
     private RidingDataDTO ridingDataDTO;
     private static final String TAG = "Hanium";
+
+    public static int num = 0;
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
 
     private void _InitUi() {
 
@@ -94,10 +104,33 @@ public class RidingMainActivity extends AppCompatActivity {
 
         if (num % 2 == 1) {
             button_pause.setText("시작");
-        } else
+
+            timeSwapBuff += timeInMilliseconds;
+            customHandler.removeCallbacks(updateTimerThread);
+        } else {
             button_pause.setText("일시정지");
 
+            startTime = SystemClock.uptimeMillis();
+            customHandler.postDelayed(updateTimerThread, 0);
+        }
+
     }
+
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            int hours = mins / 60;
+            secs = secs % 60;
+
+            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
+            customHandler.postDelayed(this, 0);
+            }
+        };
+
 
     public void stopClick(View v) {
         new AlertDialog.Builder(this)
