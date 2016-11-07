@@ -63,8 +63,8 @@
         </activity>
 
         <activity
-            android:name=".bluetooth.BluetoothConnect"
-            android:label="BluetoothConnect"/>
+            android:name=".RecordTableActivity"
+            android:label="RecordTableActivity" />
 
     </application>
 

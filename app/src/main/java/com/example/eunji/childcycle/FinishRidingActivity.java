@@ -39,7 +39,7 @@ public class FinishRidingActivity extends AppCompatActivity{
         // 오늘의 주행기록 표시
         Intent intent = getIntent();
         riding_time.setText(intent.getExtras().getString("time"));
-        riding_distance.setText(intent.getExtras().getString("distance"));
+        riding_distance.setText(intent.getExtras().getString("distance") + "km");
 
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));

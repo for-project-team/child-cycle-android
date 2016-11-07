@@ -10,11 +10,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.eunji.childcycle.dto.RidingDataDTO;
+import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by Eunji on 2016. 9. 25..
@@ -23,13 +34,16 @@ import android.widget.TextView;
 public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
-    private TextView riding_time, today_wether, weather_temp, riding_length, riding_speed;
+    private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
     public static int num = 0;
+
+    private RidingDataDTO ridingDataDTO;
+    private static final String TAG = "Hanium";
 
     private void _InitUi() {
 
@@ -39,7 +53,7 @@ public class RidingMainActivity extends AppCompatActivity {
         riding_time = (TextView) findViewById(R.id.riding_time);
         today_wether = (TextView) findViewById(R.id.today_weather);
         weather_temp = (TextView) findViewById(R.id.weather_temp);
-        riding_length = (TextView) findViewById(R.id.riding_length);
+        riding_distance = (TextView) findViewById(R.id.riding_distance);
         riding_speed = (TextView) findViewById(R.id.riding_speed);
 
         handle_aram = (ImageView) findViewById(R.id.handle_aram);
@@ -58,12 +72,12 @@ public class RidingMainActivity extends AppCompatActivity {
         _InitUi();
 
         ActionBar actionBar = getSupportActionBar();
-
-
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        ridingDataDTO = new RidingDataDTO();
 
 
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -93,8 +107,10 @@ public class RidingMainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        insertQuery();
                         Intent intent = new Intent(getApplicationContext(), FinishRidingActivity.class);
+                        intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
+                        intent.putExtra("distance", ridingDataDTO.getTotalDistance());
                         startActivity(intent);
 
                     }
@@ -102,6 +118,51 @@ public class RidingMainActivity extends AppCompatActivity {
                 .setNegativeButton("아니오", null)
                 .show();
 
+    }
+
+    // DTO 데이터 삽입
+    public void insertQuery(){
+        ridingDataDTO.setTotalDistance(riding_distance.getText().toString());
+        ridingDataDTO.setRidingTime(riding_time.getText().toString());
+        ridingDataDTO.setCalorie("456");
+        ridingDataDTO.setAvgVelocity(riding_speed.getText().toString());
+        ridingDataDTO.setSafetyCnt(0);
+        ridingDataDTO.setWarningCnt(0);
+
+        postData("http://14.63.213.62:3000/ridingdata", ridingDataDTO);
+    }
+
+    /* 라이딩 데이터 DB insert */
+    public void postData(String url, RidingDataDTO sendData){
+        final RequestParams params = new RequestParams();
+        params.put("totalDistance", sendData.getTotalDistance());
+        params.put("avgVelocity", sendData.getAvgVelocity());
+        params.put("calorie", sendData.getCalorie());
+        params.put("ridingTime", sendData.getRidingTime());
+        params.put("safetyCnt", sendData.getSafetyCnt());
+        params.put("warningCnt", sendData.getWarningCnt());
+
+        // url 및 전송된 데이터 확인 테스트
+        Log.d(TAG, "url : " + url);
+
+        HttpClientHelper.post(url, params, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                if(statusCode == 201){
+                    Toast.makeText(getApplicationContext(), "라이딩 데이터 저장 완료", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.d(TAG, "onSuccess statusCode : " + statusCode + "\nresponse" + response);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.d(TAG, "onFailure statusCode : " + statusCode);
+                Log.d(TAG, "throwable" + throwable + " errorResponse" + errorResponse);
+            }
+        });
     }
 
     @Override
