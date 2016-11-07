@@ -47,7 +47,8 @@ public class FinishRidingActivity extends AppCompatActivity{
     }
 
     public void historyClick(View v){
-        setContentView(R.layout.record_table);
+        Intent intent = new Intent(getApplicationContext(), RecordTableActivity.class);
+        startActivity(intent);
     }
 
 

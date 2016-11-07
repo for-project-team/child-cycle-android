@@ -4,6 +4,7 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,11 +14,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +33,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageButton imgbtn1, imgbtn2, imgbtn3;
-    private TextView txtview1, txtview2, txtview3;
+    private ListView user_listview;
+    private ArrayList<UserListviewItem> data;
+    private UserListviewItem user1, user2, user3;
+    private UserListviewAdapter adapter;
+    private ArrayList<String> save_string;
+    private TextView list_Text;
+    private String list_text;
+
+    private ImageButton imgbtn1;
+    private TextView txtview1;
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
@@ -42,12 +54,24 @@ public class MainActivity extends AppCompatActivity
 
         imgbtn1 = (ImageButton) findViewById(R.id.add_user);
 
-//        txtview1 = (TextView) findViewById(R.id.user_name);
+        txtview1 = (TextView) findViewById(R.id.user_name);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-    }
 
+
+        //list
+        user_listview = (ListView) findViewById(R.id.setting_listview);
+
+        data = new ArrayList<>();
+
+        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
+        //System.out.print("debug : " + user1);
+        user2 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
+        user3 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
+
+        adapter = new UserListviewAdapter(this, R.layout.ui_user_list, data);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,13 +84,23 @@ public class MainActivity extends AppCompatActivity
 
         userList = new ArrayList<>();
 
+        save_string = new ArrayList<String>();
+
+        data.add(user1);
+        data.add(user2);
+        data.add(user3);
+
+        user_listview.setAdapter(adapter);
+
+
         // 데이터 가져오기 완료 후 txtView에 출력
         new HttpTask(new OnCompletionListener() {
             @Override
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-//                    txtview1.setText(result.get(0).getName());
+                 //   txtview1.setText(result.get(0).getName());
+
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -84,6 +118,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
 
     //회원가입 버튼 클릭 리스너
     public void btnClick(View v) {
@@ -103,14 +138,7 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                         // put Extra
                         intent = new Intent(getApplicationContext(), PrepareActivity.class);
-                        try{
-                            intent.putExtra("nickname", userList.get(0).getNickname());
-                        }catch (IndexOutOfBoundsException e){
-                            e.printStackTrace();
-                        }catch (NullPointerException e){
-                            e.printStackTrace();
-                        }
-
+                        intent.putExtra("nickname", userList.get(0).getNickname());
                         startActivity(intent);
                     }
                 })
@@ -200,13 +228,9 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
     protected ArrayList<UserDTO> doInBackground(ArrayList<UserDTO>... params) {
 
         if(params != null){
-            try{
-                list = userInfoDAO.lodingUserData(getDataUrl);
-                userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-                Log.d("Hanium", list.get(0).getNickname());
-            }catch (IndexOutOfBoundsException e){
-                e.printStackTrace();
-            }
+            list = userInfoDAO.lodingUserData(getDataUrl);
+            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+            Log.d("Hanium", list.get(0).getNickname());
             return list;
         }else{
             return null;

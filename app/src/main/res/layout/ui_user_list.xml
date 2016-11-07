@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_weight="0.35"
-    android:paddingTop="@dimen/check_padding"
-    android:paddingRight="@dimen/check_padding2"
-    android:paddingLeft="@dimen/check_padding2"
+    android:paddingRight="@dimen/check_padding"
+    android:paddingLeft="@dimen/check_padding"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -18,10 +18,12 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:orientation="vertical"
             android:gravity="bottom"
             android:layout_weight="0.84"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1">
 
             <TextView
                 android:textSize="14sp"
@@ -31,37 +33,63 @@
                 android:layout_height="wrap_content"
                 android:text="환영합니다! 사용자를 등록하고,\n안전한 자전거를 바로 시작해보세요."/>
 
+
+            <LinearLayout
+                android:gravity="center"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginLeft="@dimen/check_padding"
+                android:layout_marginRight="@dimen/check_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.20">
+
+                <ListView
+                    android:id="@+id/setting_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="303dp"
+                    android:choiceMode="singleChoice"
+                    android:divider="#3e3e3e"
+                    android:dividerHeight="0dp"
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
 
+        <!--
+                <LinearLayout
+                    android:layout_weight="0.25"
+                    android:layout_gravity="center_vertical"
+                    android:paddingTop="@dimen/check_padding"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_weight="0.25"
-            android:layout_gravity="center_vertical"
-            android:paddingTop="@dimen/check_padding"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    <include
+                        android:layout_marginTop="-35px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        layout="@layout/ui_user_list" />
 
-            <include
-                android:layout_marginTop="-35px"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/ui_user_list" />
+                    <include
+                        android:layout_marginTop="-35px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        layout="@layout/ui_user_list" />
 
-            <include
-                android:layout_marginTop="-35px"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/ui_user_list" />
-
-            <include
-                android:layout_marginTop="-35px"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/ui_user_list" />
+                    <include
+                        android:layout_marginTop="-35px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        layout="@layout/ui_user_list" />
 
 
-        </LinearLayout>
+                </LinearLayout>-->
+
     </LinearLayout>
+
+
 
 </FrameLayout>
