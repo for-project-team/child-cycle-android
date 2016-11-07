@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         imgbtn1 = (ImageButton) findViewById(R.id.add_user);
 
-        txtview1 = (TextView) findViewById(R.id.user_name);
+//        txtview1 = (TextView) findViewById(R.id.user_name);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-                    txtview1.setText(result.get(0).getName());
-                    txtview2.setText(result.get(1).getName());
-                    txtview3.setText(result.get(2).getName());
+//                    txtview1.setText(result.get(0).getName());
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -105,7 +103,14 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                         // put Extra
                         intent = new Intent(getApplicationContext(), PrepareActivity.class);
-                        intent.putExtra("nickname", userList.get(0).getNickname());
+                        try{
+                            intent.putExtra("nickname", userList.get(0).getNickname());
+                        }catch (IndexOutOfBoundsException e){
+                            e.printStackTrace();
+                        }catch (NullPointerException e){
+                            e.printStackTrace();
+                        }
+
                         startActivity(intent);
                     }
                 })
@@ -195,9 +200,13 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
     protected ArrayList<UserDTO> doInBackground(ArrayList<UserDTO>... params) {
 
         if(params != null){
-            list = userInfoDAO.lodingUserData(getDataUrl);
-            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-            Log.d("Hanium", list.get(0).getNickname());
+            try{
+                list = userInfoDAO.lodingUserData(getDataUrl);
+                userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+                Log.d("Hanium", list.get(0).getNickname());
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
             return list;
         }else{
             return null;
