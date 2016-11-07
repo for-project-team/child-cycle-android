@@ -55,6 +55,10 @@
             android:name=".ContentsSettingActivity"
             android:label="ContentsSetting" />
 
+        <activity
+            android:name=".RecordTableActivity"
+            android:label="RecordTable" />
+
 
         <activity
             android:name=".TempSenseTest"
