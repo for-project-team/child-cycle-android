@@ -2,7 +2,7 @@ package com.example.eunji.childcycle.dao;
 
 import android.util.Log;
 
-import com.example.eunji.childcycle.dto.UserDTO;
+import com.example.eunji.childcycle.DTO.UserDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;

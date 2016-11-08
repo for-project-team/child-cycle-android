@@ -1,4 +1,4 @@
-package com.example.eunji.childcycle.dto;
+package com.example.eunji.childcycle.DTO;
 
 /**
  * Created by choihyesun on 2016. 10. 10..
