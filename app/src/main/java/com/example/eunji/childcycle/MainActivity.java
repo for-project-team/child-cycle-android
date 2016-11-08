@@ -4,22 +4,20 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -43,8 +41,10 @@ public class MainActivity extends AppCompatActivity
 
     private ImageButton imgbtn1;
     private TextView txtview1;
+
     private DrawerLayout drawer;
     private NavigationView navigationView;
+    Fragment fragment;
 
     private ArrayList<UserDTO> userList;
 
@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
+
         _InitUi();
+
 
         userList = new ArrayList<>();
 
@@ -118,8 +120,8 @@ public class MainActivity extends AppCompatActivity
         actionBar.hide();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, this.drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        this.drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -178,9 +180,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (this.drawer.isDrawerOpen(GravityCompat.START)) {
+            this.drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -215,12 +216,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.drawer_main) {
-            Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
-            startActivity(intent1);
+
+            fragment = new RidingFragment();
         }
 
         else if (id == R.id.drawer_history) {
-            setContentView(R.layout.record_table);          // 수정필요
+            Intent intent1 = new Intent(getApplicationContext(), RecordTableActivity.class);
+            startActivity(intent1);
         }
 
         else if (id == R.id.drawer_setting) {
@@ -228,8 +230,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent2);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if(fragment != null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
+
+        this.drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }
@@ -258,8 +265,8 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
 
         if(params != null){
             list = userInfoDAO.lodingUserData(getDataUrl);
-            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-            Log.d("Hanium", list.get(0).getNickname());
+           // userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+            //Log.d("Hanium", list.get(0).getNickname());
             return list;
         }else{
             return null;
