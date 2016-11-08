@@ -1,6 +1,7 @@
 package com.example.eunji.childcycle;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -15,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,16 +37,11 @@ import cz.msebera.android.httpclient.Header;
  * Created by Eunji on 2016. 9. 25..
  */
 
-public class RidingMainActivity extends AppCompatActivity {
+public class RidingMainActivity extends AppCompatActivity{
 
     private Button button_stop, button_pause;
     private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
-
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
-
-
 
     private RidingDataDTO ridingDataDTO;
     private static final String TAG = "Hanium";
@@ -72,12 +70,24 @@ public class RidingMainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riding_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
-//        setSupportActionBar(toolbar);
+
+        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        // inflate the custom activity layout
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View activityView = layoutInflater.inflate(R.layout.riding_main, null,false);
+        // add the custom layout of this activity to frame layout.
+        frameLayout.addView(activityView);
+
+//
+//        LayoutInflater inflater = (LayoutInflater) this
+//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View contentView = inflater.inflate(R.layout.activity_main, null, false);
+//        drawer.addView(contentView, 0);
+
 
         _InitUi();
 
@@ -89,13 +99,6 @@ public class RidingMainActivity extends AppCompatActivity {
 
         ridingDataDTO = new RidingDataDTO();
 
-
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -242,49 +245,5 @@ public class RidingMainActivity extends AppCompatActivity {
 
         return super.onKeyDown(keyCode, event);
     }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        // Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//
-//        if (id == R.id.drawer_main) {
-//            Intent intent1 = new Intent(getApplicationContext(),RidingMainActivity.class);
-//            startActivity(intent1);
-//
-//        } else if (id == R.id.drawer_history) {
-//
-//        } else if (id == R.id.drawer_setting) {
-//
-//        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 
 }
