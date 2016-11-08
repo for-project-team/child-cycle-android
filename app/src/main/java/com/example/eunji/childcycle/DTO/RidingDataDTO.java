@@ -7,7 +7,21 @@ package com.example.eunji.childcycle.dto;
  */
 
 public class RidingDataDTO {
-    private String date, totalDistance, avgVelocity, calorie, ridingTime;
+    private String date;
+    private String totalDistance;
+    private String avgVelocity;
+    private String calorie;
+    private String ridingTime;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    private String nickname;
     private int safetyCnt, warningCnt;
 
     public String getDate() {

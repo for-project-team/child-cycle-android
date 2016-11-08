@@ -28,6 +28,8 @@ public class PrepareActivity extends AppCompatActivity {
     String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요", "hihi!"};
     String s1[] = {"착용완료", "확인완료"};
 
+    String nickname;
+
     private void _InitUi(){
 
         txtview1 = (TextView) findViewById(R.id.text_change);
@@ -56,7 +58,7 @@ public class PrepareActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
         Intent intent = getIntent();
-        String nickname = intent.getExtras().getString("nickname");
+        nickname = intent.getExtras().getString("nickname");
         Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
 //        for ( i = 0; i < 4; i++) {
 //            strkbtn[i].setOnClickListener(new View.OnClickListener() {
@@ -155,6 +157,7 @@ public class PrepareActivity extends AppCompatActivity {
 
                 if(s1[1].equals(str)) {
                     Intent intent = new Intent(getApplicationContext(), RidingMainActivity.class);
+                    intent.putExtra("nickname", nickname);
                     startActivity(intent);
                 }
 

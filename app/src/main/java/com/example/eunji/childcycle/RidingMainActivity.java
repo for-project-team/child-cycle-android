@@ -44,6 +44,7 @@ public class RidingMainActivity extends AppCompatActivity {
 
     private RidingDataDTO ridingDataDTO;
     private static final String TAG = "Hanium";
+    private String nickname;
 
     private void _InitUi() {
 
@@ -79,6 +80,9 @@ public class RidingMainActivity extends AppCompatActivity {
 
         ridingDataDTO = new RidingDataDTO();
 
+        Intent intent = getIntent();
+        nickname = intent.getExtras().getString("nickname");
+        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
 
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
 //                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -128,6 +132,7 @@ public class RidingMainActivity extends AppCompatActivity {
         ridingDataDTO.setAvgVelocity(riding_speed.getText().toString());
         ridingDataDTO.setSafetyCnt(0);
         ridingDataDTO.setWarningCnt(0);
+        ridingDataDTO.setNickname(nickname);
 
         postData("http://14.63.213.62:3000/ridingdata", ridingDataDTO);
     }
@@ -141,6 +146,7 @@ public class RidingMainActivity extends AppCompatActivity {
         params.put("ridingTime", sendData.getRidingTime());
         params.put("safetyCnt", sendData.getSafetyCnt());
         params.put("warningCnt", sendData.getWarningCnt());
+        params.put("nickname", sendData.getNickname());
 
         // url 및 전송된 데이터 확인 테스트
         Log.d(TAG, "url : " + url);

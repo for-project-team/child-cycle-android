@@ -4,7 +4,6 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,12 +13,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,11 +62,6 @@ public class MainActivity extends AppCompatActivity
 
         data = new ArrayList<>();
 
-        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-        //System.out.print("debug : " + user1);
-        user2 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-        user3 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-
         adapter = new UserListviewAdapter(this, R.layout.ui_user_list, data);
     }
 
@@ -86,12 +78,7 @@ public class MainActivity extends AppCompatActivity
 
         save_string = new ArrayList<String>();
 
-        data.add(user1);
-        data.add(user2);
-        data.add(user3);
-
         user_listview.setAdapter(adapter);
-
 
         // 데이터 가져오기 완료 후 txtView에 출력
         new HttpTask(new OnCompletionListener() {
@@ -99,13 +86,20 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-                 //   txtview1.setText(result.get(0).getName());
-
+                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
+                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
+                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
+                    data.add(user1);
+                    data.add(user2);
+                    data.add(user3);
+                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
             }
         }).execute();
+
+//        user_listview.setOnItemClickListener(clickListener);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -127,11 +121,33 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+//    AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
+//        @Override
+//        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//            final int itemPosition = position;
+//            new AlertDialog.Builder(MainActivity.this)
+//                    .setTitle("안전한 자전거를 시작합니다.")
+//                    .setMessage(userList.get(itemPosition).getName() + "이 맞습니까?")
+//                    .setPositiveButton("예", new DialogInterface.OnClickListener() {
+//
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // put Extra
+//                            intent = new Intent(getApplicationContext(), PrepareActivity.class);
+//                            intent.putExtra("nickname", userList.get(itemPosition).getNickname());
+//                            startActivity(intent);
+//                        }
+//                    })
+//                    .setNegativeButton("아니오", null)
+//                    .show();
+//        }
+//    };
+
     // textView 클릭 메소드
     public void txtClick(View v) {
         new AlertDialog.Builder(this)
                 .setTitle("안전한 자전거를 시작합니다.")
-                .setMessage("ooo 이 맞습니까?")
+                .setMessage(user1.getName() + "이 맞습니까?")
                 .setPositiveButton("예", new DialogInterface.OnClickListener() {
 
                     @Override
