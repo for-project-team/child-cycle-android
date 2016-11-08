@@ -2,10 +2,8 @@ package com.example.eunji.childcycle;
 
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,20 +15,16 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eunji.childcycle.dao.UserInfoDAO;
-import com.example.eunji.childcycle.DTO.UserDTO;
+import com.example.eunji.childcycle.dto.UserDTO;
 
 import java.util.ArrayList;
 
@@ -193,8 +187,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.drawer_main) {
-//            Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
-//            startActivity(intent1);
 
             fragment = new RidingFragment();
         }

@@ -75,20 +75,6 @@ public class RidingMainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riding_main);
 
-        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.content_frame);
-        // inflate the custom activity layout
-        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View activityView = layoutInflater.inflate(R.layout.riding_main, null,false);
-        // add the custom layout of this activity to frame layout.
-        frameLayout.addView(activityView);
-
-//
-//        LayoutInflater inflater = (LayoutInflater) this
-//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View contentView = inflater.inflate(R.layout.activity_main, null, false);
-//        drawer.addView(contentView, 0);
-
-
         _InitUi();
 
         ActionBar actionBar = getSupportActionBar();

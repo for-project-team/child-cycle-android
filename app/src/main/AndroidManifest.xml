@@ -55,14 +55,16 @@
             android:name=".ContentsSettingActivity"
             android:label="ContentsSetting" />
 
-
+<!--
         <activity
             android:name=".TempSenseTest"
             android:label="tempSenseTest">
 
         </activity>
+-->
 
         <activity
+            android:theme="@style/AppTheme"
             android:name=".RecordTableActivity"
             android:label="RecordTableActivity" />
 
