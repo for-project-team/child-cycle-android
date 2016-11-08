@@ -15,13 +15,29 @@
         android:layout_weight="1"
         android:baselineAligned="false">
 
-        <ImageView
-            android:id="@+id/prepare_image"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingTop="40px"
-            android:src="@android:drawable/sym_def_app_icon" />
+            android:layout_height="311dp">
+
+            <ImageView
+                android:id="@+id/prepare_image0"
+                android:layout_width="180dp"
+                android:layout_height="317dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="40px"
+                android:src="@android:drawable/sym_def_app_icon" />
+
+            <ImageView
+                android:id="@+id/prepare_image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="40px"
+                android:src="@android:drawable/sym_def_app_icon" />
+
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/text_change"
