@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.eunji.childcycle.dto.UserDTO;
+import com.example.eunji.childcycle.DTO.UserDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;

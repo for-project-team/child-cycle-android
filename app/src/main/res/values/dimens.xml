@@ -30,7 +30,7 @@
     <dimen name="main_padding">15dp</dimen>
 
 
-    <dimen name="stroke_size">10dp</dimen>
+    <dimen name="stroke_size">15dp</dimen>
     <dimen name="stroke_margin">5dp</dimen>
 
 </resources>
