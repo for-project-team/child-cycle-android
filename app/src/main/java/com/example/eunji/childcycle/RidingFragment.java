@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +51,8 @@ public class RidingFragment extends Fragment{
     long timeInMilliseconds = 0L;
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
+
+    private Fragment fragment;
 
     private View v;
 
@@ -106,11 +109,18 @@ public class RidingFragment extends Fragment{
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                insertQuery();
-                                Intent intent = new Intent(getActivity().getApplicationContext(), FinishRidingActivity.class);
-                                intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
-                                intent.putExtra("distance", ridingDataDTO.getTotalDistance());
-                                startActivity(intent);
+//                                insertQuery();
+//                                Intent intent = new Intent(getActivity().getApplicationContext(), FinishRidingActivity.class);
+//                                intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
+//                                intent.putExtra("distance", ridingDataDTO.getTotalDistance());
+//                                startActivity(intent);
+                                fragment = new FinishRidingFragment();
+
+                                if(fragment != null){
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.content_frame, fragment);
+                                    ft.commit();
+                                }
 
                             }
                         })

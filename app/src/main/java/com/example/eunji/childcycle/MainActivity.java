@@ -80,9 +80,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-
         _InitUi();
-
 
         userList = new ArrayList<>();
 
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity
                     userList = result;
                     //   txtview1.setText(result.get(0).getName());
 
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -126,6 +124,7 @@ public class MainActivity extends AppCompatActivity
     public void btnClick(View v) {
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
+
 
     }
 
@@ -189,6 +188,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.drawer_main) {
 
             fragment = new RidingFragment();
+
+            if(fragment != null){
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, fragment);
+                ft.commit();
+            }
+
         }
 
         else if (id == R.id.drawer_history) {
@@ -199,12 +205,6 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.drawer_setting) {
             Intent intent2 = new Intent(getApplicationContext(), ContentsSettingActivity.class);
             startActivity(intent2);
-        }
-
-        if(fragment != null){
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
         }
 
         this.drawer.closeDrawer(GravityCompat.START);
@@ -239,7 +239,7 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
            // userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
             //Log.d("Hanium", list.get(0).getNickname());
             return list;
-        }else{
+        } else {
             return null;
         }
     }
