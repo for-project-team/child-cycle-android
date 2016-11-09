@@ -28,6 +28,9 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
 
 
@@ -38,7 +41,7 @@ import cz.msebera.android.httpclient.Header;
 public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
-    private TextView riding_time, today_weather = null, weather_temp, riding_distance, riding_speed;
+    private TextView riding_time, today_weather = null, riding_date, weather_temp, riding_distance, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private RidingDataDTO ridingDataDTO;
@@ -52,6 +55,10 @@ public class RidingMainActivity extends AppCompatActivity {
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
 
+    private Date cDate;
+    private String fDate;
+
+
     private void _InitUi() {
 
         button_stop = (Button) findViewById(R.id.button_stop);
@@ -59,6 +66,7 @@ public class RidingMainActivity extends AppCompatActivity {
 
         riding_time = (TextView) findViewById(R.id.riding_time);
         today_weather = (TextView) findViewById(R.id.today_weather);
+        riding_date = (TextView) findViewById(R.id.riding_date);
         weather_temp = (TextView) findViewById(R.id.weather_temp);
         riding_distance = (TextView) findViewById(R.id.riding_distance);
         riding_speed = (TextView) findViewById(R.id.riding_speed);
@@ -66,6 +74,9 @@ public class RidingMainActivity extends AppCompatActivity {
         handle_aram = (ImageView) findViewById(R.id.handle_aram);
         speed_aram = (ImageView) findViewById(R.id.speed_aram);
         distance_aram = (ImageView) findViewById(R.id.distance_aram);
+
+        cDate = new Date();
+        fDate = new SimpleDateFormat("yyyy년 MM월 dd일 (E)").format(cDate);
     }
 
     @Override
@@ -75,6 +86,8 @@ public class RidingMainActivity extends AppCompatActivity {
 
         _InitUi();
 
+        riding_date.setText(fDate);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
@@ -83,9 +96,9 @@ public class RidingMainActivity extends AppCompatActivity {
 
         ridingDataDTO = new RidingDataDTO();
 
-        Intent intent = getIntent();
-        nickname = intent.getExtras().getString("nickname");
-        Log.i(TAG, "RidingMainActivity " + nickname);
+//        Intent intent = getIntent();
+//        nickname = intent.getExtras().getString("nickname");
+//        Log.i(TAG, "RidingMainActivity " + nickname);
 
     }
 

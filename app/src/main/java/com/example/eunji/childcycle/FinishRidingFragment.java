@@ -50,13 +50,13 @@ public class FinishRidingFragment extends Fragment {
         total_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment = new RecordTableActivity();
-
-                if(fragment != null){
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.content_frame, fragment);
-                    ft.commit();
-                }
+//                fragment = new RecordTableActivity();
+//
+//                if(fragment != null){
+//                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.content_frame, fragment);
+//                    ft.commit();
+//                }
             }
         });
 

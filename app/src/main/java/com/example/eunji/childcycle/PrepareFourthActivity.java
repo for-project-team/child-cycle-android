@@ -48,6 +48,7 @@ public class PrepareFourthActivity extends Fragment {
 //                }
 
                 intent = new Intent(getActivity().getApplicationContext(), RidingMainActivity.class);
+                startActivity(intent);
             }
         });
 

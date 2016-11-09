@@ -57,7 +57,6 @@ public class ContentsSettingActivity extends ActionBarActivity {
 
 
         //list 생성
-
         data.add(user_change);
         data.add(user_edit);
         data.add(audio_onoff);

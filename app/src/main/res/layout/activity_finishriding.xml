@@ -109,6 +109,7 @@
         </LinearLayout>
 
         <Button
+            android:onClick="historyClick"
             android:id="@+id/total_history"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

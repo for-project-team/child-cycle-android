@@ -67,7 +67,6 @@ public class PrepareActivity extends AppCompatActivity {
         _InitUi();
 
         ActionBar actionBar = getSupportActionBar();
-
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 

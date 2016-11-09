@@ -4,6 +4,8 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,10 +17,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -91,13 +95,13 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
-                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
-                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
-                    data.add(user1);
-                    data.add(user2);
-                    data.add(user3);
-                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
+//                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
+//                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
+//                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
+//                    data.add(user1);
+//                    data.add(user2);
+//                    data.add(user3);
+//                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -115,7 +119,10 @@ public class MainActivity extends AppCompatActivity
 //        }
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+//        actionBar.hide();
+
+        actionBar.setTitle("");
+        actionBar.setElevation(0);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, this.drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -187,6 +194,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -208,7 +216,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
