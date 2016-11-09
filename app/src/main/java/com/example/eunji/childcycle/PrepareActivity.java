@@ -68,7 +68,7 @@ public class PrepareActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String nickname = intent.getExtras().getString("nickname");
-        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
 
         imgview.setImageResource(R.drawable.pre_1_1);
         imgview1.setImageResource(R.drawable.pre_1_2);
