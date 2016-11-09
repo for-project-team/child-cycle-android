@@ -5,6 +5,11 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,6 +109,49 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_margin="@dimen/stroke_margin"
+            android:layout_width="@dimen/stroke_size"
+            android:layout_height="@dimen/stroke_size"
+            android:background="@drawable/stroke_button"
+            android:id="@+id/prepare_stroke1"
+            />
+
+        <Button
+            android:layout_margin="@dimen/stroke_margin"
+            android:layout_width="@dimen/stroke_size"
+            android:layout_height="@dimen/stroke_size"
+            android:background="@drawable/stroke_button"
+            android:id="@+id/prepare_stroke2"
+            />
+
+        <Button
+            android:layout_margin="@dimen/stroke_margin"
+            android:layout_width="@dimen/stroke_size"
+            android:layout_height="@dimen/stroke_size"
+            android:background="@drawable/stroke_button"
+            android:id="@+id/prepare_stroke3"
+            />
+
+        <Button
+            android:layout_margin="@dimen/stroke_margin"
+            android:layout_width="@dimen/stroke_size"
+            android:layout_height="@dimen/stroke_size"
+            android:background="@drawable/stroke_button_clicked"
+            android:id="@+id/prepare_stroke4"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -118,5 +166,5 @@
             android:textColor="@color/button_font"
             android:textSize="@dimen/check_text" />
     </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

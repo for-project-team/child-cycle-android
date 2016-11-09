@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:baselineAligned="false">
 
-
     <LinearLayout
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:baselineAligned="false">
 
         <FrameLayout
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="45dp"
             android:layout_width="match_parent"
             android:layout_height="250dp">
 
@@ -38,10 +39,9 @@
 
         </FrameLayout>
 
-
         <TextView
+            android:paddingTop="12dp"
             android:id="@+id/text_change"
-            android:layout_weight="0.1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="헬멧을 착용하세요"
@@ -51,7 +51,7 @@
             />
 
         <LinearLayout
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -90,38 +90,13 @@
                 android:id="@+id/prepare_stroke4"
                 />
 
-            <!--
 
-            <ImageButton
-                android:src="@drawable/ic_menu_camera"
-                android:id="@+id/action_button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageButton
-                android:src="@drawable/ic_menu_gallery"
-                android:id="@+id/action_button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageButton
-                android:src="@drawable/ic_menu_gallery"
-                android:id="@+id/action_button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageButton
-                android:src="@drawable/ic_menu_gallery"
-                android:id="@+id/action_button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
--->
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -139,4 +114,8 @@
             />
 </LinearLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+</FrameLayout>

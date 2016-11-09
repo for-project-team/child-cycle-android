@@ -13,7 +13,7 @@ import android.widget.TextView;
  * Created by Eunji on 2016. 11. 9..
  */
 
-public class FinishRidingFragment extends Fragment implements View.OnClickListener {
+public class FinishRidingFragment extends Fragment {
 
     private View v;
     private Fragment fragment;
@@ -47,19 +47,20 @@ public class FinishRidingFragment extends Fragment implements View.OnClickListen
 
         _InitUi();
 
+        total_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new RecordTableActivity();
+
+                if(fragment != null){
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+                }
+            }
+        });
+
         return v;
     }
-
-    @Override
-    public void onClick(View v) {
-        fragment = new RecordTableActivity();
-
-        if(fragment != null){
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
-    }
-
 
 }

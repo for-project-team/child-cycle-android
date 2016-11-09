@@ -26,7 +26,7 @@ public class PrepareActivity extends AppCompatActivity {
 
     private Button btn;
     private TextView txtview1;
-    private ImageView imgview,imgview1;
+    private ImageView imgview, imgview1;
     private Button strkbtn[] = new Button[4];
     private Drawable strkbtn_toggle[] = new Drawable[2];
 
@@ -35,10 +35,12 @@ public class PrepareActivity extends AppCompatActivity {
 
     Fragment fragment;
 
-    String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요", "Good Job"};
+    private int count = 0;
+
+    String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요"};
     String s1[] = {"착용완료", "확인완료"};
 
-    private void _InitUi(){
+    private void _InitUi() {
 
         txtview1 = (TextView) findViewById(R.id.text_change);
         imgview = (ImageView) findViewById(R.id.prepare_image0);
@@ -72,13 +74,13 @@ public class PrepareActivity extends AppCompatActivity {
 
         imgview.setImageResource(R.drawable.pre_1_1);
         imgview1.setImageResource(R.drawable.pre_1_2);
-        anim= AnimationUtils.loadAnimation(this,R.anim.move);
+        anim = AnimationUtils.loadAnimation(this, R.anim.move);
         imgview1.startAnimation(anim);
 
         mp3 = MediaPlayer.create(this, R.raw.voicehelmet);
         mp3.start();
 
-
+/*
         strkbtn[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//circleButton_1
@@ -93,7 +95,7 @@ public class PrepareActivity extends AppCompatActivity {
                 imgview.setImageResource(R.drawable.pre_1_1);
                 imgview1.setImageResource(R.drawable.pre_1_2);
                 imgview.clearAnimation();
-                anim= AnimationUtils.loadAnimation(getApplication(),R.anim.move);
+                anim = AnimationUtils.loadAnimation(getApplication(), R.anim.move);
                 imgview1.startAnimation(anim);
 
                 mp3.reset();
@@ -120,7 +122,7 @@ public class PrepareActivity extends AppCompatActivity {
                 imgview.setImageResource(R.drawable.pre_2_1);
                 imgview1.setImageResource(R.drawable.pre_2_2);
                 imgview.clearAnimation();
-                anim= AnimationUtils.loadAnimation(getApplication(),R.anim.blink);
+                anim = AnimationUtils.loadAnimation(getApplication(), R.anim.blink);
                 imgview1.startAnimation(anim);
 
                 mp3.reset();
@@ -147,7 +149,7 @@ public class PrepareActivity extends AppCompatActivity {
                 mp3.reset();
                 imgview.setImageResource(R.drawable.pre_3_1);
                 imgview1.setImageResource(0);
-                anim= AnimationUtils.loadAnimation(getApplication(),R.anim.ride);
+                anim = AnimationUtils.loadAnimation(getApplication(), R.anim.ride);
                 imgview.startAnimation(anim);
                 mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceride);
                 mp3.start();
@@ -159,73 +161,71 @@ public class PrepareActivity extends AppCompatActivity {
         strkbtn[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//circleButton_4
-                strkbtn[3].setBackground(strkbtn_toggle[0]);
 
-                for (int i = 0; i < 3; i++)
-                    strkbtn[i].setBackground(strkbtn_toggle[1]);
+                fragment = new PrepareFourthActivity();
 
-                txtview1.setText(s[3]);
-                btn.setText(s1[1]);
-
-                imgview.setImageResource(0);
-                imgview1.setImageResource(0);
-                imgview.clearAnimation();
-                imgview1.clearAnimation();
+                if (fragment != null) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
+                }
 
                 mp3.reset();
                 mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
                 mp3.start();
 
-
             }
         });
 
-
+*/
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str = btn.getText().toString();
                 String text = txtview1.getText().toString();
 
-                if(s1[1].equals(str)) {
+                if (count == 3) {
+
                     fragment = new RidingFragment();
 
-                    if(fragment != null){
+                    if (fragment != null) {
                         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment);
                         ft.commit();
                     }
 
+
                 }
 
                 if (s[0].equals(text)) {
-                    for(int i=0; i<4; i++) {
+                    count++;
 
+                    for (int i = 0; i < 4; i++) {
 
-                        if(i == 1)
+                        if (i == 1)
                             strkbtn[i].setBackground(strkbtn_toggle[0]);
                         else
                             strkbtn[i].setBackground(strkbtn_toggle[1]);
 
                     }
 
-                        txtview1.setText(s[1]);
-                        btn.setText(s1[0]);
+                    txtview1.setText(s[1]);
+                    btn.setText(s1[0]);
 
                     imgview.setImageResource(R.drawable.pre_2_1);
                     imgview1.setImageResource(R.drawable.pre_2_2);
-                    anim=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
+                    anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
                     imgview1.startAnimation(anim);
 
                     mp3.reset();
                     mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceequip);
                     mp3.start();
 
-                }
+                } else if (s[1].equals(text)) {
+                    count++;
 
-                else if (s[1].equals(text)) {
-                    for(int i=0; i<4; i++) {
-                        if(i == 2)
+                    for (int i = 0; i < 4; i++) {
+                        if (i == 2)
                             strkbtn[i].setBackground(strkbtn_toggle[0]);
                         else
                             strkbtn[i].setBackground(strkbtn_toggle[1]);
@@ -236,37 +236,29 @@ public class PrepareActivity extends AppCompatActivity {
 
                     imgview.setImageResource(R.drawable.pre_3_1);
                     imgview1.setImageResource(0);
-                    anim=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.ride);
+                    anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ride);
                     imgview.startAnimation(anim);
 
                     mp3.reset();
                     mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceride);
                     mp3.start();
 
-                }
+                } else if (s[2].equals(text)) {
+                    fragment = new PrepareFourthActivity();
 
-                else if (s[2].equals(text)) {
-                    for(int i=0; i<4; i++) {
-                        if(i == 3)
-                            strkbtn[i].setBackground(strkbtn_toggle[0]);
-                        else
-                            strkbtn[i].setBackground(strkbtn_toggle[1]);
+                    if (fragment != null) {
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
                     }
 
-                    txtview1.setText(s[2]);
-                    btn.setText(s1[1]);
-
-                    imgview.setImageResource(0);
-                    imgview1.setImageResource(0);
-                    imgview.clearAnimation();
-                    imgview1.clearAnimation();
+                    _InitUi();
 
                     mp3.reset();
                     mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
                     mp3.start();
 
-                }
-                else mp3.stop();
+                } else mp3.stop();
 
             }
         });

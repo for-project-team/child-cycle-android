@@ -114,6 +114,7 @@ public class RidingFragment extends Fragment{
 //                                intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
 //                                intent.putExtra("distance", ridingDataDTO.getTotalDistance());
 //                                startActivity(intent);
+
                                 fragment = new FinishRidingFragment();
 
                                 if(fragment != null){
