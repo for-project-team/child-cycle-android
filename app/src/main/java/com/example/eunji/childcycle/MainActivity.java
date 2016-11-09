@@ -4,27 +4,19 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,9 +26,15 @@ import com.example.eunji.childcycle.dto.UserDTO;
 
 import java.util.ArrayList;
 
+// 리스너
+interface OnCompletionListener {
+    void onComplete(ArrayList<UserDTO> result);
+}
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Fragment fragment;
     private ListView user_listview;
     private ArrayList<UserListviewItem> data;
     private UserListviewItem user1, user2, user3;
@@ -44,14 +42,10 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<String> save_string;
     private TextView list_Text;
     private String list_text;
-
     private ImageButton imgbtn1;
     private TextView txtview1;
-
     private DrawerLayout drawer;
     private NavigationView navigationView;
-    Fragment fragment;
-
     private ArrayList<UserDTO> userList;
 
     private Intent intent;
@@ -226,14 +220,6 @@ public class MainActivity extends AppCompatActivity
 
             Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
             startActivity(intent1);
-//            fragment = new RidingFragment();
-//
-//            if(fragment != null){
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.content_frame, fragment);
-//                ft.commit();
-//            }
-
         }
 
         else if (id == R.id.drawer_history) {
@@ -251,14 +237,8 @@ public class MainActivity extends AppCompatActivity
     }
 }
 
-
-// 리스너
-interface OnCompletionListener {
-    void onComplete(ArrayList<UserDTO> result);
-}
-
 // 비동기통신 콜백함수
-class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>> {
+class HttpTask extends AsyncTask<ArrayList<UserDTO>, Void, ArrayList<UserDTO>> {
 
     OnCompletionListener listener = null;
     UserInfoDAO userInfoDAO = new UserInfoDAO();

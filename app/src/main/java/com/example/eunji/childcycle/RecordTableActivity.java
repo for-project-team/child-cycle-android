@@ -1,16 +1,15 @@
 package com.example.eunji.childcycle;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.eunji.childcycle.dto.RidingDataDTO;
@@ -30,7 +29,7 @@ import cz.msebera.android.httpclient.Header;
  * Created by Eunji on 2016. 11. 8..
  */
 
-public class RecordTableActivity extends AppCompatActivity {
+public class RecordTableActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "Hanium";
 
     private TextView test_textview;
@@ -55,11 +54,16 @@ public class RecordTableActivity extends AppCompatActivity {
 
         showlist = new ArrayList<>();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         toolbar.setTitle(" ChildCycle");
-        toolbar.setLogo(R.mipmap.hamburger_white);
+//        toolbar.setLogo(R.drawable.ic_menu_white_24dp);
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setBackgroundColor(0xffff5722);
 
@@ -132,5 +136,10 @@ public class RecordTableActivity extends AppCompatActivity {
                 Log.d(TAG, "String " + date);
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }

@@ -8,8 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -33,36 +33,41 @@
 
         <activity
             android:name=".AdduserActivity"
-            android:label="Adduser" />
+            android:label="Adduser"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".PrepareActivity"
-            android:label="PrepareFirst" />
+            android:label="PrepareFirst"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".RidingMainActivity"
-            android:label="RidingMain" />
+            android:label="RidingMain"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".FinishRidingActivity"
-            android:label="FinishRiding" />
+            android:label="FinishRiding"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".ContentsSettingActivity"
-            android:label="ContentsSetting" />
+            android:label="ContentsSetting"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-<!--
+        <!--
+                <activity
+                    android:name=".TempSenseTest"
+                    android:label="tempSenseTest">
+
+                </activity>
+        -->
+
         <activity
-            android:name=".TempSenseTest"
-            android:label="tempSenseTest">
-
-        </activity>
--->
-
-        <activity
-            android:theme="@style/AppTheme"
             android:name=".RecordTableActivity"
-            android:label="RecordTableActivity" />
+            android:label="RecordTableActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

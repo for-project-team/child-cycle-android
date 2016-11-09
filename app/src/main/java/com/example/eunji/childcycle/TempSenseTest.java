@@ -1,21 +1,10 @@
 package com.example.eunji.childcycle;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
-
-import android.provider.Settings;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -26,23 +15,19 @@ import android.widget.TextView;
 
 class TempSenserTest extends AppCompatActivity implements SensorEventListener {
 
+    private static final int SHAKE_THRESHOLD = 600;
     // 가속도 센서값을 출력하기 위한 TextView
     TextView tvAX = null;
     TextView tvAY = null;
     TextView tvAZ = null;
-
     TextView speedText = null;
     String s;
-
     // 센서 관리자
     SensorManager sm = null;
     // 가속도 센서
     Sensor accSensor = null;
-
     private long lastUpdate = 0;
     private float last_x, last_y, last_z;
-    private static final int SHAKE_THRESHOLD = 600;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,7 +62,6 @@ class TempSenserTest extends AppCompatActivity implements SensorEventListener {
         // 센서에서 이벤트 리스너 분리
         sm.unregisterListener(this);
     }
-
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {

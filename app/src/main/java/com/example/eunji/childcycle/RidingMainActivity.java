@@ -4,24 +4,24 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.example.eunji.childcycle.dto.RidingDataDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
@@ -40,30 +40,45 @@ import cz.msebera.android.httpclient.Header;
  * Created by Eunji on 2016. 9. 25..
  */
 
-public class RidingMainActivity extends AppCompatActivity {
+public class RidingMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button button_stop, button_pause;
-    private TextView riding_time, today_weather = null, riding_date, weather_temp, riding_distance, riding_speed;
-    private ImageView handle_aram, speed_aram, distance_aram;
-
-    private RidingDataDTO ridingDataDTO;
     private static final String TAG = "Hanium";
-    private String nickname;
-
     public static int num = 0;
-    private long startTime = 0L;
-    private Handler customHandler = new Handler();
     long timeInMilliseconds = 0L;
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
-
+    private Button button_stop, button_pause;
+    private TextView riding_time, today_weather = null, riding_date, weather_temp, riding_distance, riding_speed;
+    private ImageView handle_aram, speed_aram, distance_aram, warning, error;
+    private Handler handler;
+    private boolean warning_bool = true;
+    private RidingDataDTO ridingDataDTO;
+    private String nickname;
+    private DrawerLayout drawer;
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
     private Date cDate;
     private String fDate;
 
     private Toolbar toolbar;
+    // 주행 시간 타이머 핸들러
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
 
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            int hours = mins / 60;
+            secs = secs % 60;
+
+            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
+            customHandler.postDelayed(this, 0);
+        }
+    };
 
     private void _InitUi() {
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
 
         button_stop = (Button) findViewById(R.id.button_stop);
         button_pause = (Button) findViewById(R.id.button_pause);
@@ -83,6 +98,7 @@ public class RidingMainActivity extends AppCompatActivity {
         fDate = new SimpleDateFormat("yyyy년 MM월 dd일 (E)").format(cDate);
 
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
+
     }
 
     @Override
@@ -94,13 +110,27 @@ public class RidingMainActivity extends AppCompatActivity {
 
         riding_date.setText(fDate);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         toolbar.setTitle(" ChildCycle");
-        toolbar.setLogo(R.mipmap.hamburger);
         toolbar.setTitleTextColor(Color.BLACK);
         toolbar.setBackgroundColor(Color.WHITE);
+
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (drawer.isDrawerOpen(Gravity.END)) {
+//                    drawer.closeDrawer(Gravity.END);
+//                } else {
+//                    drawer.openDrawer(Gravity.END);
+//                }
+//            }
+//        });
 
 //        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
 //        actionBar.setTitle("ChildCycle");
@@ -111,6 +141,28 @@ public class RidingMainActivity extends AppCompatActivity {
 //        Intent intent = getIntent();
 //        nickname = intent.getExtras().getString("nickname");
 //        Log.i(TAG, "RidingMainActivity " + nickname);
+
+//        handler = new Handler();
+//        handler.postDelayed(runable,3000);
+
+//        private Runnable runable = new Runnable() {
+//            @Override
+//            public void run() {
+//                if(warning_bool) {
+//                    handle_aram.setAlpha(0);
+//                    warning_bool = false;
+//                } else {
+//                    handle_aram.setAlpha(1000);
+//                    warning_bool = true;
+//                }
+//            }
+//        };
+//
+//        // 임의 핸들러 작성
+//        handler.post(runable);
+
+//        handle_aram.setVisibility(View.INVISIBLE);
+//        if()
 
     }
 
@@ -131,23 +183,6 @@ public class RidingMainActivity extends AppCompatActivity {
         }
 
     }
-
-    // 주행 시간 타이머 핸들러
-    private Runnable updateTimerThread = new Runnable() {
-        public void run() {
-            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
-            updatedTime = timeSwapBuff + timeInMilliseconds;
-
-            int secs = (int) (updatedTime / 1000);
-            int mins = secs / 60;
-            int hours = mins / 60;
-            secs = secs % 60;
-
-            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
-            customHandler.postDelayed(this, 0);
-        }
-    };
-
 
     public void stopClick(View v) {
         new AlertDialog.Builder(this)
@@ -263,6 +298,28 @@ public class RidingMainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.drawer_main) {
+
+            Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
+            startActivity(intent1);
+        } else if (id == R.id.drawer_history) {
+            Intent intent1 = new Intent(getApplicationContext(), RecordTableActivity.class);
+            startActivity(intent1);
+        } else if (id == R.id.drawer_setting) {
+            Intent intent2 = new Intent(getApplicationContext(), ContentsSettingActivity.class);
+            startActivity(intent2);
+        }
+
+        this.drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+}
+
 
 //    public void getUrl() {
 //        String getKmaDataUrl = "http://14.63.213.62:3000/weather";
@@ -279,6 +336,5 @@ public class RidingMainActivity extends AppCompatActivity {
 //        today_weather.append(info.time);
 //    }
 
-}
 
 

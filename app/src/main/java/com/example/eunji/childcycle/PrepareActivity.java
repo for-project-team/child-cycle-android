@@ -2,17 +2,19 @@ package com.example.eunji.childcycle;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,29 +26,22 @@ import android.widget.TextView;
  * Created by Eunji on 2016. 9. 11..
  */
 
-public class PrepareActivity extends AppCompatActivity {
+public class PrepareActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "Hanium";
+    Fragment fragment;
+    String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요"};
+    String s1[] = {"착용완료", "확인완료"};
+    String nickname;
     private Button btn;
     private TextView txtview1;
     private ImageView imgview, imgview1;
     private Button strkbtn[] = new Button[4];
     private Drawable strkbtn_toggle[] = new Drawable[2];
-
     private MediaPlayer mp3;//음성파일
     private Animation anim;
-
-    Fragment fragment;
-
     private int count = 0;
-
-    String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요"};
-    String s1[] = {"착용완료", "확인완료"};
-
-    private static final String TAG = "Hanium";
-    String nickname;
-
     private Toolbar toolbar;
-
 
     private void _InitUi(){
 
@@ -65,7 +60,6 @@ public class PrepareActivity extends AppCompatActivity {
         strkbtn_toggle[1] = getResources().getDrawable(R.drawable.stroke_button);
 
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
-
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -74,16 +68,21 @@ public class PrepareActivity extends AppCompatActivity {
 
         _InitUi();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
         toolbar.setTitle(" ChildCycle");
-        toolbar.setLogo(R.mipmap.hamburger);
+//        toolbar.setLogo(R.mipmap.hamburger);
         toolbar.setTitleTextColor(Color.BLACK);
         toolbar.setBackgroundColor(Color.WHITE);
 
 //        ActionBar actionBar = getSupportActionBar();
-//
 //        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
 //        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
@@ -197,7 +196,6 @@ public class PrepareActivity extends AppCompatActivity {
         });
 
 */
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -299,6 +297,11 @@ public class PrepareActivity extends AppCompatActivity {
             mp3.release();
             mp3 = null;
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 
 //    뒤로가기 버튼 막기

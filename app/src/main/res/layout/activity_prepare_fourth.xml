@@ -1,179 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:weightSum="1">
+    tools:openDrawer="start">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/app_toolbar"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:titleTextAppearance="@style/Toolbar.TitleText"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/check_padding"
-        android:paddingRight="@dimen/check_padding"
-        android:paddingTop="@dimen/check_padding">
+        android:weightSum="1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/app_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="15dp"
-            android:paddingTop="25dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
-                android:src="@mipmap/img_weather_sun" />
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingLeft="@dimen/check_padding"
+                android:paddingRight="@dimen/check_padding"
+                android:paddingTop="@dimen/check_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="25dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        android:src="@mipmap/img_weather_sun" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25℃"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="월요일"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#7E7E7E"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="25℃"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:background="#ededed"
+                    android:padding="15dp"
+                    android:text="화창합니다. 열이 뜨거우니 주의하세요."
+                    android:textColor="#7A7A7A"
+                    android:textSize="16sp" />
 
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="월요일"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#7E7E7E"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/check_padding2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="15px"
+                        android:text="오늘의 TIP"
+                        android:textSize="@dimen/check_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ededed"
+                        android:padding="15dp"
+                        android:text="속도를 줄일 때 한번에 브레이크를 잡는 것보다
+천천히 힘을 주는 것이 좋습니다."
+                        android:textColor="#7A7A7A"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="bottom">
+
+                </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ededed"
-            android:padding="15dp"
-            android:text="화창합니다. 열이 뜨거우니 주의하세요."
-            android:textColor="#7A7A7A"
-            android:textSize="16sp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/check_padding2">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15px"
-                android:text="오늘의 TIP"
-                android:textSize="@dimen/check_text"
-                android:textStyle="bold" />
+                android:layout_marginTop="37dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
+
+                <Button
+                    android:id="@+id/prepare_stroke1"
+                    android:layout_width="@dimen/stroke_size"
+                    android:layout_height="@dimen/stroke_size"
+                    android:layout_margin="@dimen/stroke_margin"
+                    android:background="@drawable/stroke_button" />
+
+                <Button
+                    android:id="@+id/prepare_stroke2"
+                    android:layout_width="@dimen/stroke_size"
+                    android:layout_height="@dimen/stroke_size"
+                    android:layout_margin="@dimen/stroke_margin"
+                    android:background="@drawable/stroke_button" />
+
+                <Button
+                    android:id="@+id/prepare_stroke3"
+                    android:layout_width="@dimen/stroke_size"
+                    android:layout_height="@dimen/stroke_size"
+                    android:layout_margin="@dimen/stroke_margin"
+                    android:background="@drawable/stroke_button" />
+
+                <Button
+                    android:id="@+id/prepare_stroke4"
+                    android:layout_width="@dimen/stroke_size"
+                    android:layout_height="@dimen/stroke_size"
+                    android:layout_margin="@dimen/stroke_margin"
+                    android:background="@drawable/stroke_button_clicked" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ededed"
-                android:padding="15dp"
-                android:text="속도를 줄일 때 한번에 브레이크를 잡는 것보다
-천천히 힘을 주는 것이 좋습니다."
-                android:textColor="#7A7A7A"
-                android:textSize="16sp" />
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal">
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:gravity="bottom">
-
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/button"
+                    android:text="확인완료"
+                    android:textColor="@color/button_font"
+                    android:textSize="@dimen/check_text" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="37dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:layout_margin="@dimen/stroke_margin"
-            android:layout_width="@dimen/stroke_size"
-            android:layout_height="@dimen/stroke_size"
-            android:background="@drawable/stroke_button"
-            android:id="@+id/prepare_stroke1"
-            />
-
-        <Button
-            android:layout_margin="@dimen/stroke_margin"
-            android:layout_width="@dimen/stroke_size"
-            android:layout_height="@dimen/stroke_size"
-            android:background="@drawable/stroke_button"
-            android:id="@+id/prepare_stroke2"
-            />
-
-        <Button
-            android:layout_margin="@dimen/stroke_margin"
-            android:layout_width="@dimen/stroke_size"
-            android:layout_height="@dimen/stroke_size"
-            android:background="@drawable/stroke_button"
-            android:id="@+id/prepare_stroke3"
-            />
-
-        <Button
-            android:layout_margin="@dimen/stroke_margin"
-            android:layout_width="@dimen/stroke_size"
-            android:layout_height="@dimen/stroke_size"
-            android:background="@drawable/stroke_button_clicked"
-            android:id="@+id/prepare_stroke4"
-            />
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/button"
-            android:text="확인완료"
-            android:textColor="@color/button_font"
-            android:textSize="@dimen/check_text" />
-    </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>
