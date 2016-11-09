@@ -40,7 +40,6 @@ public class PrepareActivity extends AppCompatActivity {
     String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요"};
     String s1[] = {"착용완료", "확인완료"};
 
-    private void _InitUi() {
     private static final String TAG = "Hanium";
     String nickname;
 
@@ -190,13 +189,15 @@ public class PrepareActivity extends AppCompatActivity {
 
                 if (count == 3) {
 
-                    fragment = new RidingFragment();
-
-                    if (fragment != null) {
-                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment);
-                        ft.commit();
-                    }
+                    Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
+                    startActivity(intent1);
+//                    fragment = new RidingFragment();
+//
+//                    if (fragment != null) {
+//                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                        ft.replace(R.id.content_frame, fragment);
+//                        ft.commit();
+//                    }
 
 
                     Intent intent = new Intent(getApplicationContext(), RidingMainActivity.class);
@@ -251,6 +252,8 @@ public class PrepareActivity extends AppCompatActivity {
                     mp3.start();
 
                 } else if (s[2].equals(text)) {
+
+//                    setContentView(R.layout.activity_prepare_fourth);
                     fragment = new PrepareFourthActivity();
 
                     if (fragment != null) {

@@ -27,31 +27,22 @@ import cz.msebera.android.httpclient.Header;
  * Created by Eunji on 2016. 11. 8..
  */
 
-public class RecordTableActivity extends Fragment {
+public class RecordTableActivity extends AppCompatActivity {
     private View v;
-
-    @Override
-public class RecordTableActivity extends AppCompatActivity{
-
     private static final String TAG = "Hanium";
 
     private TextView test_textview;
     private ArrayList<RidingDataDTO> list, showlist;
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    private void _InitUi() {
+        test_textview = (TextView) v.findViewById(R.id.testTxt);
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        v = inflater.inflate(R.layout.record_table, container, false);
-
-        return v;
-        test_textview = (TextView) findViewById(R.id.testTxt);
+        _InitUi();
 
         Intent intent = getIntent();
         String nickname = intent.getExtras().getString("nickname");
@@ -129,4 +120,3 @@ public class RecordTableActivity extends AppCompatActivity{
         });
     }
 }
-

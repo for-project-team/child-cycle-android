@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity
         userList = new ArrayList<>();
 
         save_string = new ArrayList<String>();
-
+        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
+        data.add(user1);
         user_listview.setAdapter(adapter);
 
         // 데이터 가져오기 완료 후 txtView에 출력
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity
         }).execute();
 
 //        user_listview.setOnItemClickListener(clickListener);
+
+//        fragment = new UserSelectFragment();
+//
+//        if (fragment != null) {
+//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            ft.replace(R.id.content_frame, fragment);
+//            ft.commit();
+//        }
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -148,6 +157,7 @@ public class MainActivity extends AppCompatActivity
 //        }
 //    };
 
+
     // textView 클릭 메소드
     public void txtClick(View v) {
         new AlertDialog.Builder(this)
@@ -159,7 +169,7 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                         // put Extra
                         intent = new Intent(getApplicationContext(), PrepareActivity.class);
-                        intent.putExtra("nickname", userList.get(0).getNickname());
+                        intent.putExtra("nickname", "lala");
                         startActivity(intent);
                     }
                 })
@@ -207,13 +217,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.drawer_main) {
 
-            fragment = new RidingFragment();
-
-            if(fragment != null){
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.content_frame, fragment);
-                ft.commit();
-            }
+            Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
+            startActivity(intent1);
+//            fragment = new RidingFragment();
+//
+//            if(fragment != null){
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.content_frame, fragment);
+//                ft.commit();
+//            }
 
         }
 
@@ -231,6 +243,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+
 
 // 리스너
 interface OnCompletionListener {
@@ -256,8 +269,8 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
 
         if(params != null){
             list = userInfoDAO.lodingUserData(getDataUrl);
-            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-            Log.d("Hanium", "MainActivity " + list.get(0).getNickname());
+//            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+//            Log.d("Hanium", "MainActivity " + list.get(0).getNickname());
             return list;
         } else {
             return null;
@@ -272,3 +285,4 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
             listener.onComplete(result);    // 리스너 호출
     }
 }
+

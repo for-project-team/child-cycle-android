@@ -39,11 +39,10 @@
             android:name=".PrepareActivity"
             android:label="PrepareFirst" />
 
-        <activity
-            android:name=".PrepareFourthActivity"
-            android:label="PrepareFourth" />
+
 
         <activity
+            android:theme="@style/AppTheme"
             android:name=".RidingMainActivity"
             android:label="RidingMain" />
 

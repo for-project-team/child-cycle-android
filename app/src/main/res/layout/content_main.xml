@@ -2,7 +2,6 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,6 +11,12 @@
         android:src="@mipmap/bg"
         android:scaleType = "centerCrop" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_frame">
+
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -59,35 +64,7 @@
 
         </LinearLayout>
 
-        <!--
-                <LinearLayout
-                    android:layout_weight="0.25"
-                    android:layout_gravity="center_vertical"
-                    android:paddingTop="@dimen/check_padding"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <include
-                        android:layout_marginTop="-35px"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        layout="@layout/ui_user_list" />
-
-                    <include
-                        android:layout_marginTop="-35px"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        layout="@layout/ui_user_list" />
-
-                    <include
-                        android:layout_marginTop="-35px"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        layout="@layout/ui_user_list" />
-
-
-                </LinearLayout>-->
 
     </LinearLayout>
 

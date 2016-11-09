@@ -18,24 +18,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="12dp"
+            android:onClick="btnClick"
             android:paddingBottom="12dp"
             android:clickable="false"
             android:src="@mipmap/ic_user_profile" />
 
         <TextView
             android:id="@+id/user_name"
+            android:onClick="txtClick"
             android:layout_weight="0.5"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/check_padding"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
-            android:onClick="txtClick"
             android:hint="사용자 추가하기"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <ImageButton
-            android:onClick="btnClick"
             android:id="@+id/add_user"
             android:layout_gravity="center"
             android:src="@mipmap/ic_user_add"

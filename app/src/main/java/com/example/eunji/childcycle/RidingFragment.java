@@ -30,6 +30,9 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -39,7 +42,7 @@ import cz.msebera.android.httpclient.Header;
 public class RidingFragment extends Fragment{
 
     private Button button_stop, button_pause;
-    private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed;
+    private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed, riding_date;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private RidingDataDTO ridingDataDTO;
@@ -52,6 +55,10 @@ public class RidingFragment extends Fragment{
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
 
+    private Date cDate;
+    private String fDate;
+
+
     private Fragment fragment;
 
     private View v;
@@ -63,6 +70,7 @@ public class RidingFragment extends Fragment{
 
         riding_time = (TextView) v.findViewById(R.id.riding_time);
         today_wether = (TextView) v.findViewById(R.id.today_weather);
+        riding_date = (TextView) v.findViewById(R.id.riding_date);
         weather_temp = (TextView) v.findViewById(R.id.weather_temp);
         riding_distance = (TextView) v.findViewById(R.id.riding_distance);
         riding_speed = (TextView) v.findViewById(R.id.riding_speed);
@@ -70,6 +78,9 @@ public class RidingFragment extends Fragment{
         handle_aram = (ImageView) v.findViewById(R.id.handle_aram);
         speed_aram = (ImageView) v.findViewById(R.id.speed_aram);
         distance_aram = (ImageView) v.findViewById(R.id.distance_aram);
+
+        cDate = new Date();
+        fDate = new SimpleDateFormat("yyyy년 MM월 dd일 (E)").format(cDate);
 
     }
 
@@ -88,12 +99,13 @@ public class RidingFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         v = inflater.inflate(R.layout.riding_main, container, false);
 
 
         _InitUi();
+
+        riding_date.setText(fDate);
 
 
         ridingDataDTO = new RidingDataDTO();
@@ -152,6 +164,7 @@ public class RidingFragment extends Fragment{
 
         return v;
     }
+
 
     private Runnable updateTimerThread = new Runnable() {
         public void run() {
