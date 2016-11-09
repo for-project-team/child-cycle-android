@@ -1,25 +1,19 @@
 package com.example.eunji.childcycle;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,10 +82,11 @@ public class RidingMainActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         nickname = intent.getExtras().getString("nickname");
-        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "RidingMainActivity " + nickname);
 
     }
 
+    // 시작, 일시정지 버튼 표시
     public void pauseClick(View v) {
         ++num;
 
@@ -109,6 +104,7 @@ public class RidingMainActivity extends AppCompatActivity{
 
     }
 
+    // 주행 시간 타이머 핸들러
     private Runnable updateTimerThread = new Runnable() {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
@@ -137,6 +133,7 @@ public class RidingMainActivity extends AppCompatActivity{
                         Intent intent = new Intent(getApplicationContext(), FinishRidingActivity.class);
                         intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
                         intent.putExtra("distance", ridingDataDTO.getTotalDistance());
+                        intent.putExtra("nickname", ridingDataDTO.getNickname());
                         startActivity(intent);
 
                     }

@@ -10,13 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by Eunji on 2016. 9. 11..
@@ -37,6 +37,9 @@ public class PrepareActivity extends AppCompatActivity {
 
     String s[] = {"헬멧을 착용하세요", "보호장구를 착용하세요", "자전거에 탑승하세요", "Good Job"};
     String s1[] = {"착용완료", "확인완료"};
+
+    private static final String TAG = "Hanium";
+    String nickname;
 
     private void _InitUi(){
 
@@ -67,8 +70,8 @@ public class PrepareActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
         Intent intent = getIntent();
-        String nickname = intent.getExtras().getString("nickname");
-//        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
+        nickname = intent.getExtras().getString("nickname");
+        Log.i(TAG, "PrepareActivity " + nickname);
 
         imgview.setImageResource(R.drawable.pre_1_1);
         imgview1.setImageResource(R.drawable.pre_1_2);

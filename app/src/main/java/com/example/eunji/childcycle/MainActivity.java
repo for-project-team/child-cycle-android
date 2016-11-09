@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity
 
     private ImageButton imgbtn1;
     private TextView txtview1;
-
     private DrawerLayout drawer;
     private NavigationView navigationView;
     Fragment fragment;
@@ -61,14 +61,9 @@ public class MainActivity extends AppCompatActivity
 
 
         //list
-        user_listview = (ListView) findViewById(R.id.setting_listview);
+        user_listview = (ListView) findViewById(R.id.user_listview);
 
         data = new ArrayList<>();
-
-        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-        //System.out.print("debug : " + user1);
-        user2 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-        user3 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
 
         adapter = new UserListviewAdapter(this, R.layout.ui_user_list, data);
     }
@@ -80,20 +75,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-
         _InitUi();
-
 
         userList = new ArrayList<>();
 
         save_string = new ArrayList<String>();
 
-        data.add(user1);
-        data.add(user2);
-        data.add(user3);
-
         user_listview.setAdapter(adapter);
-
 
         // 데이터 가져오기 완료 후 txtView에 출력
         new HttpTask(new OnCompletionListener() {
@@ -265,8 +253,8 @@ class HttpTask extends AsyncTask<ArrayList<UserDTO> , Void , ArrayList<UserDTO>>
 
         if(params != null){
             list = userInfoDAO.lodingUserData(getDataUrl);
-           // userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-            //Log.d("Hanium", list.get(0).getNickname());
+            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+            Log.d("Hanium", "MainActivity " + list.get(0).getNickname());
             return list;
         }else{
             return null;

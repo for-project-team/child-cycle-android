@@ -19,6 +19,8 @@ public class FinishRidingActivity extends AppCompatActivity{
     private Button total_history;
     private TextView riding_distance, riding_time;
 
+    private String nickname;
+
     private void _InitUi(){
 
         total_history = (Button) findViewById(R.id.total_history);
@@ -40,6 +42,7 @@ public class FinishRidingActivity extends AppCompatActivity{
         Intent intent = getIntent();
         riding_time.setText(intent.getExtras().getString("time"));
         riding_distance.setText(intent.getExtras().getString("distance") + "km");
+        nickname = intent.getExtras().getString("nickname");
 
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
@@ -48,6 +51,7 @@ public class FinishRidingActivity extends AppCompatActivity{
 
     public void historyClick(View v){
         Intent intent = new Intent(getApplicationContext(), RecordTableActivity.class);
+        intent.putExtra("nickname", nickname);
         startActivity(intent);
     }
 
