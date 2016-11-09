@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -29,7 +30,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
     private Toolbar toolbar;
 
     private DrawerLayout drawer;
-
+    private ImageView imgv_distance, imgv_time;
 
     private void _InitUi() {
 
@@ -38,6 +39,9 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
         riding_time = (TextView) findViewById(R.id.riding_time);
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
+
+        imgv_distance=(ImageView)findViewById(R.id.imgv_distance);
+        imgv_time=(ImageView)findViewById(R.id.imgv_time);
 
     }
 
@@ -67,6 +71,9 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
 
 //        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
 //        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
+
+        imgv_distance.setImageResource(R.mipmap.ic_location);
+        imgv_time.setImageResource(R.mipmap.ic_time);
 
     }
 

@@ -49,11 +49,11 @@ public class ContentsSettingActivity extends ActionBarActivity implements Naviga
         actionBar = getSupportActionBar();
 
 
-        user_change = new ListviewItem(R.drawable.ic_menu_camera, "사용자 변경");
-        user_edit = new ListviewItem(R.drawable.ic_menu_camera, "프로필 수정");
-        audio_onoff = new ListviewItem(R.drawable.ic_menu_camera, "음성안내");
-        user_delete = new ListviewItem(R.drawable.ic_menu_camera, "사용자 삭제");
-        user_logout = new ListviewItem(R.drawable.ic_menu_camera, "로그아웃");
+        user_change = new ListviewItem(R.mipmap.switch_user, "사용자 변경");
+        user_edit = new ListviewItem(R.mipmap.update_arrow, "프로필 수정");
+        audio_onoff = new ListviewItem(R.mipmap.voic, "음성안내");
+        user_delete = new ListviewItem(R.mipmap.delete, "사용자 삭제");
+        user_logout = new ListviewItem(R.mipmap.logout, "로그아웃");
 
         drawer = (DrawerLayout) findViewById(R.id.drawer);
 

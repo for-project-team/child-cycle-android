@@ -2,7 +2,6 @@ package com.example.eunji.childcycle;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +26,8 @@ public class FinishRidingFragment extends Fragment {
 
         riding_distance = (TextView) v.findViewById(R.id.riding_distance);
         riding_time = (TextView) v.findViewById(R.id.riding_time);
+
+
 
     }
 
