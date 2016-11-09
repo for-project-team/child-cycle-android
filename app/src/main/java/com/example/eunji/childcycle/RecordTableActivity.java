@@ -1,10 +1,12 @@
 package com.example.eunji.childcycle;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +36,11 @@ public class RecordTableActivity extends AppCompatActivity {
     private TextView test_textview;
     private ArrayList<RidingDataDTO> list, showlist;
 
+    private Toolbar toolbar;
+
     private void _InitUi() {
         test_textview = (TextView) findViewById(R.id.testTxt);
+        toolbar = (Toolbar) findViewById(R.id.app_toolbar);
 
     }
 
@@ -49,6 +54,14 @@ public class RecordTableActivity extends AppCompatActivity {
 //        String nickname = intent.getExtras().getString("nickname");
 
         showlist = new ArrayList<>();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        toolbar.setTitle(" ChildCycle");
+        toolbar.setLogo(R.mipmap.hamburger_white);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setBackgroundColor(0xffff5722);
 
 //        getData("http://14.63.213.62:3000/ridingrecord", nickname);
     }

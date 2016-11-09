@@ -2,9 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginTop="5dp"
-    >
+    android:layout_marginTop="5dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ListView
         android:id="@+id/setting_listview"

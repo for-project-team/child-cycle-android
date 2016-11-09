@@ -1,6 +1,7 @@
 package com.example.eunji.childcycle;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -48,6 +49,8 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
     private ActionBar actionBar;
     private UserDTO userDTO;
 
+    private Toolbar toolbar;
+
     private static final String TAG = "Hanium";
 
     public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +60,17 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
 
         _InitUi();
 
-        actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF5722));
-        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'> 사용자 등록 </font>"));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        toolbar.setTitle(" 사용자 등록");
+        toolbar.setLogo(R.mipmap.hamburger_white);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setBackgroundColor(0xffff5722);
+
+//        actionBar = getSupportActionBar();
+//        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF5722));
+//        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'> 사용자 등록 </font>"));
 
         HttpClientHelper.myCookieStore = new PersistentCookieStore(this);
         HttpClientHelper.myCookieStore.clear();
@@ -93,6 +104,8 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         woman_radiobutton = (RadioButton) findViewById(R.id.woman_radiobutton);
         man_radiobutton = (RadioButton) findViewById(R.id.man_radiobutton);
         gender_radiogroup = (RadioGroup) findViewById(R.id.gender_radiogroup);
+
+        toolbar = (Toolbar) findViewById(R.id.app_toolbar);
     }
 
     // TODO : 데이터 전송시 파라미터 명과 파라미터에 데이터 보낼 수 있음

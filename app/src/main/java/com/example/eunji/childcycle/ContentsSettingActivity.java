@@ -1,9 +1,11 @@
 package com.example.eunji.childcycle;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +29,8 @@ public class ContentsSettingActivity extends ActionBarActivity {
     private TextView list_Text;
     private String list_text;
 
+    private Toolbar toolbar;
+
     private void _InitUi() {
 
         setting_listview = (ListView) findViewById(R.id.setting_listview);
@@ -41,6 +45,8 @@ public class ContentsSettingActivity extends ActionBarActivity {
 
         adapter = new ListviewAdapter(this, R.layout.ui_setting_list, data);
 
+        toolbar = (Toolbar) findViewById(R.id.app_toolbar);
+
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +55,17 @@ public class ContentsSettingActivity extends ActionBarActivity {
 
         _InitUi();
 
-        actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
-        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        toolbar.setTitle(" ChildCycle");
+        toolbar.setLogo(R.mipmap.hamburger);
+        toolbar.setTitleTextColor(Color.BLACK);
+        toolbar.setBackgroundColor(Color.WHITE);
+
+//        actionBar = getSupportActionBar();
+//        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
+//        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
         save_string = new ArrayList<String>();
 

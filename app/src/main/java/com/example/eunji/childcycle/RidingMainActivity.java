@@ -3,6 +3,7 @@ package com.example.eunji.childcycle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -59,6 +60,8 @@ public class RidingMainActivity extends AppCompatActivity {
     private Date cDate;
     private String fDate;
 
+    private Toolbar toolbar;
+
 
     private void _InitUi() {
 
@@ -78,6 +81,8 @@ public class RidingMainActivity extends AppCompatActivity {
 
         cDate = new Date();
         fDate = new SimpleDateFormat("yyyy년 MM월 dd일 (E)").format(cDate);
+
+        toolbar = (Toolbar) findViewById(R.id.app_toolbar);
     }
 
     @Override
@@ -90,9 +95,16 @@ public class RidingMainActivity extends AppCompatActivity {
         riding_date.setText(fDate);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
-        actionBar.setTitle("ChildCycle");
+        actionBar.hide();
 
+        toolbar.setTitle(" ChildCycle");
+        toolbar.setLogo(R.mipmap.hamburger);
+        toolbar.setTitleTextColor(Color.BLACK);
+        toolbar.setBackgroundColor(Color.WHITE);
+
+//        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
+//        actionBar.setTitle("ChildCycle");
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 
         ridingDataDTO = new RidingDataDTO();
 

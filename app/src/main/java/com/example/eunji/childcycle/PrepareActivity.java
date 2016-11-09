@@ -1,6 +1,7 @@
 package com.example.eunji.childcycle;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +45,8 @@ public class PrepareActivity extends AppCompatActivity {
     private static final String TAG = "Hanium";
     String nickname;
 
+    private Toolbar toolbar;
+
     private void _InitUi(){
 
         txtview1 = (TextView) findViewById(R.id.text_change);
@@ -58,6 +62,8 @@ public class PrepareActivity extends AppCompatActivity {
 
         strkbtn_toggle[0] = getResources().getDrawable(R.drawable.stroke_button_clicked);
         strkbtn_toggle[1] = getResources().getDrawable(R.drawable.stroke_button);
+
+        toolbar = (Toolbar) findViewById(R.id.app_toolbar);
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -67,8 +73,16 @@ public class PrepareActivity extends AppCompatActivity {
         _InitUi();
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
-        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
+        actionBar.hide();
+
+        toolbar.setTitle(" ChildCycle");
+        toolbar.setLogo(R.mipmap.hamburger);
+        toolbar.setTitleTextColor(Color.BLACK);
+        toolbar.setBackgroundColor(Color.WHITE);
+
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
+//        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
         Intent intent = getIntent();
         nickname = intent.getExtras().getString("nickname");
@@ -228,47 +242,23 @@ public class PrepareActivity extends AppCompatActivity {
                     mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceequip);
                     mp3.start();
 
-                } else if (s[1].equals(text)) {
-                    count++;
-
-                    for (int i = 0; i < 4; i++) {
-                        if (i == 2)
-                            strkbtn[i].setBackground(strkbtn_toggle[0]);
-                        else
-                            strkbtn[i].setBackground(strkbtn_toggle[1]);
-                    }
-
-                    txtview1.setText(s[2]);
-                    btn.setText(s1[0]);
-
-                    imgview.setImageResource(R.drawable.pre_3_1);
-                    imgview1.setImageResource(0);
-                    anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ride);
-                    imgview.startAnimation(anim);
-
-                    mp3.reset();
-                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.voiceride);
-                    mp3.start();
-
-                } else if (s[2].equals(text)) {
+                } else if (s[2].equals(text)) {//weather
 
 //                    setContentView(R.layout.activity_prepare_fourth);
                     fragment = new PrepareFourthActivity();
 
                     if (fragment != null) {
-                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment);
-                        ft.commit();
-                    }
 
+                    } FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.content_frame, fragment);
+                    ft.commit();
                     _InitUi();
 
                     mp3.reset();
                     mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
                     mp3.start();
 
-                } else mp3.stop();
-
+                }
             }
         });
 
