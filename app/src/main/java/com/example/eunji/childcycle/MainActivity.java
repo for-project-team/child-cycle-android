@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
     private ImageButton imgbtn1;
     private TextView txtview1;
+
     private DrawerLayout drawer;
     private NavigationView navigationView;
     Fragment fragment;

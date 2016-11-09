@@ -25,9 +25,9 @@
 
     <dimen name="stroke_padding">16sp</dimen>
 
-    <dimen name="main_text">16sp</dimen>
+    <dimen name="main_text">14sp</dimen>
     <dimen name="main_text_large">18sp</dimen>
-    <dimen name="main_padding">15dp</dimen>
+    <dimen name="main_padding">10dp</dimen>
 
 
     <dimen name="stroke_size">15dp</dimen>
