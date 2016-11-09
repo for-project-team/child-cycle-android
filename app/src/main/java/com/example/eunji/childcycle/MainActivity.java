@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity
         actionBar.setTitle("");
         actionBar.setElevation(0);
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, this.drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         this.drawer.setDrawerListener(toggle);
@@ -138,8 +139,6 @@ public class MainActivity extends AppCompatActivity
     public void btnClick(View v) {
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
-
-
     }
 
 //    AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -216,7 +215,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-*/
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

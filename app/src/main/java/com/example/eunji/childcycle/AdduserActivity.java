@@ -1,9 +1,11 @@
 package com.example.eunji.childcycle;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +44,7 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
     private RadioGroup gender_radiogroup;
     private Button add_user_finish;
 
+    private ActionBar actionBar;
     private UserDTO userDTO;
 
     private static final String TAG = "Hanium";
@@ -52,6 +55,11 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         setTitle("사용자 등록");
 
         _InitUi();
+
+        actionBar = getSupportActionBar();
+        actionBar.setIcon(R.mipmap.hamburger_icon);
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF5722));
+        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'> 사용자 등록 </font>"));
 
         HttpClientHelper.myCookieStore = new PersistentCookieStore(this);
         HttpClientHelper.myCookieStore.clear();

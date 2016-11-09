@@ -42,7 +42,6 @@
 
 
         <activity
-            android:theme="@style/AppTheme"
             android:name=".RidingMainActivity"
             android:label="RidingMain" />
 
