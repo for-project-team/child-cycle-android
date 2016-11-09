@@ -1,28 +1,25 @@
 package com.example.eunji.childcycle;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.example.eunji.childcycle.dto.RidingDataDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
@@ -33,18 +30,20 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+
 /**
  * Created by Eunji on 2016. 9. 25..
  */
 
-public class RidingMainActivity extends AppCompatActivity{
+public class RidingMainActivity extends AppCompatActivity {
 
     private Button button_stop, button_pause;
-    private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed;
+    private TextView riding_time, today_weather = null, weather_temp, riding_distance, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram;
 
     private RidingDataDTO ridingDataDTO;
     private static final String TAG = "Hanium";
+    private String nickname;
 
     public static int num = 0;
     private long startTime = 0L;
@@ -59,7 +58,7 @@ public class RidingMainActivity extends AppCompatActivity{
         button_pause = (Button) findViewById(R.id.button_pause);
 
         riding_time = (TextView) findViewById(R.id.riding_time);
-        today_wether = (TextView) findViewById(R.id.today_weather);
+        today_weather = (TextView) findViewById(R.id.today_weather);
         weather_temp = (TextView) findViewById(R.id.weather_temp);
         riding_distance = (TextView) findViewById(R.id.riding_distance);
         riding_speed = (TextView) findViewById(R.id.riding_speed);
@@ -67,7 +66,6 @@ public class RidingMainActivity extends AppCompatActivity{
         handle_aram = (ImageView) findViewById(R.id.handle_aram);
         speed_aram = (ImageView) findViewById(R.id.speed_aram);
         distance_aram = (ImageView) findViewById(R.id.distance_aram);
-
     }
 
     @Override
@@ -85,9 +83,13 @@ public class RidingMainActivity extends AppCompatActivity{
 
         ridingDataDTO = new RidingDataDTO();
 
+        Intent intent = getIntent();
+        nickname = intent.getExtras().getString("nickname");
+        Log.i(TAG, "RidingMainActivity " + nickname);
 
     }
 
+    // 시작, 일시정지 버튼 표시
     public void pauseClick(View v) {
         ++num;
 
@@ -105,6 +107,7 @@ public class RidingMainActivity extends AppCompatActivity{
 
     }
 
+    // 주행 시간 타이머 핸들러
     private Runnable updateTimerThread = new Runnable() {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
@@ -117,8 +120,8 @@ public class RidingMainActivity extends AppCompatActivity{
 
             riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             customHandler.postDelayed(this, 0);
-            }
-        };
+        }
+    };
 
 
     public void stopClick(View v) {
@@ -133,6 +136,7 @@ public class RidingMainActivity extends AppCompatActivity{
                         Intent intent = new Intent(getApplicationContext(), FinishRidingActivity.class);
                         intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
                         intent.putExtra("distance", ridingDataDTO.getTotalDistance());
+                        intent.putExtra("nickname", ridingDataDTO.getNickname());
                         startActivity(intent);
 
                     }
@@ -143,19 +147,20 @@ public class RidingMainActivity extends AppCompatActivity{
     }
 
     // DTO 데이터 삽입
-    public void insertQuery(){
+    public void insertQuery() {
         ridingDataDTO.setTotalDistance(riding_distance.getText().toString());
         ridingDataDTO.setRidingTime(riding_time.getText().toString());
         ridingDataDTO.setCalorie("456");
         ridingDataDTO.setAvgVelocity(riding_speed.getText().toString());
         ridingDataDTO.setSafetyCnt(0);
         ridingDataDTO.setWarningCnt(0);
+        ridingDataDTO.setNickname(nickname);
 
         postData("http://14.63.213.62:3000/ridingdata", ridingDataDTO);
     }
 
     /* 라이딩 데이터 DB insert */
-    public void postData(String url, RidingDataDTO sendData){
+    public void postData(String url, RidingDataDTO sendData) {
         final RequestParams params = new RequestParams();
         params.put("totalDistance", sendData.getTotalDistance());
         params.put("avgVelocity", sendData.getAvgVelocity());
@@ -163,17 +168,18 @@ public class RidingMainActivity extends AppCompatActivity{
         params.put("ridingTime", sendData.getRidingTime());
         params.put("safetyCnt", sendData.getSafetyCnt());
         params.put("warningCnt", sendData.getWarningCnt());
+        params.put("nickname", sendData.getNickname());
 
         // url 및 전송된 데이터 확인 테스트
         Log.d(TAG, "url : " + url);
 
-        HttpClientHelper.post(url, params, new JsonHttpResponseHandler(){
+        HttpClientHelper.post(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                if(statusCode == 201){
+                if (statusCode == 201) {
                     Toast.makeText(getApplicationContext(), "라이딩 데이터 저장 완료", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Log.d(TAG, "onSuccess statusCode : " + statusCode + "\nresponse" + response);
                 }
             }
@@ -232,4 +238,22 @@ public class RidingMainActivity extends AppCompatActivity{
         return super.onKeyDown(keyCode, event);
     }
 
+
+//    public void getUrl() {
+//        String getKmaDataUrl = "http://14.63.213.62:3000/weather";
+//        new HttpTask().execute(getKmaDataUrl);
+//    }
+//    //kma-js 라이브러리
+//    public void getKmaJsWeather() throws JSONException {
+//        //서버 요청
+//
+//        String str = today_weather.getText().toString();
+//
+//
+//        JSONObject jObj = new JSONObject(str);
+//        today_weather.append(info.time);
+//    }
+
 }
+
+

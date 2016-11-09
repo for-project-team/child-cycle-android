@@ -127,23 +127,29 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
 
         // 입력한 데이터 저장
-        userDTO.setName(user_name.getText().toString());
-        userDTO.setNickname(user_nickname.getText().toString());
-        userDTO.setBirth(user_birthday.getText().toString());
-        userDTO.setHeight(Integer.parseInt(user_height.getText().toString()));
-        userDTO.setWeight(Integer.parseInt(user_weight.getText().toString()));
-        //if((userDTO.getPhoto().toString()).equals(" ")) {
+        String name, nickname, birth;
+        int height, weight;
+
+        name = user_name.getText().toString();
+        nickname = user_nickname.getText().toString();
+        birth = user_birthday.getText().toString();
+        height = Integer.parseInt(user_height.getText().toString());
+        weight = Integer.parseInt(user_weight.getText().toString());
+
+        if(name.equals(" ") || nickname.equals(" ") || birth.equals(" ") || height == 0 || weight == 0){
+            Toast.makeText(getApplicationContext(), "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
+        }else{
+            userDTO.setName(name);
+            userDTO.setNickname(nickname);
+            userDTO.setBirth(birth);
+            userDTO.setHeight(height);
+            userDTO.setWeight(weight);
             userDTO.setPhoto("photo.jpg");
-        //}else{
-        //    userDTO.setPhoto(userDTO.getPhoto().toString());
-        //}
+            // url과 데이터 전송
+            postData("http://14.63.213.62:3000/usercreate", userDTO);
 
-        // url과 데이터 전송
-        postData("http://14.63.213.62:3000/usercreate", userDTO);
-
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
     }
-
-
 }

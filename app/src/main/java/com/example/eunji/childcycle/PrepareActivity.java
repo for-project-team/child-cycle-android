@@ -10,13 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by Eunji on 2016. 9. 11..
@@ -41,6 +41,10 @@ public class PrepareActivity extends AppCompatActivity {
     String s1[] = {"착용완료", "확인완료"};
 
     private void _InitUi() {
+    private static final String TAG = "Hanium";
+    String nickname;
+
+    private void _InitUi(){
 
         txtview1 = (TextView) findViewById(R.id.text_change);
         imgview = (ImageView) findViewById(R.id.prepare_image0);
@@ -69,8 +73,8 @@ public class PrepareActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
         Intent intent = getIntent();
-        String nickname = intent.getExtras().getString("nickname");
-//        Toast.makeText(getApplicationContext(), nickname, Toast.LENGTH_SHORT).show();
+        nickname = intent.getExtras().getString("nickname");
+        Log.i(TAG, "PrepareActivity " + nickname);
 
         imgview.setImageResource(R.drawable.pre_1_1);
         imgview1.setImageResource(R.drawable.pre_1_2);
@@ -95,7 +99,7 @@ public class PrepareActivity extends AppCompatActivity {
                 imgview.setImageResource(R.drawable.pre_1_1);
                 imgview1.setImageResource(R.drawable.pre_1_2);
                 imgview.clearAnimation();
-                anim = AnimationUtils.loadAnimation(getApplication(), R.anim.move);
+                anim= AnimationUtils.loadAnimation(getApplication(),R.anim.move);
                 imgview1.startAnimation(anim);
 
                 mp3.reset();
@@ -195,6 +199,9 @@ public class PrepareActivity extends AppCompatActivity {
                     }
 
 
+                    Intent intent = new Intent(getApplicationContext(), RidingMainActivity.class);
+                    intent.putExtra("nickname", nickname);
+                    startActivity(intent);
                 }
 
                 if (s[0].equals(text)) {
