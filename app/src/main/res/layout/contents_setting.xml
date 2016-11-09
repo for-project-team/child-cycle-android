@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:contentInsetStartWithNavigation="10dp"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ListView

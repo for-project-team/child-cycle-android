@@ -1,9 +1,13 @@
 package com.example.eunji.childcycle;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +24,17 @@ public class PrepareFourthActivity extends Fragment {
     private Fragment fragment;
     private Intent intent;
 
+    private Toolbar toolbar;
+
+
     public PrepareFourthActivity(){
 
     }
 
     private void _InitUi() {
         button = (Button) v.findViewById(R.id.button);
+
+        toolbar = (Toolbar) v.findViewById(R.id.app_toolbar);
     }
 
     @Override
@@ -34,8 +43,14 @@ public class PrepareFourthActivity extends Fragment {
 
         v = inflater.inflate(R.layout.activity_prepare_fourth, container, false);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         _InitUi();
 
+
+        toolbar.setTitle(" ChildCycle");
+        toolbar.setLogo(R.mipmap.hamburger);
+        toolbar.setTitleTextColor(Color.BLACK);
+        toolbar.setBackgroundColor(Color.WHITE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

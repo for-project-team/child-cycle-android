@@ -24,8 +24,8 @@
         android:baselineAligned="false">
 
         <FrameLayout
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="45dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginBottom="70dp"
             android:layout_width="match_parent"
             android:layout_height="250dp">
 
@@ -125,6 +125,7 @@
 </LinearLayout>
 
     <FrameLayout
+        android:layout_gravity="bottom"
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
