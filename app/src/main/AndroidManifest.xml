@@ -39,8 +39,6 @@
             android:name=".PrepareActivity"
             android:label="PrepareFirst" />
 
-
-
         <activity
             android:name=".RidingMainActivity"
             android:label="RidingMain" />

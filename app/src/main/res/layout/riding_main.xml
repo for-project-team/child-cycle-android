@@ -85,7 +85,7 @@
                         android:paddingTop="8dp"
                         android:text="2016.09.25 (일)"
                         android:textColor="@color/maintxt_color"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="핸들"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/handle_aram"
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="속도"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/speed_aram"
@@ -211,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="거리감지"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 아
 

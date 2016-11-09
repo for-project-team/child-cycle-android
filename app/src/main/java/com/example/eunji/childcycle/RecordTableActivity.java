@@ -29,28 +29,28 @@ import cz.msebera.android.httpclient.Header;
  */
 
 public class RecordTableActivity extends AppCompatActivity {
-    private View v;
     private static final String TAG = "Hanium";
 
     private TextView test_textview;
     private ArrayList<RidingDataDTO> list, showlist;
 
     private void _InitUi() {
-        test_textview = (TextView) v.findViewById(R.id.testTxt);
+        test_textview = (TextView) findViewById(R.id.testTxt);
 
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.record_table);
 
         _InitUi();
 
-        Intent intent = getIntent();
-        String nickname = intent.getExtras().getString("nickname");
+//        Intent intent = getIntent();
+//        String nickname = intent.getExtras().getString("nickname");
 
         showlist = new ArrayList<>();
 
-        getData("http://14.63.213.62:3000/ridingrecord", nickname);
+//        getData("http://14.63.213.62:3000/ridingrecord", nickname);
     }
 
     /*

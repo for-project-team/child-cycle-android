@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -57,7 +58,6 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         _InitUi();
 
         actionBar = getSupportActionBar();
-        actionBar.setIcon(R.mipmap.hamburger_icon);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFF5722));
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'> 사용자 등록 </font>"));
 
