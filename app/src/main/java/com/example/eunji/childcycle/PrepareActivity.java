@@ -95,7 +95,8 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
         anim = AnimationUtils.loadAnimation(this, R.anim.move);
         imgview1.startAnimation(anim);
 
-        mp3 = MediaPlayer.create(this, R.raw.voicehelmet);
+        mp3 = MediaPlayer.create(PrepareActivity.this, R.raw.voicehelmet);
+
         mp3.start();
 
 /*
@@ -281,8 +282,8 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
 
 
                     mp3.reset();
-                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm_short);
-                    mp3.start();
+//                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm_short);
+//                    mp3.start();
 
                 }
 
