@@ -1,6 +1,7 @@
 package com.example.eunji.childcycle;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -49,10 +50,11 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
 
         _InitUi();
 
+//        intent에서 오류나서 막음
 //        Intent intent = getIntent();
 //        String nickname = intent.getExtras().getString("nickname");
 
-        showlist = new ArrayList<>();
+        list = new ArrayList<>();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -66,47 +68,33 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
 //        toolbar.setLogo(R.drawable.ic_menu_white_24dp);
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setBackgroundColor(0xffff5722);
-
-//        getData("http://14.63.213.62:3000/ridingrecord", nickname);
     }
 
-    /*
-    * JSONObject data = response.getJSONObject(i);
+    public ArrayList<RidingDataDTO> getData(String url){
 
-                        RidingDataDTO record = new RidingDataDTO();
-                        record.setDate(data.getString("date"));
-                        record.setTotalDistance(data.getString("totalDistance"));
-                        record.setRidingTime(data.getString("ridingTime"));
-    *
-    * */
-
-    public void getData(String url, String sendData){
         RequestParams params = new RequestParams();
-        params.put("nickname", sendData);
-
-        Log.d(TAG, "url " + url + ",\n sendData : " + sendData);
+        showlist = new ArrayList<RidingDataDTO>();
+        Log.d(TAG, "url " + url);
 
         HttpClientHelper.get(url, params, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                try{
-                    String date = response.getString("date");
-                    Log.d(TAG, "date : " + date);
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
                 try{
-                    JSONObject data = response.getJSONObject(0);
-                    String date = data.getString("date");
-                    Log.d(TAG, "date : " + date);
+                    for(int i = 0;i<response.length();i++){
+                        JSONObject data = response.getJSONObject(i);
+                        RidingDataDTO record = new RidingDataDTO();
+                        record.setDate(data.getString("date"));
+                        record.setTotalDistance(data.getString("totalDistance"));
+                        record.setRidingTime(data.getString("ridingTime"));
+                        showlist.add(record);
+                    }
                 }catch (JSONException e){
                     e.printStackTrace();
+                }
+                if(statusCode == 201){
+                    Log.i(TAG, "라이딩데이터 불러오기 완료");
                 }
             }
 
@@ -121,25 +109,52 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 Log.d(TAG, "onFailure2" + statusCode);
             }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.d(TAG, "onFailure3" + statusCode);
-                Log.d(TAG, "throwable" + throwable);
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-                String date = responseString.toString();
-                Log.d(TAG, "String " + date);
-            }
         });
+
+        return showlist;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+}
+
+// 리스너
+interface OnCompletionListener2 {
+    void onComplete(ArrayList<RidingDataDTO> result);
+}
+
+// 비동기통신 콜백함수
+class HttpTask2 extends AsyncTask<ArrayList<RidingDataDTO>, Void, ArrayList<RidingDataDTO>> {
+
+    OnCompletionListener2 listener = null;
+    ArrayList<RidingDataDTO> list = new ArrayList<>();
+    String getDataUrl = "http://14.63.213.62:3000/ridingrecord";
+    RecordTableActivity main = new RecordTableActivity();
+
+    public HttpTask2() {
+    }
+
+    public HttpTask2(OnCompletionListener2 listener) {
+        this.listener = listener;
+    }
+
+    protected ArrayList<RidingDataDTO> doInBackground(ArrayList<RidingDataDTO>... params) {
+
+        if(params != null){
+            main.getData(getDataUrl);
+            return list;
+        } else {
+            return null;
+        }
+    }
+
+    // 결과에 대해 호출되는 부분
+    protected void onPostExecute(ArrayList<RidingDataDTO> result) {
+        // result : 웹서버로부터 가져온 값
+        // 리턴받은 String데이터를 EditText에 출력
+        if ( listener != null)
+            listener.onComplete(result);    // 리스너 호출
     }
 }

@@ -106,8 +106,7 @@
             android:id="@+id/testTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="라이딩데이터.." />
+            android:gravity="center"/>
 
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

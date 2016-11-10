@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity
         userList = new ArrayList<>();
 
         save_string = new ArrayList<String>();
-        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
-        data.add(user1);
+//        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "사용자 추가", R.mipmap.ic_user_add);
+//        data.add(user1);
         user_listview.setAdapter(adapter);
 
         // 데이터 가져오기 완료 후 txtView에 출력
@@ -89,13 +89,13 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(ArrayList<UserDTO> result) {
                 if(result != null) {
                     userList = result;
-//                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
-//                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
-//                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
-//                    data.add(user1);
-//                    data.add(user2);
-//                    data.add(user3);
-//                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
+                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
+                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
+                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
+                    data.add(user1);
+                    data.add(user2);
+                    data.add(user3);
+                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
                 }else{
                     Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity
     public void txtClick(View v) {
         new AlertDialog.Builder(this)
                 .setTitle("안전한 자전거를 시작합니다.")
-                .setMessage(user1.getName() + "이 맞습니까?")
+                .setMessage(user1.getName() + "님이 맞습니까?")
                 .setPositiveButton("예", new DialogInterface.OnClickListener() {
 
                     @Override
