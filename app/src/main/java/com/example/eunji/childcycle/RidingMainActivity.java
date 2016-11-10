@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eunji.childcycle.dto.RidingDataDTO;
+import com.example.eunji.childcycle.dto.SensingDTO;
 import com.example.eunji.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -31,6 +32,7 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
@@ -42,21 +44,38 @@ import cz.msebera.android.httpclient.Header;
 
 public class RidingMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "Hanium";
-    public static int num = 0;
-    long timeInMilliseconds = 0L;
-    long timeSwapBuff = 0L;
-    long updatedTime = 0L;
     private Button button_stop, button_pause;
     private TextView riding_time, today_weather = null, riding_date, weather_temp, riding_distance, riding_speed;
     private ImageView handle_aram, speed_aram, distance_aram, warning, error;
     private Handler handler;
     private boolean warning_bool = true;
     private RidingDataDTO ridingDataDTO;
+    private static final String TAG = "Hanium";
     private String nickname;
     private DrawerLayout drawer;
+
+    // 주행시간
+    public static int num = 0;
     private long startTime = 0L;
     private Handler customHandler = new Handler();
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+
+    //
+
+    String sensing[] = {};
+    String sensor = "18;123.43;456.75";
+    String sensor2 = "14;124.34;0.0;";
+    String sensor3 = "16;45.67;0.0";
+    String sensor4 = "5;145.435;456.3657";
+    String sensor5 = "156;4354.456;456.23";
+
+    SensingDTO sensingDTO1, sensingDTO2, sensingDTO3, sensingDTO4, sensingDTO5;
+    ArrayList<SensingDTO> array = new ArrayList<SensingDTO>();
+
+    View v;
+
     private Date cDate;
     private String fDate;
 
@@ -98,7 +117,6 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
         fDate = new SimpleDateFormat("yyyy년 MM월 dd일 (E)").format(cDate);
 
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
-
     }
 
     @Override
@@ -136,9 +154,48 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
 //        actionBar.setTitle("ChildCycle");
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
-        ridingDataDTO = new RidingDataDTO();
 
-//        Intent intent = getIntent();
+        sensingDTO1 = new SensingDTO();
+        sensingDTO2 = new SensingDTO();
+        sensingDTO3 = new SensingDTO();
+        sensingDTO4 = new SensingDTO();
+        sensingDTO5 = new SensingDTO();
+
+        ridingDataDTO = new RidingDataDTO();
+        sensing = sensor.split(";");
+        sensingDTO1.setUltrasonic(sensing[0]);
+        sensingDTO1.setlFsr(sensing[1]);
+        sensingDTO1.setrFsr(sensing[2]);
+
+        sensing = sensor2.split(";");
+        sensingDTO2.setUltrasonic(sensing[0]);
+        sensingDTO2.setlFsr(sensing[1]);
+        sensingDTO2.setrFsr(sensing[2]);
+
+        sensing = sensor3.split(";");
+        sensingDTO3.setUltrasonic(sensing[0]);
+        sensingDTO3.setlFsr(sensing[1]);
+        sensingDTO3.setrFsr(sensing[2]);
+
+        sensing = sensor4.split(";");
+        sensingDTO4.setUltrasonic(sensing[0]);
+        sensingDTO4.setlFsr(sensing[1]);
+        sensingDTO4.setrFsr(sensing[2]);
+
+        sensing = sensor5.split(";");
+        sensingDTO5.setUltrasonic(sensing[0]);
+        sensingDTO5.setlFsr(sensing[1]);
+        sensingDTO5.setrFsr(sensing[2]);
+
+        array.add(sensingDTO1);
+        array.add(sensingDTO2);
+        array.add(sensingDTO3);
+        array.add(sensingDTO4);
+        array.add(sensingDTO5);
+
+//        sensing();
+
+        Intent intent = getIntent();
 //        nickname = intent.getExtras().getString("nickname");
 //        Log.i(TAG, "RidingMainActivity " + nickname);
 
@@ -183,6 +240,23 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
         }
 
     }
+
+    // 주행 시간 타이머 핸들러
+//    private Runnable updateTimerThread = new Runnable() {
+//        public void run() {
+//            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+//            updatedTime = timeSwapBuff + timeInMilliseconds;
+//
+//            int secs = (int) (updatedTime / 1000);
+//            int mins = secs / 60;
+//            int hours = mins / 60;
+//            secs = secs % 60;
+//
+//            riding_time.setText("" + String.format("%02d", hours) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
+//            customHandler.postDelayed(this, 0);
+//        }
+//    };
+
 
     public void stopClick(View v) {
         new AlertDialog.Builder(this)
