@@ -1,22 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:openDrawer="start">
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:id="@+id/drawer"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:openDrawer="start">-->
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+<!--<android.support.design.widget.NavigationView--><!--android:id="@+id/nav_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_gravity="start"--><!--android:fitsSystemWindows="true"--><!--app:headerLayout="@layout/nav_header_main"--><!--app:menu="@menu/activity_main_drawer" />-->
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -185,7 +172,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/main_padding"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@drawable/img_riding_warning" />
 
                 </LinearLayout>
 
@@ -215,7 +202,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/main_padding"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@drawable/img_zero" />
 
                 </LinearLayout>
 
@@ -240,15 +227,14 @@
                         android:text="거리감지"
                         android:textSize="16sp" />
 
-                    아
 
                     <ImageView
                         android:id="@+id/distance_aram"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/main_padding"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@drawable/img_riding_error" />
 
                 </LinearLayout>
 
@@ -410,5 +396,4 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout>
-</android.support.v4.widget.DrawerLayout>
+    </LinearLayout><!--</android.support.v4.widget.DrawerLayout>-->
