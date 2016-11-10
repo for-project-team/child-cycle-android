@@ -84,8 +84,9 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgv_time"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:src="@android:drawable/sym_def_app_icon" />
 
                         <TextView
@@ -113,8 +114,9 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgv_distance"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:src="@android:drawable/sym_def_app_icon" />
 
                         <TextView

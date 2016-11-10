@@ -204,7 +204,7 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
 
                 if (count == 3) {
 
-                    stopPlaying();
+                    //stopPlaying();
 
                     Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
                     startActivity(intent1);
@@ -281,23 +281,23 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
 
 
                     mp3.reset();
-                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm);
+                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm_short);
                     mp3.start();
 
-                } else mp3.stop();
+                }
 
             }
         });
 
     }
-
-    private void stopPlaying() {
+    /*안됨*/
+   /* private void stopPlaying() {
         if (mp3 != null) {
             mp3.stop();
             mp3.release();
             mp3 = null;
         }
-    }
+    }*/
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
