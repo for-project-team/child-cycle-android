@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ChildCycle.iml" filepath="$PROJECT_DIR$/ChildCycle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ChildCycleF.iml" filepath="$PROJECT_DIR$/ChildCycleF.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-async-http-1.4.8/android-async-http-1.4.8.iml" filepath="$PROJECT_DIR$/android-async-http-1.4.8/android-async-http-1.4.8.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-async-http-1.4.8/android-async-http-1.4.8.iml" filepath="$PROJECT_DIR$/android-async-http-1.4.8/android-async-http-1.4.8.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
