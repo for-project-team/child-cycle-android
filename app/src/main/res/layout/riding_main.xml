@@ -1,20 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:id="@+id/drawer"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:openDrawer="start">-->
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start">
 
-<!--<android.support.design.widget.NavigationView--><!--android:id="@+id/nav_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_gravity="start"--><!--android:fitsSystemWindows="true"--><!--app:headerLayout="@layout/nav_header_main"--><!--app:menu="@menu/activity_main_drawer" />-->
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/app_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextAppearance="@style/Toolbar.TitleText" />
+        <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/app_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
+        <!--app:titleTextAppearance="@style/Toolbar.TitleText" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,7 +130,7 @@
                             android:layout_marginLeft="8dp"
                             android:layout_marginRight="8dp"
                             android:layout_marginTop="8dp"
-                            android:src="@mipmap/img_weather_sun" />
+                            android:src="@drawable/img_cloudy" />
 
                         <TextView
                             android:id="@+id/today_weather"
@@ -123,7 +138,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="12dp"
                             android:gravity="center_vertical"
-                            android:text="맑음"
+                            android:text="흐림"
                             android:textSize="@dimen/main_text" />
 
                         <TextView
@@ -132,7 +147,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="12dp"
                             android:gravity="center_vertical"
-                            android:text=" / 5℃"
+                            android:text=" / 8℃"
                             android:textColor="@color/maintxt_color"
                             android:textSize="@dimen/main_text" />
 
@@ -394,6 +409,7 @@
                 android:textColor="@color/button_font"
                 android:textSize="@dimen/check_text"
                 android:textStyle="bold" />
-        </LinearLayout>
 
-    </LinearLayout><!--</android.support.v4.widget.DrawerLayout>-->
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

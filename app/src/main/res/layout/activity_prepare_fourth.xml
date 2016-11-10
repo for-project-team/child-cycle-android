@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/nav_header_vertical_spacing"
-                        android:src="@mipmap/img_weather_sun" />
+                        android:src="@drawable/img_cloudy" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="25℃"
+                            android:text="8℃"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                             android:textSize="30sp"
                             android:textStyle="bold" />
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:background="#ededed"
                     android:padding="15dp"
-                    android:text="화창합니다. 열이 뜨거우니 주의하세요."
+                    android:text="온도가 차갑습니다 따뜻한 장갑을 준비하면 좋습니다."
                     android:textColor="#7A7A7A"
                     android:textSize="16sp" />
 
