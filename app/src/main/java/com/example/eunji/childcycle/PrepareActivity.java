@@ -205,7 +205,7 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
 
                 if (count == 3) {
 
-                    //stopPlaying();
+                    //mp3.stop();
 
                     Intent intent1 = new Intent(getApplicationContext(), RidingMainActivity.class);
                     startActivity(intent1);
@@ -282,8 +282,8 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
 
 
                     mp3.reset();
-//                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm_short);
-//                    mp3.start();
+                    mp3 = MediaPlayer.create(getApplicationContext(), R.raw.weatherbgm_final);
+                    mp3.start();
 
                 }
 
