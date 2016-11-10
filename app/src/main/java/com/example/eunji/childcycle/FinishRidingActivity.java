@@ -30,7 +30,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
     private Toolbar toolbar;
 
     private DrawerLayout drawer;
-    private ImageView imgv_distance, imgv_time;
+    private ImageView img_ending,imgv_distance, imgv_time;
 
     private void _InitUi() {
 
@@ -40,6 +40,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
 
+        img_ending=(ImageView)findViewById(R.id.ending_img) ;
         imgv_distance=(ImageView)findViewById(R.id.imgv_distance);
         imgv_time=(ImageView)findViewById(R.id.imgv_time);
 
@@ -72,6 +73,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
 //        actionBar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
 //        actionBar.setTitle(Html.fromHtml("<font color='#000000'> ChildCycle </font>"));
 
+        img_ending.setImageResource(R.drawable.pre_3_1);
         imgv_distance.setImageResource(R.mipmap.ic_location);
         imgv_time.setImageResource(R.mipmap.ic_time);
 

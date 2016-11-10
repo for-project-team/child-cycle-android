@@ -53,8 +53,9 @@
 
             <ImageView
                 android:id="@+id/ending_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="218dp"
+                android:layout_gravity="center"
                 android:layout_weight="0.88"
                 android:src="@android:drawable/sym_def_app_icon" />
 
@@ -80,16 +81,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
+                        android:padding="9dp"
                         android:background="#fff"
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:paddingLeft="5dp"
                             android:id="@+id/imgv_time"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:layout_gravity="center"
                             android:src="@android:drawable/sym_def_app_icon" />
 
                         <TextView
+                            android:paddingLeft="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -102,6 +107,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical|right"
                             android:text="00:10:00"
+                            android:paddingRight="5dp"
                             android:textSize="@dimen/main_text" />
 
                     </LinearLayout>
@@ -109,7 +115,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="9dp"
                         android:background="#fff"
                         android:orientation="horizontal">
 
@@ -117,9 +124,12 @@
                             android:id="@+id/imgv_distance"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="5dp"
                             android:src="@android:drawable/sym_def_app_icon" />
 
                         <TextView
+                            android:paddingLeft="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -132,6 +142,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical|right"
                             android:text="2.00 km"
+                            android:paddingRight="5dp"
                             android:textSize="@dimen/main_text" />
 
                     </LinearLayout>
@@ -140,6 +151,7 @@
 
                 <Button
                     android:id="@+id/total_history"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
