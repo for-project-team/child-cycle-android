@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "com.example.eunji.childcycle"
+        applicationId "com.ccgirls.knu.childcycle"
         minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
