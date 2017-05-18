@@ -1,10 +1,10 @@
-package com.ccgirls.knu.childcycle.dto;
+package com.ccgirls.knu.childcycle.vo;
 
 /**
  * Created by choihyesun on 2016. 10. 10..
  */
 
-public class UserDTO {
+public class UserVO {
     private String name, nickname, birth, photo;
     private int weight, height, gender;
 

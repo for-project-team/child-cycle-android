@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.ccgirls.knu.childcycle.R;
 
 /**
  * Created by Eunji on 2016. 9. 11..
@@ -36,7 +38,7 @@ public class PrepareFourthActivity extends Fragment implements NavigationView.On
 
     }
 
-    private void _InitUi() {
+    private void initUi() {
         button = (Button) v.findViewById(R.id.button);
         drawer = (DrawerLayout) v.findViewById(R.id.drawer);
         toolbar = (Toolbar) v.findViewById(R.id.app_toolbar);
@@ -49,7 +51,7 @@ public class PrepareFourthActivity extends Fragment implements NavigationView.On
         v = inflater.inflate(R.layout.activity_prepare_fourth, container, false);
 
 //        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        _InitUi();
+        initUi();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getActivity(), drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

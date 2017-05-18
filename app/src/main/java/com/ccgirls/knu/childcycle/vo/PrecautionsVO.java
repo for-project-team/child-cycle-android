@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle.dto;
+package com.ccgirls.knu.childcycle.vo;
 
 /**
  * PrecuationsDTO
@@ -6,7 +6,7 @@ package com.ccgirls.knu.childcycle.dto;
  * Created by choihyesun on 2016. 11. 3..
  */
 
-public class PrecautionsDTO {
+public class PrecautionsVO {
     private int index;
     private String description;
 

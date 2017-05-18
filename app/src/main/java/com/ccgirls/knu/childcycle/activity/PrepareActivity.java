@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ccgirls.knu.childcycle.R;
+
 /**
  * Created by Eunji on 2016. 9. 11..
  */
@@ -43,7 +45,7 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
     private int count = 0;
     private Toolbar toolbar;
 
-    private void _InitUi(){
+    private void initUi(){
 
         txtview1 = (TextView) findViewById(R.id.text_change);
         imgview = (ImageView) findViewById(R.id.prepare_image0);
@@ -66,7 +68,7 @@ public class PrepareActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prepare);
 
-        _InitUi();
+        initUi();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);

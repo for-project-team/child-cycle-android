@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,6 +18,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.ccgirls.knu.childcycle.adapter.ListviewAdapter;
+import com.ccgirls.knu.childcycle.item.ListviewItem;
+import com.ccgirls.knu.childcycle.R;
 
 import java.util.ArrayList;
 
@@ -40,7 +44,7 @@ public class ContentsSettingActivity extends ActionBarActivity implements Naviga
 
     private Toolbar toolbar;
 
-    private void _InitUi() {
+    private void initUi() {
 
         setting_listview = (ListView) findViewById(R.id.setting_listview);
 
@@ -68,7 +72,7 @@ public class ContentsSettingActivity extends ActionBarActivity implements Naviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contents_setting);
 
-        _InitUi();
+        initUi();
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

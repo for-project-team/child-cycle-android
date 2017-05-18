@@ -26,14 +26,6 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
 
-            <TextView
-                android:textSize="14sp"
-                android:textColor="#ffffff"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="환영합니다! 사용자를 등록하고,\n안전한 자전거를 바로 시작해보세요."/>
-
 
             <LinearLayout
                 android:gravity="center"

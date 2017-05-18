@@ -1,10 +1,10 @@
-package com.ccgirls.knu.childcycle.dto;
+package com.ccgirls.knu.childcycle.vo;
 
 /**
  * Created by choihyesun on 2016. 11. 9..
  */
 
-public class SensingDTO {
+public class SensingVO {
     String ultrasonic, rFsr, lFsr;
 
     public String getUltrasonic() {

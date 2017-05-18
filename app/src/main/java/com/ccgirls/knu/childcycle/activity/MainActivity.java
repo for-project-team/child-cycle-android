@@ -1,13 +1,13 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -19,17 +19,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.ccgirls.knu.childcycle.dao.UserInfoDAO;
-import com.ccgirls.knu.childcycle.dto.UserDTO;
+import com.ccgirls.knu.childcycle.R;
+import com.ccgirls.knu.childcycle.item.UserListviewItem;
+import com.ccgirls.knu.childcycle.adapter.UserListviewAdapter;
+import com.ccgirls.knu.childcycle.vo.UserVO;
+import com.ccgirls.knu.childcycle.fragment.UserSelectFragment;
 
 import java.util.ArrayList;
 
-// 리스너
-interface OnCompletionListener {
-    void onComplete(ArrayList<UserDTO> result);
-}
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     Fragment fragment;
     private ListView user_listview;
     private ArrayList<UserListviewItem> data;
-    private UserListviewItem user1, user2, user3;
+    private UserListviewItem user1, user2, user3, user4;
     private UserListviewAdapter adapter;
     private ArrayList<String> save_string;
     private TextView list_Text;
@@ -46,11 +44,11 @@ public class MainActivity extends AppCompatActivity
     private TextView txtview1;
     private DrawerLayout drawer;
     private NavigationView navigationView;
-    private ArrayList<UserDTO> userList;
+    private ArrayList<UserVO> userList;
 
     private Intent intent;
 
-    private void _InitUi() {
+    private void initUi() {
 
         imgbtn1 = (ImageButton) findViewById(R.id.add_user);
 
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-        _InitUi();
+        initUi();
 
         userList = new ArrayList<>();
 
@@ -84,36 +82,44 @@ public class MainActivity extends AppCompatActivity
         user_listview.setAdapter(adapter);
 
         // 데이터 가져오기 완료 후 txtView에 출력
-        new HttpTask(new OnCompletionListener() {
-            @Override
-            public void onComplete(ArrayList<UserDTO> result) {
-                if(result != null) {
-                    userList = result;
-                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
-                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
-                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
-                    data.add(user1);
-                    data.add(user2);
-                    data.add(user3);
-                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
-                }else{
-                    Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }).execute();
+//        new HttpTask(new OnCompletionListener() {
+//            @Override
+//            public void onComplete(ArrayList<UserVO> result) {
+//                if(result != null) {
+//                    userList = result;
+//                    user1 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(0).getName(), R.mipmap.ic_user_add);
+//                    user2 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(1).getName(), R.mipmap.ic_user_add);
+//                    user3 = new UserListviewItem(R.mipmap.ic_user_profile, userList.get(2).getName(), R.mipmap.ic_user_add);
+//                    data.add(user1);
+//                    data.add(user2);
+//                    data.add(user3);
+//                    adapter.notifyDataSetChanged(); // 리스트뷰 갱신
+//                }else{
+//                    Toast.makeText(getApplicationContext(), "서버가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }).execute();
 
+        user1 = new UserListviewItem(R.mipmap.ic_user_profile, "Choi hyesun", R.mipmap.ic_user_add);
+        user2 = new UserListviewItem(R.mipmap.ic_user_profile, "Kim Sungmin", R.mipmap.ic_user_add);
+        user3 = new UserListviewItem(R.mipmap.ic_user_profile, "Kim Eunji", R.mipmap.ic_user_add);
+        user4 = new UserListviewItem(R.mipmap.ic_user_profile, "Lee u ran", R.mipmap.ic_user_add);
+        data.add(user1);
+        data.add(user2);
+        data.add(user3);
+        data.add(user4);
+        adapter.notifyDataSetChanged(); // 리스트뷰 갱신
 //        user_listview.setOnItemClickListener(clickListener);
 
-//        fragment = new UserSelectFragment();
-//
-//        if (fragment != null) {
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            ft.replace(R.id.content_frame, fragment);
-//            ft.commit();
-//        }
+        fragment = new UserSelectFragment();
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
 
         ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
 
         actionBar.setTitle("");
         actionBar.setElevation(0);
@@ -134,29 +140,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(getApplicationContext(), AdduserActivity.class);
         startActivity(intent);
     }
-
-//    AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
-//        @Override
-//        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//            final int itemPosition = position;
-//            new AlertDialog.Builder(MainActivity.this)
-//                    .setTitle("안전한 자전거를 시작합니다.")
-//                    .setMessage(userList.get(itemPosition).getName() + "이 맞습니까?")
-//                    .setPositiveButton("예", new DialogInterface.OnClickListener() {
-//
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // put Extra
-//                            intent = new Intent(getApplicationContext(), PrepareActivity.class);
-//                            intent.putExtra("nickname", userList.get(itemPosition).getNickname());
-//                            startActivity(intent);
-//                        }
-//                    })
-//                    .setNegativeButton("아니오", null)
-//                    .show();
-//        }
-//    };
-
 
     // textView 클릭 메소드
     public void txtClick(View v) {
@@ -238,38 +221,42 @@ public class MainActivity extends AppCompatActivity
 }
 
 // 비동기통신 콜백함수
-class HttpTask extends AsyncTask<ArrayList<UserDTO>, Void, ArrayList<UserDTO>> {
 
-    OnCompletionListener listener = null;
-    UserInfoDAO userInfoDAO = new UserInfoDAO();
-    ArrayList<UserDTO> list = new ArrayList<>();
-    String getDataUrl = "http://14.63.213.62:3000/users";
+//interface OnCompletionListener {
+//    void onComplete(ArrayList<UserVO> result);
+//}
 
-    public HttpTask() {
-    }
-
-    public HttpTask(OnCompletionListener listener) {
-        this.listener = listener;
-    }
-
-    protected ArrayList<UserDTO> doInBackground(ArrayList<UserDTO>... params) {
-
-        if(params != null){
-            list = userInfoDAO.lodingUserData(getDataUrl);
-//            userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
-//            Log.d("Hanium", "MainActivity " + list.get(0).getNickname());
-            return list;
-        } else {
-            return null;
-        }
-    }
-
-    // 결과에 대해 호출되는 부분
-    protected void onPostExecute(ArrayList<UserDTO> result) {
-        // result : 웹서버로부터 가져온 값
-        // 리턴받은 String데이터를 EditText에 출력
-        if ( listener != null)
-            listener.onComplete(result);    // 리스너 호출
-    }
-}
-
+//class HttpTask extends AsyncTask<ArrayList<UserVO>, Void, ArrayList<UserVO>> {
+//
+//    OnCompletionListener listener = null;
+//    UserInfoDAO userInfoDAO = new UserInfoDAO();
+//    ArrayList<UserVO> list = new ArrayList<>();
+//    String getDataUrl = "http://14.63.213.62:3000/users";
+//
+//    public HttpTask() {
+//    }
+//
+//    public HttpTask(OnCompletionListener listener) {
+//        this.listener = listener;
+//    }
+//
+//    protected ArrayList<UserVO> doInBackground(ArrayList<UserVO>... params) {
+//
+//        if (params != null) {
+//            // 서버 연결 해제됨
+////            list = userInfoDAO.lodingUserData(getDataUrl);
+//            // userInfoDAO.findByNickname(getDataUrl, list.get(0).getNickname());
+//            return list;
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    // 결과에 대해 호출되는 부분
+//    protected void onPostExecute(ArrayList<UserVO> result) {
+//        // result : 웹서버로부터 가져온 값
+//        // 리턴받은 String데이터를 EditText에 출력
+//        if (listener != null)
+//            listener.onComplete(result);    // 리스너 호출
+//    }
+//}

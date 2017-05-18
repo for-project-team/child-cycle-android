@@ -2,7 +2,7 @@ package com.ccgirls.knu.childcycle.dao;
 
 import android.util.Log;
 
-import com.ccgirls.knu.childcycle.dto.UserDTO;
+import com.ccgirls.knu.childcycle.vo.UserVO;
 import com.ccgirls.knu.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -22,11 +22,11 @@ import cz.msebera.android.httpclient.Header;
 public class UserInfoDAO {
     private static final String TAG = "Hanium";
 
-    public ArrayList<UserDTO> list;
+    public ArrayList<UserVO> list;
 
     // 메인화면 - 회원 이름 표시
-    public ArrayList<UserDTO> lodingUserData(String url){
-        ArrayList<UserDTO> uList = getData(url);
+    public ArrayList<UserVO> lodingUserData(String url){
+        ArrayList<UserVO> uList = getData(url);
         return uList;
     }
 
@@ -35,9 +35,9 @@ public class UserInfoDAO {
         getData(url, nickname);
     }
 
-    public ArrayList<UserDTO> getData(String url){
+    public ArrayList<UserVO> getData(String url){
 
-        list = new ArrayList<UserDTO>();
+        list = new ArrayList<UserVO>();
 
         RequestParams params = new RequestParams();
         HttpClientHelper.get(url, params, new JsonHttpResponseHandler() {
@@ -59,7 +59,7 @@ public class UserInfoDAO {
                     for(int i = 0; i<response.length(); i++){
                         JSONObject data = response.getJSONObject(i);
 
-                        UserDTO user = new UserDTO();
+                        UserVO user = new UserVO();
                         user.setName(data.getString("name"));
                         user.setNickname(data.getString("nickname"));
                         user.setPhoto(data.getString("photo"));
@@ -92,9 +92,9 @@ public class UserInfoDAO {
     }
 
     // nickname으로 회원정보 불러오기
-    public ArrayList<UserDTO> getData(String url, String nickname){
+    public ArrayList<UserVO> getData(String url, String nickname){
 
-        list = new ArrayList<UserDTO>();
+        list = new ArrayList<UserVO>();
 
         RequestParams params = new RequestParams();
         params.put("nickname", nickname);
@@ -121,7 +121,7 @@ public class UserInfoDAO {
                     for(int i = 0; i<response.length(); i++){
                         JSONObject data = response.getJSONObject(i);
 
-                        UserDTO user = new UserDTO();
+                        UserVO user = new UserVO();
                         user.setName(data.getString("name"));
                         user.setNickname(data.getString("nickname"));
                         user.setPhoto(data.getString("photo"));

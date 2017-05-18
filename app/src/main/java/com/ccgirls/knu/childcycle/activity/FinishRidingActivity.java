@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ccgirls.knu.childcycle.R;
+
 /**
  * Created by Eunji on 2016. 10. 9..
  */
@@ -32,7 +34,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
     private DrawerLayout drawer;
     private ImageView img_ending,imgv_distance, imgv_time;
 
-    private void _InitUi() {
+    private void initUi() {
 
         total_history = (Button) findViewById(R.id.total_history);
         riding_distance = (TextView) findViewById(R.id.riding_distance);
@@ -50,7 +52,7 @@ public class FinishRidingActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finishriding);
 
-        _InitUi();
+        initUi();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

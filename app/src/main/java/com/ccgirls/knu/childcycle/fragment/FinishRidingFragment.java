@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.ccgirls.knu.childcycle.R;
 
 /**
  * Created by Eunji on 2016. 11. 9..

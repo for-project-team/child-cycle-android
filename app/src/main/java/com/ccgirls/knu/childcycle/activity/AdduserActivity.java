@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +19,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.ccgirls.knu.childcycle.dto.UserDTO;
+import com.ccgirls.knu.childcycle.R;
+import com.ccgirls.knu.childcycle.vo.UserVO;
 import com.ccgirls.knu.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
@@ -51,7 +52,7 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
     private Button add_user_finish;
     private DrawerLayout drawer;
     private Toolbar toolbar;
-    private UserDTO userDTO;
+    private UserVO userVO;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_adduser);
         setTitle("사용자 등록");
 
-        _InitUi();
+        initUi();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -76,7 +77,7 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         HttpClientHelper.myCookieStore.clear();
         HttpClientHelper.client.setCookieStore(HttpClientHelper.myCookieStore);
 
-        userDTO = new UserDTO();
+        userVO = new UserVO();
 
 
         gender_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -84,17 +85,17 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.woman_radiobutton:
-                        userDTO.setGender(1);
+                        userVO.setGender(1);
                         break;
                     case R.id.man_radiobutton:
-                        userDTO.setGender(0);
+                        userVO.setGender(0);
                         break;
                 }
             }
         });
     }
 
-    private void _InitUi(){
+    private void initUi(){
         user_name = (EditText) findViewById(R.id.user_name);
         user_birthday = (EditText) findViewById(R.id.user_birthday);
         user_height = (EditText) findViewById(R.id.user_height);
@@ -115,7 +116,7 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
     // TODO : onSuccess 및 onFailure는 콜백 리스너로 데이터를 request 후 response관련된 것 임
     // TODO : 회원가입 데이터 post 방식 전송 메소드
 
-    public void postData(String url, UserDTO sendData){
+    public void postData(String url, UserVO sendData){
         final RequestParams params = new RequestParams();
         params.put("name", sendData.getName());
         params.put("nickname", sendData.getNickname());
@@ -164,14 +165,14 @@ public class AdduserActivity extends AppCompatActivity implements View.OnClickLi
         if(name.equals(" ") || nickname.equals(" ") || birth.equals(" ") || height == 0 || weight == 0){
             Toast.makeText(getApplicationContext(), "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
         }else{
-            userDTO.setName(name);
-            userDTO.setNickname(nickname);
-            userDTO.setBirth(birth);
-            userDTO.setHeight(height);
-            userDTO.setWeight(weight);
-            userDTO.setPhoto("photo.jpg");
+            userVO.setName(name);
+            userVO.setNickname(nickname);
+            userVO.setBirth(birth);
+            userVO.setHeight(height);
+            userVO.setWeight(weight);
+            userVO.setPhoto("photo.jpg");
             // url과 데이터 전송
-            postData("http://14.63.213.62:3000/usercreate", userDTO);
+            postData("http://14.63.213.62:3000/usercreate", userVO);
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);

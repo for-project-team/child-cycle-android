@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle.dto;
+package com.ccgirls.knu.childcycle.vo;
 
 /**
  * RidingData DTO
@@ -6,7 +6,7 @@ package com.ccgirls.knu.childcycle.dto;
  * Created by choihyesun on 2016. 10. 12..
  */
 
-public class RidingDataDTO {
+public class RidingDataVO {
     private String date;
     private String totalDistance;
     private String avgVelocity;

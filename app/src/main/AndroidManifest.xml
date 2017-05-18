@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.MainActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -32,27 +32,27 @@
         </activity>
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.AdduserActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.AdduserActivity"
             android:label="Adduser"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.PrepareActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.PrepareActivity"
             android:label="PrepareFirst"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.RidingMainActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.RidingMainActivity"
             android:label="RidingMain"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.FinishRidingActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.FinishRidingActivity"
             android:label="FinishRiding"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.ContentsSettingActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.ContentsSettingActivity"
             android:label="ContentsSetting"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -65,7 +65,7 @@
         -->
 
         <activity
-            android:name="com.ccgirls.knu.childcycle.RecordTableActivity"
+            android:name="com.ccgirls.knu.childcycle.activity.RecordTableActivity"
             android:label="RecordTableActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 

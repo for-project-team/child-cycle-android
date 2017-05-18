@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.fragment;
 
 
 import android.app.AlertDialog;
@@ -18,7 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ccgirls.knu.childcycle.dto.RidingDataDTO;
+import com.ccgirls.knu.childcycle.R;
+import com.ccgirls.knu.childcycle.vo.RidingDataVO;
 import com.ccgirls.knu.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -40,7 +41,7 @@ public class RidingFragment extends Fragment{
     private TextView riding_time, today_wether, weather_temp, riding_distance, riding_speed, riding_date;
     private ImageView handle_aram, speed_aram, distance_aram;
 
-    private RidingDataDTO ridingDataDTO;
+    private RidingDataVO ridingDataVO;
     private static final String TAG = "Hanium";
 
     public static int num = 0;
@@ -103,7 +104,7 @@ public class RidingFragment extends Fragment{
         riding_date.setText(fDate);
 
 
-        ridingDataDTO = new RidingDataDTO();
+        ridingDataVO = new RidingDataVO();
 
 
         button_stop.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +119,8 @@ public class RidingFragment extends Fragment{
                             public void onClick(DialogInterface dialog, int which) {
 //                                insertQuery();
 //                                Intent intent = new Intent(getActivity().getApplicationContext(), FinishRidingActivity.class);
-//                                intent.putExtra("time", ridingDataDTO.getRidingTime()); // intent로 다음 화면으로 값 전송
-//                                intent.putExtra("distance", ridingDataDTO.getTotalDistance());
+//                                intent.putExtra("time", ridingDataVO.getRidingTime()); // intent로 다음 화면으로 값 전송
+//                                intent.putExtra("distance", ridingDataVO.getTotalDistance());
 //                                startActivity(intent);
 
                                 fragment = new FinishRidingFragment();
@@ -178,18 +179,18 @@ public class RidingFragment extends Fragment{
 
     // DTO 데이터 삽입
     public void insertQuery(){
-        ridingDataDTO.setTotalDistance(riding_distance.getText().toString());
-        ridingDataDTO.setRidingTime(riding_time.getText().toString());
-        ridingDataDTO.setCalorie("456");
-        ridingDataDTO.setAvgVelocity(riding_speed.getText().toString());
-        ridingDataDTO.setSafetyCnt(0);
-        ridingDataDTO.setWarningCnt(0);
+        ridingDataVO.setTotalDistance(riding_distance.getText().toString());
+        ridingDataVO.setRidingTime(riding_time.getText().toString());
+        ridingDataVO.setCalorie("456");
+        ridingDataVO.setAvgVelocity(riding_speed.getText().toString());
+        ridingDataVO.setSafetyCnt(0);
+        ridingDataVO.setWarningCnt(0);
 
-        postData("http://14.63.213.62:3000/ridingdata", ridingDataDTO);
+        postData("http://14.63.213.62:3000/ridingdata", ridingDataVO);
     }
 
     /* 라이딩 데이터 DB insert */
-    public void postData(String url, RidingDataDTO sendData){
+    public void postData(String url, RidingDataVO sendData){
         final RequestParams params = new RequestParams();
         params.put("totalDistance", sendData.getTotalDistance());
         params.put("avgVelocity", sendData.getAvgVelocity());

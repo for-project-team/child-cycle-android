@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -13,7 +13,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.ccgirls.knu.childcycle.dto.RidingDataDTO;
+import com.ccgirls.knu.childcycle.R;
+import com.ccgirls.knu.childcycle.vo.RidingDataVO;
 import com.ccgirls.knu.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -34,11 +35,11 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
     private static final String TAG = "Hanium";
 
     private TextView test_textview;
-    private ArrayList<RidingDataDTO> list, showlist;
+    private ArrayList<RidingDataVO> list, showlist;
 
     private Toolbar toolbar;
 
-    private void _InitUi() {
+    private void initUi() {
         test_textview = (TextView) findViewById(R.id.testTxt);
         toolbar = (Toolbar) findViewById(R.id.app_toolbar);
 
@@ -48,7 +49,7 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.record_table);
 
-        _InitUi();
+        initUi();
 
 //        intent에서 오류나서 막음
 //        Intent intent = getIntent();
@@ -70,10 +71,10 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
         toolbar.setBackgroundColor(0xffff5722);
     }
 
-    public ArrayList<RidingDataDTO> getData(String url){
+    public ArrayList<RidingDataVO> getData(String url){
 
         RequestParams params = new RequestParams();
-        showlist = new ArrayList<RidingDataDTO>();
+        showlist = new ArrayList<RidingDataVO>();
         Log.d(TAG, "url " + url);
 
         HttpClientHelper.get(url, params, new JsonHttpResponseHandler(){
@@ -84,7 +85,7 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
                 try{
                     for(int i = 0;i<response.length();i++){
                         JSONObject data = response.getJSONObject(i);
-                        RidingDataDTO record = new RidingDataDTO();
+                        RidingDataVO record = new RidingDataVO();
                         record.setDate(data.getString("date"));
                         record.setTotalDistance(data.getString("totalDistance"));
                         record.setRidingTime(data.getString("ridingTime"));
@@ -122,14 +123,14 @@ public class RecordTableActivity extends AppCompatActivity implements Navigation
 
 // 리스너
 interface OnCompletionListener2 {
-    void onComplete(ArrayList<RidingDataDTO> result);
+    void onComplete(ArrayList<RidingDataVO> result);
 }
 
 // 비동기통신 콜백함수
-class HttpTask2 extends AsyncTask<ArrayList<RidingDataDTO>, Void, ArrayList<RidingDataDTO>> {
+class HttpTask2 extends AsyncTask<ArrayList<RidingDataVO>, Void, ArrayList<RidingDataVO>> {
 
     OnCompletionListener2 listener = null;
-    ArrayList<RidingDataDTO> list = new ArrayList<>();
+    ArrayList<RidingDataVO> list = new ArrayList<>();
     String getDataUrl = "http://14.63.213.62:3000/ridingrecord";
     RecordTableActivity main = new RecordTableActivity();
 
@@ -140,7 +141,7 @@ class HttpTask2 extends AsyncTask<ArrayList<RidingDataDTO>, Void, ArrayList<Ridi
         this.listener = listener;
     }
 
-    protected ArrayList<RidingDataDTO> doInBackground(ArrayList<RidingDataDTO>... params) {
+    protected ArrayList<RidingDataVO> doInBackground(ArrayList<RidingDataVO>... params) {
 
         if(params != null){
             main.getData(getDataUrl);
@@ -151,7 +152,7 @@ class HttpTask2 extends AsyncTask<ArrayList<RidingDataDTO>, Void, ArrayList<Ridi
     }
 
     // 결과에 대해 호출되는 부분
-    protected void onPostExecute(ArrayList<RidingDataDTO> result) {
+    protected void onPostExecute(ArrayList<RidingDataVO> result) {
         // result : 웹서버로부터 가져온 값
         // 리턴받은 String데이터를 EditText에 출력
         if ( listener != null)

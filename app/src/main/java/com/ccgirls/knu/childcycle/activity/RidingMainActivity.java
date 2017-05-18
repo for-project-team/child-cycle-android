@@ -1,4 +1,4 @@
-package com.ccgirls.knu.childcycle;
+package com.ccgirls.knu.childcycle.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ccgirls.knu.childcycle.dto.RidingDataDTO;
-import com.ccgirls.knu.childcycle.dto.SensingDTO;
+import com.ccgirls.knu.childcycle.R;
+import com.ccgirls.knu.childcycle.vo.RidingDataVO;
 import com.ccgirls.knu.childcycle.urlconnection.HttpClientHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -32,7 +32,6 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
@@ -49,7 +48,7 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
     private ImageView handle_aram, speed_aram, distance_aram, warning, error;
     private Handler handler;
     private boolean warning_bool = true;
-    private RidingDataDTO ridingDataDTO;
+    private RidingDataVO ridingDataDTO;
     private static final String TAG = "Hanium";
     private String nickname;
     private DrawerLayout drawer;
@@ -61,17 +60,6 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
     long timeInMilliseconds = 0L;
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
-
-    //
-    String sensing[] = {};
-    String sensor = "18;123.43;456.75";
-    String sensor2 = "14;124.34;0.0;";
-    String sensor3 = "16;45.67;0.0";
-    String sensor4 = "5;145.435;456.3657";
-    String sensor5 = "156;4354.456;456.23";
-
-    SensingDTO sensingDTO1, sensingDTO2, sensingDTO3, sensingDTO4, sensingDTO5;
-    ArrayList<SensingDTO> array = new ArrayList<SensingDTO>();
 
     View v;
 
@@ -95,7 +83,7 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
         }
     };
 
-    private void _InitUi() {
+    private void initUi() {
         drawer = (DrawerLayout) findViewById(R.id.drawer);
 
         button_stop = (Button) findViewById(R.id.button_stop);
@@ -123,7 +111,7 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riding_main);
 
-        _InitUi();
+        initUi();
 
         riding_date.setText(fDate);
 
@@ -153,46 +141,6 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
 //        actionBar.setTitle("ChildCycle");
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-        sensingDTO1 = new SensingDTO();
-        sensingDTO2 = new SensingDTO();
-        sensingDTO3 = new SensingDTO();
-        sensingDTO4 = new SensingDTO();
-        sensingDTO5 = new SensingDTO();
-
-        ridingDataDTO = new RidingDataDTO();
-        sensing = sensor.split(";");
-        sensingDTO1.setUltrasonic(sensing[0]);
-        sensingDTO1.setlFsr(sensing[1]);
-        sensingDTO1.setrFsr(sensing[2]);
-
-        sensing = sensor2.split(";");
-        sensingDTO2.setUltrasonic(sensing[0]);
-        sensingDTO2.setlFsr(sensing[1]);
-        sensingDTO2.setrFsr(sensing[2]);
-
-        sensing = sensor3.split(";");
-        sensingDTO3.setUltrasonic(sensing[0]);
-        sensingDTO3.setlFsr(sensing[1]);
-        sensingDTO3.setrFsr(sensing[2]);
-
-        sensing = sensor4.split(";");
-        sensingDTO4.setUltrasonic(sensing[0]);
-        sensingDTO4.setlFsr(sensing[1]);
-        sensingDTO4.setrFsr(sensing[2]);
-
-        sensing = sensor5.split(";");
-        sensingDTO5.setUltrasonic(sensing[0]);
-        sensingDTO5.setlFsr(sensing[1]);
-        sensingDTO5.setrFsr(sensing[2]);
-
-        array.add(sensingDTO1);
-        array.add(sensingDTO2);
-        array.add(sensingDTO3);
-        array.add(sensingDTO4);
-        array.add(sensingDTO5);
-
-//        sensing();
 
         Intent intent = getIntent();
 //        nickname = intent.getExtras().getString("nickname");
@@ -293,7 +241,7 @@ public class RidingMainActivity extends AppCompatActivity implements NavigationV
     }
 
     /* 라이딩 데이터 DB insert */
-    public void postData(String url, RidingDataDTO sendData) {
+    public void postData(String url, RidingDataVO sendData) {
         final RequestParams params = new RequestParams();
         params.put("totalDistance", sendData.getTotalDistance());
         params.put("avgVelocity", sendData.getAvgVelocity());
