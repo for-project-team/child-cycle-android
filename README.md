@@ -13,4 +13,5 @@
 6. 회원가입 기능 등
 
 - Play Store : https://play.google.com/store/apps/details?id=com.ccgirls.knu.childcycle
+- 시연 영상 : https://www.youtube.com/watch?v=A3cOTzHtioE
 - 해당 프로젝트를 통해 작성한 논문으로 한이음 학술대회, 한국정보과학회 학술대회 참가
