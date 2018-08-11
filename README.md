@@ -7,11 +7,12 @@
 *  기능 소개
 1. 뒷 차/사람 간격 감지 - Arduino
 2. 핸들 파지 여부 감지 - Arduino
-3. 자전거 속도 감지
-4. 감지를 통한 청각적 시각적 알림 기능
-5. 애니메이션을 통한 보호 장구 착용 유도
+3. 자전거 속도 감지 - Android 가속도 센서
+4. 감지를 통한 청각적 시각적 알림 기능 - Arduino + Android
+5. 애니메이션을 통한 보호 장구 착용 유도 - Android
 6. 회원가입 기능 등
 
 - Play Store : https://play.google.com/store/apps/details?id=com.ccgirls.knu.childcycle
 - 시연 영상 : https://www.youtube.com/watch?v=A3cOTzHtioE
+- 한국정보과학회 학술발표논문집 : http://www.eiric.or.kr/community/m_post2.php?m=view&gubun=201612&num=6579&pg=5&seGubun=16&seGubun1=&SnxGubun=%C6%F7%BD%BA%C5%CD&searchBy=Subject&searchWord=
 - 해당 프로젝트를 통해 작성한 논문으로 한이음 학술대회, 한국정보과학회 학술대회 참가
