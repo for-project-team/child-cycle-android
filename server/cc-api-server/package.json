@@ -1,0 +1,16 @@
+{
+  "name": "cc-api-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "강남대학교 컴퓨터공학과 최혜선 - 한이음 안전자전거 프로젝트(ccgirls)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "kma-js": "^1.0.4",
+    "sequelize": "^3.24.3"
+  }
+}
