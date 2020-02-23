@@ -2,7 +2,7 @@
 안전에 취약한 어린이를 대상으로 안전하게 자전거를 즐길 수 있도록 도와주는 App제작
 
 ### 미래부 산하 정보통신기술진흥협회 한이음ICT멘토링
-- 5인팀(멘토 1, 학생 4), [최혜선](https://github.com/devssun), [김성민](https://github.com/onsway), [김은지](https://github.com/zluoy), [이우란](https://github.com/ranbly)
+- 5인팀(멘토 1, 학생 4), [최혜선](https://github.com/devssun), [김성민](https://github.com/devminiK), [김은지](https://github.com/zluoy), [이우란](https://github.com/ranbly)
 
 ### 기능 소개
 - 뒷 차/사람 간격 감지 (Arduino)
