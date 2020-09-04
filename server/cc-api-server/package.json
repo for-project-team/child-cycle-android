@@ -11,6 +11,6 @@
   "dependencies": {
     "express": "^4.14.0",
     "kma-js": "^1.0.4",
-    "sequelize": "^3.24.3"
+    "sequelize": "^6.3.5"
   }
 }
